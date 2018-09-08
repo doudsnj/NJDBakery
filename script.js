@@ -1,4 +1,9 @@
-//function showNav() {
-    //document.getElementById("navMenu").classList.toggle("show");
-//}
+<script>
+    currentLinks = document.querySelectorAll('a[href="'+document.URL+'"]')
+    currentLinks.forE‌​ach(function(link) {
+        link.className += ' current-link')
+    });
+</script>
+
+
 

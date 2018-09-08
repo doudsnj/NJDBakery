@@ -11,16 +11,25 @@
     color: #8b9e98;
 }
 
+.nav-menu__link:active {
+    color: #ce9a51;
+}
+  
 
 
 
 
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) { 
+    .logo-div {
+        text-align: center;
+    }
+
+    .logo-div__logo {
+        display: inline-block;
+        padding: 30px;
+    }
     
-    
-    
-       
     .nav-bar__icon {
         display:none;
     }
@@ -29,7 +38,7 @@
         text-align: center;
     }
 
-    .nav-menu__link:active {
+    .nav-menu__link--currentPage {
         color: #ce9a51;
     }
 
@@ -66,7 +75,8 @@
     .nav-menu:before {
         /*this moves the nav line farther to the left of the Home link.
         50 makes the left and right lines equidistant from their nearest links. 
-        Doing the reverse on the right does not have the same effect.*/
+        Doing the reverse on the right does not have the same effect.
+        TO DO: Find a way to add 5% more to each side*/
         margin-left: -50%;
         text-align: right;
     }
