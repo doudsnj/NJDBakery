@@ -1,62 +1,60 @@
+$( document ).ready();
+    $(function(){
+        $("[rel='js-logo-div']").after('<div class="reusable-nav" rel="js-reusable-nav"></div>');
+        $("[rel='js-reusable-nav']").after('<div class="nav-bar" rel="js-nav-bar"></div>');
+        $("[rel='js-nav-bar']").after('<button onclick="showNav()" class="nav-bar__icon" rel="js-nav-bar__icon"><i class="fa fa-bars"></i></button>')
+        $("[rel='js-nav-bar__icon']").after('<div class="nav-menu" rel="js-nav-menu"></div>');
+        //$("[rel='js-reusable-nav']").load("NavBar.html");
+        generateNavLinks();
+    }
+    );
 
-$(function(){
-    $(".reusable-nav").load("NavBar.html");
+const navLinks = [{
+    class: '--index nav-menu__link--first',
+    href: 'index.html',
+    linkText: 'HOME'
+},
+{
+    class: '--Products',
+    href: 'Products.html',
+    linkText: 'PRODUCTS'
+},
+{
+    class: '--Order',
+    href: 'Order.html',
+    linkText: 'Order'
+},
+{
+    class: '--MeetNadine',
+    href: 'MeetNadine.html',
+    linkText: 'MEET NADINE'
+},
+{
+    class: '--IngredientInfo',
+    href: 'IngredientInfo.html',
+    linkText: 'INGREDIENT INFO'
+},
+{
+    class: '--Contact nav-menu__link--last',
+    href: 'Contact.html',
+    linkText: 'CONTACT'
+},
+];
 
-    // now you have the html created
-    // get ref to nav-menu
-    // loop through elements in nav array, creating new <a> for each element in the array
-      // if the element matches the current window.location.href, add the active class
-});
+function generateNavLinks(){
+    let navMenuDiv = $('.nav-menu');//TODO: figure out how to make it reference the rel, instead of the class
 
-//get current URL 
-var url = window.location.href;
-console.log(url);
+    //TODO: redo as forEach loop arrow function
+    for (let index = 0; index <navLinks.length; index++) {
+        const link = navLinks[index];
+        let linkToAdd = $(`<a class="nav-menu__link nav-menu__link${link.class}" href="${link.href}">${link.linkText}</a>`);
+        navMenuDiv.append(linkToAdd);
+    };
 
-
-//determine which page the URL points to
-
-var contactResult = url.includes("Contact");
-console.log(contactResult);
-
-var indexResult = url.includes("index");
-console.log(indexResult);
-
-var ingredientInfoResult = url.includes("IngredientInfo");
-console.log(ingredientInfoResult);
-
-var meetNadineResult = url.includes("MeetNadine");
-console.log(meetNadineResult);
-
-var orderResult = url.includes("Order");
-console.log(orderResult);
-
-var productsResult = url.includes("Products");
-console.log(productsResult);
-
-var page = "placeholder";
-
-var className = "nav-menu__link--" + page;
-console.log(className);
-
-//determine which class name to find
-function setPage(){
-    if (contactResult === true){
-        console.log("It is true.")
-        page = "Contact"
-        console.log("page set to:" + page);
-        className = "nav-menu__link--" + page;
-        console.log(className);
-        }
-}
+};
 
 
 
-setPage();
-console.log("className outside of function: " + className);
-
-//add a 'currentPage' class to the link for the current page
-var element = document.getElementsByClassName(className);
-element.classList.add("nav-menu__link--currentPage");
 
 
 
