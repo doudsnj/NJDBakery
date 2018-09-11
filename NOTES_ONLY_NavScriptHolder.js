@@ -1,5 +1,5 @@
 //get current URL 
-var url = window.location.href;
+let url = window.location.href;
 console.log(url);
 
 const navElements = [{

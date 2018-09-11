@@ -1,0 +1,17 @@
+.main-image-row{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/*.main-image-row__column{
+    display: flex;
+    justify-content: center;
+
+}*/
+
+.main-image{
+    flex: 50%;
+    /*padding: 5px;*/
+    width: 90%;
+}

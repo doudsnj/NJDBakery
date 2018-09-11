@@ -2,9 +2,10 @@
 
 .nav-menu__link {
     color: #383838;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     text-decoration: none;
-    font-size: 75%;
+    font-size: 13px;
+    font-weight: 700;
     }
 
 .nav-menu__link:hover, .nav-menu__link:focus {
@@ -12,6 +13,10 @@
 }
 
 .nav-menu__link:active {
+    color: #ce9a51;
+}
+
+.nav-menu__link--currentPage {
     color: #ce9a51;
 }
   

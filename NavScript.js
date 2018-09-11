@@ -1,16 +1,18 @@
+//create nav elements
 $( document ).ready();
     $(function(){
         $("[rel='js-logo-div']").after('<div class="reusable-nav" rel="js-reusable-nav"></div>');
-        $("[rel='js-reusable-nav']").after('<div class="nav-bar" rel="js-nav-bar"></div>');
-        $("[rel='js-nav-bar']").after('<button onclick="showNav()" class="nav-bar__icon" rel="js-nav-bar__icon"><i class="fa fa-bars"></i></button>')
+        $("[rel='js-reusable-nav']").append('<div class="nav-bar" rel="js-nav-bar"></div>');
+        $("[rel='js-nav-bar']").append('<button onclick="showNav()" class="nav-bar__icon" rel="js-nav-bar__icon"><i class="fa fa-bars"></i></button>')
         $("[rel='js-nav-bar__icon']").after('<div class="nav-menu" rel="js-nav-menu"></div>');
-        //$("[rel='js-reusable-nav']").load("NavBar.html");
         generateNavLinks();
-    }
+         }
     );
+    
 
-const navLinks = [{
-    class: '--index nav-menu__link--first',
+//set nav attributes
+    const navLinks = [{
+    class: '--index',
     href: 'index.html',
     linkText: 'HOME'
 },
@@ -22,7 +24,7 @@ const navLinks = [{
 {
     class: '--Order',
     href: 'Order.html',
-    linkText: 'Order'
+    linkText: 'ORDER'
 },
 {
     class: '--MeetNadine',
@@ -35,16 +37,23 @@ const navLinks = [{
     linkText: 'INGREDIENT INFO'
 },
 {
-    class: '--Contact nav-menu__link--last',
+    class: '--Contact',
     href: 'Contact.html',
     linkText: 'CONTACT'
 },
 ];
 
-function generateNavLinks(){
-    let navMenuDiv = $('.nav-menu');//TODO: figure out how to make it reference the rel, instead of the class
 
-    //TODO: redo as forEach loop arrow function
+function generateNavLinks(){
+    let navMenuDiv = $("[rel='js-nav-menu']");
+
+    // navLinks.forEach(li => {
+    //     let link = new Link();
+    //     link.classList.add(`<a class="nav-menu__link nav-menu__link${link.class}" href="${link.href}">${link.linkText}</a>`);
+    //     navMenuDiv.append(link);
+    // });
+
+   
     for (let index = 0; index <navLinks.length; index++) {
         const link = navLinks[index];
         let linkToAdd = $(`<a class="nav-menu__link nav-menu__link${link.class}" href="${link.href}">${link.linkText}</a>`);
@@ -52,6 +61,34 @@ function generateNavLinks(){
     };
 
 };
+
+let url = window.location.href;
+
+//add class to current page's nav link for CSS needs
+for (let index = 0; index <navLinks.length; index++) {
+    const link = navLinks[index];
+    let currentArrayURLMatches = url.includes(link.href);
+    if (currentArrayURLMatches === true){
+        $(function(){
+            $(`.nav-menu__link${link.class}`).addClass('nav-menu__link--currentPage');
+        });             
+        break;
+    };
+    
+};
+
+    // navLinks.forEach(li => {
+    //     console.log('URL from function' + url);
+    //     let urlResult = url.includes(li.href);
+    //     console.log(urlResult);
+    //     if (url.includes(li.href)) {
+    //         console.log('rightafter url.includes');
+    //         $(`".nav-menu__link--"${link.class}`).addClass("nav-menu__link--currentPage");
+    //         console.log('Prior to break');
+    //         Break;
+    //     };
+    // });
+
 
 
 
