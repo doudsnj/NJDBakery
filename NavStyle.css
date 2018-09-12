@@ -19,6 +19,10 @@
 .nav-menu__link--currentPage {
     color: #ce9a51;
 }
+
+.disabled {
+    pointer-events: none;
+}
   
 
 
@@ -53,14 +57,20 @@
          padding: 30px;
     }
 
+    .reusable-nav {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 5%;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
 
     /*big grouping - start - to get line to show on either side of nav  - start */
-    .nav-bar {
-        /*make nav bar line not go to edge of page*/
-        margin-right: 5%;
-        margin-left: 5%;
-    }
-    
+   
     .nav-menu {
         position: relative;
         font-size: 100%;

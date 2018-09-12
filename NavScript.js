@@ -40,8 +40,23 @@ const navLinks = [{
 },
 ];
 
+//create nav links and add class to current page's nav link for CSS needs
 function generateNavLinks() {
     let navMenuDiv = $("[rel='js-nav-menu']");
+
+    for (let index = 0; index < navLinks.length; index++) {
+        const link = navLinks[index];
+        let url = window.location.href;
+        let currentArrayURLMatches = url.includes(link.href);
+        let linkToAdd = $(`<a class="nav-menu__link nav-menu__link--${link.class}" href="${link.href}">${link.linkText}</a>`);
+        navMenuDiv.append(linkToAdd);
+        if (currentArrayURLMatches === true) {
+            $(`.nav-menu__link--${link.class}`).addClass('nav-menu__link--currentPage disabled');
+        };
+    };
+
+};
+
 
     // navLinks.forEach(li => {
     //     let link = new Link();
@@ -49,30 +64,6 @@ function generateNavLinks() {
     //     navMenuDiv.append(link);
     // });
 
-    for (let index = 0; index < navLinks.length; index++) {
-        const link = navLinks[index];
-        let linkToAdd = $(`<a class="nav-menu__link nav-menu__link--${link.class}" href="${link.href}">${link.linkText}</a>`);
-        // TODO: add current page logic in this loop
-        // TODO: if current page, maybe add disabled attribute to prevent a full page load if user clicks the current link
-        navMenuDiv.append(linkToAdd);
-    };
-
-};
-
-let url = window.location.href;
-
-//add class to current page's nav link for CSS needs
-for (let index = 0; index < navLinks.length; index++) {
-    const link = navLinks[index];
-    let currentArrayURLMatches = url.includes(link.href);
-    if (currentArrayURLMatches === true) {
-        $(function () {
-            $(`.nav-menu__link--${link.class}`).addClass('nav-menu__link--currentPage');
-        });
-        break;
-    };
-
-};
 
     // navLinks.forEach(li => {
     //     console.log('URL from function' + url);

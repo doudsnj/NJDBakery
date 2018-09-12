@@ -1,0 +1,31 @@
+.main-image-row {
+    background-color: blue;
+    width: 90%;
+    max-height: 549px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.main-image-row__column--left {
+    background-color: lightblue;
+    float: left;
+    width: 50%;
+} 
+
+.main-image-row__leftImage {
+    width: 95%;
+    margin-right: 5%;
+}
+
+.main-image-row__column--right {
+    background-color: rgb(220, 230, 173);
+    float: right;
+    width: 50%;
+} 
+
+.main-image-row__rightImage {
+    width: 95%;
+    margin-left: 5%;
+}
+
+
