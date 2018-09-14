@@ -1,31 +1,60 @@
 .main-image-row {
+    display: block;
     background-color: blue;
     width: 90%;
     max-height: 549px;
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 50px;
+    position: relative;
 }
 
 .main-image-row__column--left {
+    display: block;
     background-color: lightblue;
     float: left;
     width: 50%;
 } 
 
 .main-image-row__leftImage {
-    width: 95%;
+    display: block;
+    width: 90%;
     margin-right: 5%;
 }
 
 .main-image-row__column--right {
+    display: block;
     background-color: rgb(220, 230, 173);
     float: right;
     width: 50%;
 } 
 
 .main-image-row__rightImage {
+    display: block;
     width: 95%;
     margin-left: 5%;
+}
+
+.site-explanation {
+    display: block;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    background-color: pink;
+    position: static;
+}
+
+.site-explanation__text {
+    display: block;
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    background-color: brown;
+    text-align: center;
 }
 
 

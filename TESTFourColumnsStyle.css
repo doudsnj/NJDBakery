@@ -1,0 +1,30 @@
+.row {
+    width: 90%;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.column {
+    flex: 25%;
+}
+
+.column-one {
+    background-color: pink;
+}
+
+.column-two{
+    background-color: orange;
+}
+
+.column-three {
+    background-color: yellow;
+}
+
+.column-four{
+    background-color: green;
+}
+
+.image {
+    width: 100%;
+}
