@@ -29,6 +29,7 @@
     }
 
     .footer-copyright__text {
+        font-family: Arial, Helvetica, sans-serif;
         color: white;
         padding-left: 5%;
     }
