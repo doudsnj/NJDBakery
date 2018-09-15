@@ -1,0 +1,35 @@
+
+
+
+@media only screen and (min-width: 600px) {
+    .footer {
+        width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    .footer-content {
+        background-color: #8e744f;
+        column-count: 4;
+        padding: 2.5%;
+    }
+
+    .footer-content__link {
+        display: block;
+        text-decoration: none;
+        color: white;
+        padding-left: 10%;
+        padding-top: 2.5%;
+    }
+
+    .footer-copyright {
+        background-color: #1d1d1d;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+    .footer-copyright__text {
+        color: white;
+        padding-left: 5%;
+    }
+}
