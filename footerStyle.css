@@ -4,8 +4,9 @@
 @media only screen and (min-width: 600px) {
     .footer {
         width: 100%;
-        font-family: Arial, Helvetica, sans-serif;
-
+        font-family: 'Open Sans', sans-serif;
+        color: #ffffff;
+        text-decoration: none;
     }
 
     .footer-content {
@@ -29,8 +30,9 @@
     }
 
     .footer-copyright__text {
-        font-family: Arial, Helvetica, sans-serif;
-        color: white;
+        font-family: 'Open Sans', sans-serif;
+        color: #ffffff;
+        text-decoration: none;
         padding-left: 5%;
     }
 }

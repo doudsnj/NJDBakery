@@ -1,0 +1,51 @@
+/*start - use to show containers*/
+/* .explanation-container {
+    background-color: green;
+} */
+/*end - use to show containers*/
+
+.general-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #8b9e98;
+    text-align: center;
+    font-size: 50px;
+ }
+
+.order-form__customer-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #ffffff;
+    text-align: center;
+}
+
+.order-form__order-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #ffffff;
+    text-align: center;
+}
+
+.explanation-container {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.explanation-container__text {
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    text-decoration: none;
+    font-size: 13px;
+    padding-left: 10%;
+    padding-top: 2.5%;
+    padding-right: 10%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .order-form {
+        background-color: #8b9e98;
+        width: 100%;
+    }
+}
