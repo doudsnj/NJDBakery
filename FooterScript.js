@@ -82,7 +82,7 @@ const footerLinks = [{
 function generateFooterLinks() {
     let footerLinksDiv = $("[rel='js-footer-content']");
     for (let index = 0; index < footerLinks.length; index++) {
-        console.log('in forLoop');
+        console.log('in generateFooterLinks forLoop');
         let link = footerLinks[index];
         let linkToAdd = $(`<a class="${link.class}" href="${link.href}">${link.linkText}</a>`);
         footerLinksDiv.append(linkToAdd);
@@ -90,3 +90,4 @@ function generateFooterLinks() {
 
 
 };
+
