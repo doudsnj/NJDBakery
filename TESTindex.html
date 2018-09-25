@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <!--<link rel="stylesheet" href="CSSReset.css">-->
+    <link rel="stylesheet" href="CSSReset.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="NavStyle.css">
     <link rel="stylesheet" href="TESTindexstyles.css">
+    <link rel="stylesheet" href="footerStyle.css">
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="NavScript.js"></script>
+    <script type="text/javascript" src="FooterScript.js"></script>
 </head>
 
-<body>
+<body rel="js-body">
     <div class="logo-div" rel="js-logo-div">
         <img class="logo-div__logo" src="LogoPlaceholderWithGhettoCookie.png" alt="NJDBakeryLogo">
     </div>
@@ -21,23 +25,56 @@
         <div class="main-image-row__column main-image-row__column--left">
             <img class="main-image main-image-row__leftImage" src="OatmealChocolateChipCookiesOnTableTwoInForeGroundTwoInBackground.jpg"
                 alt="ExampleText">
-            <p>in left column</p>
+            <div class="main-image__label main-image__label--left">gluten free</div>
         </div>
-
         <div class="main-image-row__column main-image-row__column--right">
             <img class="main-image main-image-row__rightImage" src="OatmealChocolateChipFourLeaningOnPlateOnTable.jpg"
                 alt="ExampleText2">
-            <p>in right column<p>
+            <div class="main-image__label main-image__label--right">vegan</div>
         </div>
     </div>
-    <div class="site-explanation">
-        <p class="site-explanation__text">Everyone should be able to eat food, made from high quality and nutritious
-            ingredients, that tastes good and makes them happy, regardless of dietary restrictions. At NJD Bakery, our
-            goal is to help make that easier! Choose what you would like from an array of allergen friendly products
-            and we will make those for you. If you see a product you'd like to have, but its default has ingredients
-            you can't eat, choose an adaptation of that product instead. Eyeballing those chocolate chip cookies but
-            wish they were vegan? Just choose the vegan option when you order! Our aim is to help you and your loved
-            ones eat healthy, tasty food that leaves you satisfied and feeling good. Everyone deserves happy tastebuds.</p>
+    <br>
+    <div class="site-explanation-container">
+        <p class="site-explanation__text">Everyone should be able to eat food made from high quality and nutritious
+            ingredients, that tastes great, regardless of dietary restrictions. At NJD Bakery, our goal is to help make
+            that easier! Choose what you would like from an array of allergen friendly products and we will make those
+            for you. Our goal is to help you and your loved ones eat healthy, tasty food that leaves you satisfied and
+            feeling good. Everyone deserves happy tastebuds.</p>
+    </div>
+    <div class="browse-container">
+        <a class="browse-heading browse-heading--products" href="Products.html">BROWSE PRODUCTS</a>
+    </div>
+
+    <div class="category-container">
+        <div class="category-row">
+            <div class="category__bi-column category__bi-column1">
+                <div class="category-row__column category-row__quad-column1">
+                    <img class="category-image category-image--1" src="OatmealChocolateChipCookiesOnTableTwoInForeGroundTwoInBackground.jpg"
+                        alt="ExampleText">
+                    <div class="category-image__label category-image__label--one">cookies</div>
+                </div>
+                <div class="category-row__column category-row__quad-column2">
+                    <img class="category-image category-image--2" src="ChocolateHazelnutTruffleBites_OneOnSpoonTwoNearPlateInBackground.jpg"
+                        alt="ExampleText2">
+                    <div class="category-image__label category-image__label--two">small bites</div>
+                </div>
+            </div>
+            <div class="category__bi-column category__bi-column2">
+                <div class="category-row__column category-row__quad-column3">
+                    <img class="category-image category-image--3" src="BananaChocolateChipsMuffinsCloseUp.jpg" alt="ExampleText">
+                    <div class="category-image__label category-image__label--three">cakes & cupcakes</div>
+                </div>
+                <div class="category-row__column category-row__quad-column4">
+                    <img class="category-image category-image--4" src="OatmealChocolateChipFourLeaningOnPlateOnTable.jpg"
+                        alt="ExampleText2">
+                    <div class="category-image__label category-image__label--four">dessert creations</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="browse-container">
+        <a class="browse-heading browse-heading--allCategories" href="Products.html">ALL CATEGORIES</a>
     </div>
 
 

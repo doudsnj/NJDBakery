@@ -1,24 +1,19 @@
-/*start - use to show containers*/
+/*START - use to show containers*/
 /* .explanation-container {
     background-color: green;
-} */
-
-/* .order-form__customer-fields {
+} 
+.order-form__customer-fields {
     background-color: lightblue;
-}  */
-
-/*.order-form__order-fields {
+}
+.order-form__order-fields {
     background-color: #ffffff;
-} */ 
-
-/* .order-form__bi-column--left {
+} 
+.order-form__bi-column--left {
     background-color: pink;
 }
-
 .order-form__bi-column--right {
     background-color: lightgray;
 }
-
 .order-form__quad-column1 {
     background-color: red;
 }
@@ -31,14 +26,11 @@
 .order-form__quad-column4 {
     background-color: green;
 }
-
 .order-form__button-row {
     background-color: black;
 
 } */
-
-
-/*end - use to show containers*/
+/*END - use to show containers*/
 
 .general-heading {
     font-family: 'Indie Flower', cursive;
@@ -228,17 +220,14 @@
         margin-right: 5%;
         display: inline-block;
         position: relative;
-
     }
 
     .order-form__customer-fields {
         width: 100%;
         height: auto;
-     }
+    }
 
-
-
-     .order-form__bi-column {
+    .order-form__bi-column {
         width: 50%; 
         display:inline-block;
     }
