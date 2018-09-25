@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TESTOrder</title>
+    <link rel="stylesheet" href="CSSReset.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="NavStyle.css">
+    <link rel="stylesheet" href="TestOrderStyles.css">
+    <link rel="stylesheet" href="footerStyle.css">
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="NavScript.js"></script>
+    <script type="text/javascript" src="OrderScript.js"></script>
+    <script type="text/javascript" src="FooterScript.js"></script>
+</head>
+
+<body rel="js-body">
+    <div class="logo-div" rel="js-logo-div">
+        <img class="logo-div__logo" src="LogoPlaceholderWithGhettoCookie.png" alt="NJDBakeryLogo">
+    </div>
+    <div class="general-heading">TESTorder</div>
+    <div class="explanation-container">
+        <p class="explanation-container__text">To place an order, fill out the form below and click the Submit button.
+            You will receive an email with a copy of your order and someone from NJD Bakery will be in contact with
+            you. Payment is handled at the time of pickup/delivery.
+            To order more than one type of product, click the Add Another button.</p>
+    </div>
+    <div class="form-container">
+        <form class="order-form">
+            <h1 class="order-form__customer-heading">TESTcustomer</h1>
+            <div class="order-form__customer-fields">
+                <div class="order-form__bi-column order-form__bi-column--left">
+                    <div class="order-form__quad-column order-form__quad-column1">
+                        <label for="order-form__first-name" class="input-label">First Name</label>
+                        <input type="text" name="first-name" class="order-form__input order-form__customer-field
+                        order-form__first-name">
+                    </div>
+                    <div class="order-form__quad-column order-form__quad-column2">
+                        <label for="order-form__last-name" class="input-label">Last Name</label>
+                        <input type="text" name="last-name" class="order-form__input order-form__customer-field
+                        order-form__last-name">
+                    </div>
+                </div>
+
+                <div class="order-form__bi-column order-form__bi-column--right">
+                    <div class="order-form__quad-column order-form__quad-column3">
+                        <label for="order-form__email" class="input-label">Email</label>
+                        <input type="text" name="email" class="order-form__input order-form__customer-field order-form__email">
+                    </div>
+                    <div class="order-form__quad-column order-form__quad-column4">
+                        <label for="order-form__phone" class="input-label">Phone</label>
+                        <input type="text" name="phone" class="order-form__input order-form__customer-field order-form__phone">
+                    </div>
+                </div>
+
+                <h1 class="order-form__order-heading">TESTorder</h1>
+                <div class="order-form__order-fields">
+                    <div class="order-form__quad-column">
+                        <label for="order-form__product" class="input-label">Product</label>
+                        <input type="text" name="product" class="order-form__input" class="order-form__order-field"
+                            class="order-form__product">
+                    </div>
+                    <div class="order-form__quad-column">
+                        <label for="order-form__quantity" class="input-label">Quantity</label>
+                        <input type="text" name="quantity" class="order-form__input" class="order-form__order-field"
+                            class="order-form__quantity">
+                    </div>
+                    <div class="order-form__quad-column">
+                        <label for="order-form__dietary-options" class="input-label">Dietary Options</label>
+                        <input type="text" name="dietary-options" class="order-form__input" class="order-form__order-field"
+                            class="order-form__dietary-options">
+                    </div>
+                    <div class="order-form__quad-column">
+                        <label for="order-form__price" class="input-label">Price</label>
+                        <input type="text" value="will be generated and not an input" name="price" class="order-form__input"
+                            class="order-form__order-field" class="order-form__price">
+                    </div>
+
+                    <br>
+                    <!-- <div class="order-form__product-fields">
+                <div class="order-form__product-dropdown">
+                    <span class="order-form__product-current-value">Chocolate Chip Cookies</span>
+                    <ul class="order-form__product-option-list">
+                        <li class="order-form__product-option">Chocolate Chip Cookies</li>
+                        <li class="order-form__product-option">Oatmeal Raisin Cookies</li>
+                        <li class="order-form__product-option">Double Chocolate Chip Cookies</li>
+                    </ul>
+                </div>
+                <select name="products" class="products">
+                    <option value="default"></option>
+                    <option value="chocolateChipCookies">Chocolate Chip Cookies</option>
+                    <option value="oatmealRaisinCookies">Oatmeal Raisin Cookies</option>
+                    <option value="doubleChocolateChipCookies">Double Chooclate Chip Cookies</option>
+                </select> -->
+                </div>
+
+
+
+                <div class="order-form__remaining-fields"></div>
+                <div class="order-form__button-row">tsxt
+                    <!-- <button class="order-form__submit-button">SUBMIT</button> -->
+                </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

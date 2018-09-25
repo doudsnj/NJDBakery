@@ -24,37 +24,56 @@
     </div>
     <div class="general-heading">order</div>
     <div class="explanation-container">
-        <p class="explanation-container__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi
-            ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
+        <p class="explanation-container__text">To place an order, fill out the form below and click the Submit button.
+            You will receive an email with a copy of your order and someone from NJD Bakery will be in contact with
+            you. Payment is handled at the time of pickup/delivery.
+            To order more than one type of product, click the Add Another button.</p>
     </div>
     <form class="order-form">
         <h1 class="order-form__customer-heading">customer</h1>
         <div class="order-form__customer-fields">
-            <div class="order-form__customer-fields--column">
+            <div class="order-form__column">
                 <label for="order-form__first-name" class="input-label">First Name</label>
                 <input type="text" name="first-name" class="order-form__input" class="order-form__customer-field" class="order-form__first-name">
             </div>
-            <div class="order-form__customer-fields--column">
+            <div class="order-form__column">
                 <label for="order-form__last-name" class="input-label">Last Name</label>
                 <input type="text" name="last-name" class="order-form__input" class="order-form__customer-field" class="order-form__last-name">
             </div>
-            <div class="order-form__customer-fields--column">
+            <div class="order-form__column">
                 <label for="order-form__email" class="input-label">Email</label>
                 <input type="text" name="email" class="order-form__input" class="order-form__customer-field" class="order-form__email">
             </div>
-            <div class="order-form__customer-fields--column">
+            <div class="order-form__column">
                 <label for="order-form__phone" class="input-label">Phone</label>
                 <input type="text" name="phone" class="order-form__input" class="order-form__customer-field" class="order-form__phone">
             </div>
 
 
         </div>
-        <h1 class="order-form__order-heading">order</>
-            <div class="order-form__product-fields">
+        <h1 class="order-form__order-heading">order</h1>
+        <div class="order-form__order-fields">
+            <div class="order-form__column">
+                <label for="order-form__product" class="input-label">Product</label>
+                <input type="text" name="product" class="order-form__input" class="order-form__order-field" class="order-form__product">
+            </div>
+            <div class="order-form__column">
+                <label for="order-form__quantity" class="input-label">Quantity</label>
+                <input type="text" name="quantity" class="order-form__input" class="order-form__order-field" class="order-form__quantity">
+            </div>
+            <div class="order-form__column">
+                <label for="order-form__dietary-options" class="input-label">Dietary Options</label>
+                <input type="text" name="dietary-options" class="order-form__input" class="order-form__order-field"
+                    class="order-form__dietary-options">
+            </div>
+            <div class="order-form__column">
+                <label for="order-form__price" class="input-label">Price</label>
+                <input type="text" value="will be generated and not an input" name="price" class="order-form__input"
+                    class="order-form__order-field" class="order-form__price">
+            </div>
+
+            <br>
+            <!-- <div class="order-form__product-fields">
                 <div class="order-form__product-dropdown">
                     <span class="order-form__product-current-value">Chocolate Chip Cookies</span>
                     <ul class="order-form__product-option-list">
@@ -68,15 +87,15 @@
                     <option value="chocolateChipCookies">Chocolate Chip Cookies</option>
                     <option value="oatmealRaisinCookies">Oatmeal Raisin Cookies</option>
                     <option value="doubleChocolateChipCookies">Double Chooclate Chip Cookies</option>
-                </select>
-            </div>
+                </select> -->
+        </div>
 
 
 
-            <div class="order-form__remaining-fields"></div>
-            <div class="order-form__button-row">
-                <button class="order-form__button-row--submit-button">SUBMIT</button>
-            </div>
+        <div class="order-form__remaining-fields"></div>
+        <div class="order-form__button-row">tsxt
+            <!-- <button class="order-form__submit-button">SUBMIT</button> -->
+        </div>
     </form>
 
 </body>

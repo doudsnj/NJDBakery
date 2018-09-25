@@ -2,13 +2,21 @@
 /* .explanation-container {
     background-color: green;
 } */
+
 /* .order-form__customer-fields {
     background-color: lightblue;
+}  */
+
+/*.order-form__order-fields {
+    background-color: #ffffff;
+} */ 
+
+.order-form__button-row {
+    background-color: black;
+
 }
 
-.order-form__product-fields {
-    background-color: #ffffff;
-} */
+
 /*end - use to show containers*/
 
 .general-heading {
@@ -34,7 +42,8 @@
     text-align: center;
     font-size: 30px;
     font-weight: 300;
-    padding: 30px; 
+    padding-top: 90px; 
+    padding-bottom: 30px;
 }
 
 .explanation-container {
@@ -160,7 +169,9 @@
     font-family: 'Open Sans', sans-serif; 
     color: #ffffff;
     font-weight: 100;
+    font-size: .75em;
     display: block;
+    padding: 10px;
 }
 
 
@@ -168,10 +179,21 @@
     width: 80%;
     height: 50px;
     border: 1px solid #8b9e98;
-    border-radius: 5px;
+    border-radius: 7.5px;
     font-family: 'Open Sans', sans-serif;
     color: #383838;
 }
+
+.order-form__button-row {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: right;
+}
+
+/* .order-form__button {
+    float: right;
+} */
 
  
 
@@ -187,20 +209,26 @@
     .order-form__customer-fields {
         display: flex;
         width: 90%;
-        height: 300px;
+
         margin-left: 5%;
         margin-right: 5%;
-
     }
 
-    .order-form__customer-fields--column {
+    .order-form__order-fields {
+        display: flex;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .order-form__column {
         flex: 25%;
         display: inline-block;
     }
 
 
 
-    .order-form__product-fields {
+    .order-form__order-fields {
         width: 90%;
         height: 300px;
         margin-left: 5%;

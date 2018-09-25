@@ -2,13 +2,42 @@
 /* .explanation-container {
     background-color: green;
 } */
-/* .contact-form__customer-fields {
+
+/* .order-form__customer-fields {
     background-color: lightblue;
+}  */
+
+/*.order-form__order-fields {
+    background-color: #ffffff;
+} */ 
+
+/* .order-form__bi-column--left {
+    background-color: pink;
 }
 
-.contact-form__product-fields {
-    background-color: #ffffff;
+.order-form__bi-column--right {
+    background-color: lightgray;
+}
+
+.order-form__quad-column1 {
+    background-color: red;
+}
+.order-form__quad-column2 {
+    background-color: orange;
+}
+.order-form__quad-column3 {
+    background-color: yellow;
+}
+.order-form__quad-column4 {
+    background-color: green;
+}
+
+.order-form__button-row {
+    background-color: black;
+
 } */
+
+
 /*end - use to show containers*/
 
 .general-heading {
@@ -18,7 +47,7 @@
     font-size: 50px;
  }
 
-.contact-form__customer-heading {
+.order-form__customer-heading {
     font-family: 'Indie Flower', cursive;
     color: #ffffff;
     text-align: center;
@@ -28,13 +57,14 @@
 
 }
 
-.contact-form__contact-heading {
+.order-form__order-heading {
     font-family: 'Indie Flower', cursive;
     color: #ffffff;
     text-align: center;
     font-size: 30px;
     font-weight: 300;
-    padding: 30px; 
+    padding-top: 90px; 
+    padding-bottom: 30px;
 }
 
 .explanation-container {
@@ -57,29 +87,29 @@
 }
 
 /* Start - styling the dropdown box for the Products */
-.contact-form__product-dropdown {
+.order-form__product-dropdown {
     position: relative;
     display: inline-block;
 }
 
-.contact-form__product-dropdown .active,
-.contact-form__product-dropdown:focus {
+.order-form__product-dropdown .active,
+.order-form__product-dropdown:focus {
     outline: none;
     box-shadow: 0 0 3px 1px #227755;
 }
 
-.contact-form__product-option-list{
+.order-form__product-option-list{
     position: absolute;
     top: 100%;
     left: 0;
 }
 
-.contact-form__product-option-list.hidden {
+.order-form__product-option-list.hidden {
     max-height: 0;
     visibility: hidden;
 }
 
-.contact-form__product-dropdown {
+.order-form__product-dropdown {
     font-size: 1em;
     font-family: 'Indie Flower', cursive;
     -moz-box-sizing: border-box;
@@ -91,7 +121,7 @@
     box-shadow: 0 .1em .2em rgba(0,0,0,.45);
 }
 
-.contact-form__product-current-value {
+.order-form__product-current-value {
     display: inline-block;
     width: 100%;
     overflow: hidden;
@@ -100,7 +130,7 @@
     text-overflow: ellipsis;
 }
 
-.contact-form__product-dropdown:after {
+.order-form__product-dropdown:after {
     content: U+25BC;
     position: relative;
     z-index: 1;
@@ -117,7 +147,7 @@
     text-align: center;
 }
 
-.contact-form__product-option-list {
+.order-form__product-option-list {
     z-index: 2;
     list-style: none;
     margin: 0;
@@ -134,16 +164,16 @@
     background: #f0f0f0;
 }
 
-.contact-form__product-option {
+.order-form__product-option {
     padding: .2em .3em;
 }
 
-.contact-form__product-option .highlight{
+.order-form__product-option .highlight{
     background: #000;
     color: #ffffff;
 }
 
-.contact-form__product-dropdown .highlight {
+.order-form__product-dropdown .highlight {
     background: #000;
     color: #ffffff;
 }
@@ -160,18 +190,26 @@
     font-family: 'Open Sans', sans-serif; 
     color: #ffffff;
     font-weight: 100;
+    font-size: .75em;
     display: block;
+    padding: 10px;
 }
 
 
-.contact-form__input {
+.order-form__input {
     width: 80%;
     height: 50px;
     border: 1px solid #8b9e98;
-    border-radius: 5px;
+    border-radius: 7.5px;
     font-family: 'Open Sans', sans-serif;
     color: #383838;
 }
+
+
+
+/* .order-form__button {
+    float: right;
+} */
 
  
 
@@ -179,37 +217,73 @@
 
 
 @media only screen and (min-width: 600px) {
-    .contact-form {
+    .form-container {
         background-color: #8b9e98;
         width: 100%;
     }
 
-    .contact-form__customer-fields {
-        display: flex;
+    .order-form {
         width: 90%;
-        height: 150px;
         margin-left: 5%;
         margin-right: 5%;
-
-    }
-
-    .contact-form__customer-fields--column {
-        flex: 25%;
         display: inline-block;
+        position: relative;
+
     }
 
-
-    .contact-form__comment-row {
+    .order-form__customer-fields {
         width: 100%;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-bottom: 100px;
-        display: block;
+        height: auto;
+     }
+
+
+
+     .order-form__bi-column {
+        width: 50%; 
+        display:inline-block;
     }
 
-    .contact-form__comments {
-        width: 100%;
-        padding-bottom: 100px; 
+    .order-form__bi-column--left {
+        float: left; 
     }
+
+    .order-form__bi-column--right {
+        float: right; 
+    }
+
+    .order-form__quad-column1 {
+        width: 50%;
+        float: left;
+    }
+
+    .order-form__quad-column2 {
+        width: 50%;
+        float: right;
+    }
+
+    .order-form__quad-column3 {
+        width: 50%;
+        float: left;
+    }
+
+    .order-form__quad-column4 {
+        width: 50%;
+        float: right;
+    }
+    
+    .order-form__last-name {
+        float: right;
+        margin-right: 13.33%;
+    }
+    .order-form__email {
+        margin-left: 13.33%;
+    }
+
+    .order-form__phone {
+        float: right;
+    }
+    
+
+
 
 }
