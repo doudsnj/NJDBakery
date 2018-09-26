@@ -229,37 +229,11 @@
         float: right;
     }
 
-/*START - FROM ORIGINAL*/
     .category-image {
        width: 92.496%;
    }
 
-  /* .category-image--one {
-       width: 95%;
-       float: left;
-       margin-right: 5%;
-   }
-
-   .category-image--two {
-        width: 95%;
-        float: right;
-        margin-right: 5%;
-     }
-
-    .category-image--three {
-        width: 95%;
-        float: left;
-        margin-left: 5%;
-    }
-
-    .category-image--four {
-        width: 95%;
-        float: right;
-        margin-left: 5%;
-
-    } */
-    /*END - FROM ORIGINAL*/
-
+  
 
 
 }

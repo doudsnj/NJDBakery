@@ -29,7 +29,11 @@
 .order-form__button-row {
     background-color: black;
 
-} */
+}
+
+.add-section {
+    background-color: darkslategrey;
+}*/
 /*END - use to show containers*/
 
 .general-heading {
@@ -289,6 +293,47 @@
 
     .input-label__phone, .input-label__price {
         margin-left: 20%;
+    }
+
+    .order-fields__template {
+        display: none;
+    }
+
+    .add-section {
+        width: 100%;
+        display: inline-block;
+        line-height: 30px;
+      }
+
+    .add-section__button {
+        background-color: #ffffff;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        color: #383838;
+        float: left;
+        padding-left: 4px;
+        padding-top: 0px;
+        padding-right: 4px;
+        padding-bottom: 0px;
+        margin-top: 3px;
+        margin-right: 3px;
+        border-radius: .2em;
+        border-style: solid;
+        border-color: #ffffff;
+    }
+
+    .add-section__button:hover {
+        background-color: #ce9a51;
+    }
+
+    .add-section__button:focus {
+        background-color: #ce9a51;
+    }
+
+    .add-section__button--text {
+        float: left;
+        padding-bottom: 0px;
+ 
     }
 
 
