@@ -1,19 +1,21 @@
 /*START - use to show containers*/
 /* .explanation-container {
     background-color: green;
-} 
+}
 .order-form__customer-fields {
     background-color: lightblue;
 }
+
 .order-form__order-fields {
     background-color: #ffffff;
-} 
+}
 .order-form__bi-column--left {
     background-color: pink;
 }
 .order-form__bi-column--right {
     background-color: lightgray;
 }
+
 .order-form__quad-column1 {
     background-color: red;
 }
@@ -33,6 +35,10 @@
 
 .add-section {
     background-color: darkslategrey;
+}
+
+.remove-row__section {
+    background-color: #000;
 }*/
 /*END - use to show containers*/
 
@@ -49,7 +55,7 @@
     text-align: center;
     font-size: 30px;
     font-weight: 300;
-    padding: 30px; 
+    padding: 30px;
 }
 
 .order-form__order-heading {
@@ -58,7 +64,7 @@
     text-align: center;
     font-size: 30px;
     font-weight: 300;
-    padding-top: 90px; 
+    padding-top: 90px;
     padding-bottom: 30px;
 }
 
@@ -182,7 +188,7 @@
 }
 
 .input-label {
-    font-family: 'Open Sans', sans-serif; 
+    font-family: 'Open Sans', sans-serif;
     color: #ffffff;
     font-weight: 100;
     font-size: .75em;
@@ -198,7 +204,14 @@
     border-radius: 7.5px;
     font-family: 'Open Sans', sans-serif;
     color: #383838;
+    margin-bottom: 3px;
 }
+
+.order-form__product {
+    width: 100%;
+}
+
+
 
 
 
@@ -206,7 +219,7 @@
     float: right;
 } */
 
- 
+
 
 
 
@@ -242,16 +255,16 @@
 
 
     .order-form__bi-column {
-        width: 50%; 
+        width: 50%;
         display:inline-block;
     }
 
     .order-form__bi-column--left {
-        float: left; 
+        float: left;
     }
 
     .order-form__bi-column--right {
-        float: right; 
+        float: right;
     }
 
     .order-form__quad-column1, .order-form__quad-column3 {
@@ -264,7 +277,7 @@
         float: right;
     }
 
-  
+
     .order-form__last-name {
         float: right;
         margin-right: 13.33%;
@@ -295,17 +308,13 @@
         margin-left: 20%;
     }
 
-    .order-fields__template {
-        display: none;
-    }
-
-    .add-section {
+    .add-row-section {
         width: 100%;
         display: inline-block;
-        line-height: 30px;
+        line-height: 25px;
       }
 
-    .add-section__button {
+    .add-row__button, .remove-row__button {
         background-color: #ffffff;
         font-family: 'Open Sans', sans-serif;
         font-weight: 700;
@@ -315,25 +324,49 @@
         padding-top: 0px;
         padding-right: 4px;
         padding-bottom: 0px;
-        margin-top: 3px;
         margin-right: 3px;
         border-radius: .2em;
         border-style: solid;
         border-color: #ffffff;
     }
 
-    .add-section__button:hover {
+
+
+    .add-row__button:hover,.remove-row__button:hover {
         background-color: #ce9a51;
     }
 
-    .add-section__button:focus {
-        background-color: #ce9a51;
+    .order-form__product-field--container {
+        width: 80%;
+        float: left;
+        display: block;
     }
 
-    .add-section__button--text {
+    .remove-row__section {
+        width: 20%;
+        height: 100%;
+        display: block;
+        float: right;
+        line-height: 25px;
+        margin-top: 8.5%;
+    }
+
+    .remove-row__button {
+        margin-left: 4px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+
+
+    /* .add-row-section__button:focus {
+        background-color: #ce9a51;
+    } */
+
+    .add-row__button--text, .remove-row__button--text {
         float: left;
         padding-bottom: 0px;
- 
+
     }
 
 

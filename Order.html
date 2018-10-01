@@ -60,61 +60,43 @@
 
             <h1 class="order-form__order-heading">order</h1>
             <div class="order-form__order-fields" rel="js-order-fields">
-                <div class="order-fields__row1" rel="js-order-fields__row1">
-                    <div class="order-form__bi-column order-form__bi-column--left" rel="order-form__bi-column__left">
+                <div class="order-fields__rows" rel="js-order-fields__rows">
+                    <div class="order-form__bi-column order-form__bi-column--left" rel="js-order-form__bi-column__left">
                         <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1">
-                            <label for="order-form__product" class="input-label input-label__product">Product</label>
-                            <input type="text" name="product" class="order-form__input order-form__order-field order-form__product">
+                            <div class="order-form__product-field--container" rel="js-order-form__product-field--container">
+                                <label for="order-form__product" class="input-label input-label__product">Product</label>
+                                <input type="text" name="product" class="order-form__input order-form__product order-form__product1 newest row1">
+                            </div>
+
+                            <!--START new-->
+                            <div class="remove-row__section rel=js-remove-row__section">
+                                <button type="button" class="remove-row__button">-</button>
+                                <span class="remove-row__button--text input-label">Remove</span>
+                            </div>
+                            <!--END new-->
                         </div>
                         <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2">
                             <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
-                            <input type="text" name="quantity" class="order-form__input order-form__order-field order-form__quantity">
+                            <input type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity1 row1">
                         </div>
                     </div>
 
-                    <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__left">
+                    <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__right">
                         <div class="order-form__quad-column order-form__quad-column3" rel="js-order-form__quad-column3">
                             <label for="order-form__dietary-options" class="input-label input-label__dietary-options">Dietary
                                 Options</label>
-                            <input type="text" name="dietary-options" class="order-form__input order-form__order-field order-form__dietary-options">
+                            <input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options1 row1">
                         </div>
                         <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4">
                             <label for="order-form__price" class="input-label input-label__price">Price</label>
-                            <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__order-field order-form__price">
+                            <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price1 row1">
                         </div>
                     </div>
                 </div>
-                <div>below this is the display:none template div</div>
-                <!-- START - hidden div used by script -->
-                <div id="test" class="order-fields__template" rel="js-order-fields__template">
-                    <div class="order-form__bi-column order-form__bi-column--left" rel="order-form__bi-column__left">
-                        <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1">
-                            <label for="order-form__product" class="input-label input-label__product">Product</label>
-                            <input type="text" name="product" class="order-form__input order-form__order-field order-form__product">
-                        </div>
-                        <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2">
-                            <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
-                            <input type="text" name="quantity" class="order-form__input order-form__order-field order-form__quantity">
-                        </div>
-                    </div>
 
-                    <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__left">
-                        <div class="order-form__quad-column order-form__quad-column3" rel="js-order-form__quad-column3">
-                            <label for="order-form__dietary-options" class="input-label input-label__dietary-options">Dietary
-                                Options</label>
-                            <input type="text" name="dietary-options" class="order-form__input order-form__order-field order-form__dietary-options">
-                        </div>
-                        <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4">
-                            <label for="order-form__price" class="input-label input-label__price">Price</label>
-                            <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__order-field order-form__price">
-                        </div>
-                    </div>
-                </div>
-                <!-- END - hidden div used by script -->
-
-                <div class="add-section">
-                    <button type="button" onclick="addRow()" class="add-section__button">+</button>
-                    <span class="add-section__button--text input-label">Add more</span>
+                <div class="add-row-section">
+                    <button type="button" onclick="addRow()" class="add-row__button">+</button>
+                    <span class="add-row__button--text input-label">Add more</span>
                 </div>
 
                 <br>
@@ -131,7 +113,7 @@
                     <option value="default"></option>
                     <option value="chocolateChipCookies">Chocolate Chip Cookies</option>
                     <option value="oatmealRaisinCookies">Oatmeal Raisin Cookies</option>
-                    <option value="doubleChocolateChipCookies">Double Chooclate Chip Cookies</option>
+                    <option value="doubleChocolateChipCookies">Double Chocolate Chip Cookies</option>
                 </select> -->
             </div>
 
