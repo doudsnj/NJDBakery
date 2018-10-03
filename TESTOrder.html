@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="NavStyle.css">
-    <link rel="stylesheet" href="TestOrderStyles.css">
+    <link rel="stylesheet" href="TESTOrderStyles.css">
     <link rel="stylesheet" href="footerStyle.css">
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="NavScript.js"></script>
-    <script type="text/javascript" src="OrderScript.js"></script>
+    <script type="text/javascript" src="TESTOrderScript.js"></script>
     <script type="text/javascript" src="FooterScript.js"></script>
 </head>
 
@@ -27,7 +27,7 @@
         <p class="explanation-container__text">To place an order, fill out the form below and click the Submit button.
             You will receive an email with a copy of your order and someone from NJD Bakery will be in contact with
             you. Payment is handled at the time of pickup/delivery.
-            To order more than one type of product, click the Add Another button.</p>
+            To order more than one type of product, click the Add More button.</p>
     </div>
     <div class="form-container">
         <form class="order-form">
@@ -35,12 +35,12 @@
             <div class="order-form__customer-fields">
                 <div class="order-form__bi-column order-form__bi-column--left">
                     <div class="order-form__quad-column order-form__quad-column1">
-                        <label for="order-form__first-name" class="input-label">First Name</label>
+                        <label for="order-form__first-name" class="input-label input-label__first-name">First Name</label>
                         <input type="text" name="first-name" class="order-form__input order-form__customer-field
                         order-form__first-name">
                     </div>
                     <div class="order-form__quad-column order-form__quad-column2">
-                        <label for="order-form__last-name" class="input-label">Last Name</label>
+                        <label for="order-form__last-name" class="input-label input-label__last-name">Last Name</label>
                         <input type="text" name="last-name" class="order-form__input order-form__customer-field
                         order-form__last-name">
                     </div>
@@ -48,40 +48,59 @@
 
                 <div class="order-form__bi-column order-form__bi-column--right">
                     <div class="order-form__quad-column order-form__quad-column3">
-                        <label for="order-form__email" class="input-label">Email</label>
+                        <label for="order-form__email" class="input-label input-label__email">Email</label>
                         <input type="text" name="email" class="order-form__input order-form__customer-field order-form__email">
                     </div>
                     <div class="order-form__quad-column order-form__quad-column4">
-                        <label for="order-form__phone" class="input-label">Phone</label>
+                        <label for="order-form__phone" class="input-label  input-label__phone">Phone</label>
                         <input type="text" name="phone" class="order-form__input order-form__customer-field order-form__phone">
                     </div>
                 </div>
+            </div>
 
-                <h1 class="order-form__order-heading">TESTorder</h1>
-                <div class="order-form__order-fields">
-                    <div class="order-form__quad-column">
-                        <label for="order-form__product" class="input-label">Product</label>
-                        <input type="text" name="product" class="order-form__input" class="order-form__order-field"
-                            class="order-form__product">
-                    </div>
-                    <div class="order-form__quad-column">
-                        <label for="order-form__quantity" class="input-label">Quantity</label>
-                        <input type="text" name="quantity" class="order-form__input" class="order-form__order-field"
-                            class="order-form__quantity">
-                    </div>
-                    <div class="order-form__quad-column">
-                        <label for="order-form__dietary-options" class="input-label">Dietary Options</label>
-                        <input type="text" name="dietary-options" class="order-form__input" class="order-form__order-field"
-                            class="order-form__dietary-options">
-                    </div>
-                    <div class="order-form__quad-column">
-                        <label for="order-form__price" class="input-label">Price</label>
-                        <input type="text" value="will be generated and not an input" name="price" class="order-form__input"
-                            class="order-form__order-field" class="order-form__price">
+            <h1 class="order-form__order-heading">TESTorder</h1>
+            <div class="order-form__order-fields" rel="js-order-fields">
+                <div class="order-fields__rows" rel="js-order-fields__rows">
+                    <div class="order-fields__row order-fields__row1" rel="js-order-fields__row--1">
+                        <div class="order-form__bi-column order-form__bi-column--left" rel="js-order-form__bi-column__left--1">
+                            <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1--1">
+                                <div class="order-form__product-field--container" rel="js-order-form__product-field--container--1">
+                                    <label for="order-form__product" class="input-label input-label__product">Product</label>
+                                    <input type="text" name="product" class="order-form__input order-form__product order-form__product1 entry1 newest">
+                                </div>
+                                <div class="remove-row__section--entry1" rel="js-remove-row__section--1">
+                                    <label for="remove-row__button" class="input-label input-label__remove_row">Remove
+                                        row</label>
+                                    <button type="button" class="remove-row__button remove-row__button1">-</button>
+                                </div>
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2--1">
+                                <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
+                                <input type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity1">
+                            </div>
+                        </div>
+                        <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__right--1">
+                            <div class="order-form__quad-column order-form__quad-column3" rel="js-order-form__quad-column3--1">
+                                <label for="order-form__dietary-options" class="input-label input-label__dietary-options">Dietary
+                                    Options</label>
+                                <input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options1">
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4--1">
+                                <label for="order-form__price" class="input-label input-label__price">Price</label>
+                                <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price1">
+                            </div>
+                        </div>
                     </div>
 
-                    <br>
-                    <!-- <div class="order-form__product-fields">
+                </div>
+                <div class="add-row-section">
+                    <button type="button" onclick="addRow()" class="add-row__button">+</button>
+                    <span class="add-row__button--text input-label">Add more</span>
+                </div>
+
+
+                <!--<br> -->
+                <!-- <div class="order-form__product-fields">
                 <div class="order-form__product-dropdown">
                     <span class="order-form__product-current-value">Chocolate Chip Cookies</span>
                     <ul class="order-form__product-option-list">
@@ -94,14 +113,14 @@
                     <option value="default"></option>
                     <option value="chocolateChipCookies">Chocolate Chip Cookies</option>
                     <option value="oatmealRaisinCookies">Oatmeal Raisin Cookies</option>
-                    <option value="doubleChocolateChipCookies">Double Chooclate Chip Cookies</option>
+                    <option value="doubleChocolateChipCookies">Double Chocolate Chip Cookies</option>
                 </select> -->
-                </div>
+                <!-- </div> -->
 
 
 
                 <div class="order-form__remaining-fields"></div>
-                <div class="order-form__button-row">tsxt
+                <div class="order-form__button-row">
                     <!-- <button class="order-form__submit-button">SUBMIT</button> -->
                 </div>
         </form>
