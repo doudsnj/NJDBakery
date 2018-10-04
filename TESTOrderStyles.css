@@ -19,7 +19,7 @@
 .order-form__quad-column1 {
     background-color: red;
 }
-.order-form__quad-column2 {
+/*.order-form__quad-column2 {
     background-color: orange;
 }
 .order-form__quad-column3 {
@@ -357,7 +357,7 @@
         padding-left: 6px;
         padding-right: 6px;
         margin-left: 4px; 
-        margin-right: 56px;
+        /* margin-right: 25px; */
         margin-top: 17px;
         margin-bottom: 17px;
     }
