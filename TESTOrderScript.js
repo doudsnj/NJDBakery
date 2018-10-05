@@ -45,12 +45,27 @@ function addRow() {
             $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price${rowNumber}">`);
         };
     };
+
+
+    let numberOfChildren = $('.order-fields__rows > div').length;
+    console.log('numberOfChildren: ' + numberOfChildren);
+
+    if (numberOfChildren > 1) {
+        console.log('numberOfChildren is more than 1: ' + numberOfChildren);
+        let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
+        removeRowButton.classList.add('noVisibility');
+        let removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
+        removeRowLabel.classList.add('noVisibility');
+        removeRowButton.classList.remove('noVisibility');
+        removeRowLabel.classList.remove('noVisibility');
+    }
+
+
 };
 
 
 
 $(document).on('click', '.remove-row__button', function () {
-    alert('Handler for .click() called.');
     console.log('in top of new removeRow function');
     let listOfClassesOnButton = $(this)[0].className.split(/\s+/);
     console.log('listOfClassesOnButton: ' + listOfClassesOnButton);
@@ -64,7 +79,7 @@ $(document).on('click', '.remove-row__button', function () {
             let rowToAddClassTo = 'order-fields__row' + rowNumberMinusOne;
             let rowToRemove = 'order-fields__row' + rowNumber;
             console.log('rowToRemove: ' + rowToRemove);
-            //determine if the row that's going to be deleted has the 'newest' class on it
+            //determine if the row that's going to be deleted has the 'newestRow' class on it
             let classListOfRowToFind = document.getElementsByClassName(rowToRemove)[0].className.split(/\s+/);
             console.log('classListOfRowToFind: ' + classListOfRowToFind);
 
@@ -73,7 +88,7 @@ $(document).on('click', '.remove-row__button', function () {
                 if ((classListOfRowToFind[i].includes)('newestRow')) {
                     console.log('classListOfRowToFind included "newestRow"');
 
-                    //if it does, then remove that row, find the last child in that same div, then add the 'newestRow' class to it
+                    //if it does, remove that row. Then find the row that was right before it and add the 'newestRow' class to it
                     $(`.${rowToRemove}`).remove();
                     $(`.${rowToAddClassTo}`).addClass('newestRow');
 
@@ -86,6 +101,16 @@ $(document).on('click', '.remove-row__button', function () {
         }
 
     }
+    let numberOfChildren = $('.order-fields__rows > div').length;
+    console.log('numberOfChildren: ' + numberOfChildren);
+
+    if (numberOfChildren === 1) {
+        console.log('numberOfChildren is 1: ' + numberOfChildren);
+        let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
+        removeRowButton.classList.add('noVisibility');
+        let removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
+        removeRowLabel.classList.add('noVisibility');
+    }
 });
 
 
@@ -97,3 +122,21 @@ $(document).on('click', '.remove-row__button', function () {
 //     }
 //     )//i added this manually
 // }
+// $(document).on('click', '.remove-row__button', function () {
+//     let numberOfChildren = $('.order-fields__rows > div').length;
+//     console.log('numberOfChildren: ' + numberOfChildren);
+
+//     if (numberOfChildren === 1) {
+//         console.log('numberOfChildren is 1: ' + numberOfChildren);
+//         let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
+//         removeRowButton.classList.add('noVisibility');
+//         let removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
+//         removeRowLabel.classList.add('noVisibility');
+//     } else {
+//         console.log('numberOfChildren is more than 1: ' + numberOfChildren);
+//         removeRowButton.classList.remove('noVisibility');
+//         removeRowLabel.classList.remove('noVisibility');
+//     }
+
+
+// });

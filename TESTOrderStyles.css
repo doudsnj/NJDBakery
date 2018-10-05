@@ -211,11 +211,9 @@
     width: 100%;
 }
 
-.input-label__remove_row {
+.noVisibility {
     visibility: hidden;
 }
-
-
 
 
 
@@ -357,7 +355,6 @@
         padding-left: 6px;
         padding-right: 6px;
         margin-left: 4px; 
-        /* margin-right: 25px; */
         margin-top: 17px;
         margin-bottom: 17px;
     }
