@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TESTCustomSelect</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="TESTCustomSelectStyles.css">
+    <script type="text/javascript" src="TESTCustomSelect.js"></script>
+</head>
+
+<body>
+    <!-- This is our main container for our widget.
+     The tabindex attribute is what allows the user to focus the widget. 
+     We'll see later that it's better to set it through JavaScript. -->
+    <div class="order-form__product-select-container" tabindex="0">
+
+        <!-- This container will be used to display the current value of the widget -->
+        <span class="order-form__product-select--value">Select...</span>
+
+        <!-- This container will contain all the options available for our widget.
+             Because it's a list, it makes sense to use the ul element. -->
+        <ul class="order-form__product-option-list">
+            <!-- Each option only contains the value to be displayed, we'll see later
+               how to handle the real value that will be sent with the form data -->
+            <li class="order-form__product-option">Chocolate Chip Cookies</li>
+            <li class="order-form__product-option">Oatmeal Raisin Cookies</li>
+            <li class="order-form__product-option">Double Chocolate Chip Cookies</li>
+            <li class="order-form__product-option">Crunchy Chocolate Mexican Cookies</li>
+            <li class="order-form__product-option">Crunchy Lemon Cookies</li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

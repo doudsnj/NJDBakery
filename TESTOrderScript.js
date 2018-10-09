@@ -8,11 +8,13 @@
 //     console.log(Http);
 // };
 
-// function addRow() {
-//     console.log('in top row of addRow function');
-//     let classList = document.getElementsByClassName('newestRow')[0].className.split(/\s+/);
-//     console.log('classList: ' + classList);
-// };
+// var data = JSON.parse(this.response);
+
+// data.forEach(product => {
+//     console.log(product.title);
+// });
+
+
 
 //addRow objective: find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
 function addRow() {
@@ -114,29 +116,12 @@ $(document).on('click', '.remove-row__button', function () {
 });
 
 
-//toggleRemoveLabel objective: hide the 'remove row' label and button on the first and only row, if there is only one row
-// function toggleRemoveLabel() {
-//     $('.remove-row__button').click(function () {
-//         let numberOfChildren = $('.order-form__product-field--container > input').length;
-//         console.log('numberOfChildren: ' + numberOfChildren);
-//     }
-//     )//i added this manually
-// }
-// $(document).on('click', '.remove-row__button', function () {
-//     let numberOfChildren = $('.order-fields__rows > div').length;
-//     console.log('numberOfChildren: ' + numberOfChildren);
 
-//     if (numberOfChildren === 1) {
-//         console.log('numberOfChildren is 1: ' + numberOfChildren);
-//         let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
-//         removeRowButton.classList.add('noVisibility');
-//         let removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
-//         removeRowLabel.classList.add('noVisibility');
-//     } else {
-//         console.log('numberOfChildren is more than 1: ' + numberOfChildren);
-//         removeRowButton.classList.remove('noVisibility');
-//         removeRowLabel.classList.remove('noVisibility');
-//     }
-
-
-// });
+$(document).on('click', '.order-form__product-dropdown', function () {
+    let productListClasses = document.getElementsByClassName('order-form__product-option-list')[0];
+    if (productListClasses.classList.contains('noVisibility')) {
+        $('.order-form__product-option-list').removeClass('noVisibility');
+    } else {
+        $('.order-form__product-option-list').addClass('noVisibility');
+    }
+});
