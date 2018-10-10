@@ -117,7 +117,7 @@ $(document).on('click', '.remove-row__button', function () {
 
 
 
-$(document).on('click', '.order-form__product-dropdown', function () {
+$(document).on('click', '.order-form__product-select-container', function () {
     let productListClasses = document.getElementsByClassName('order-form__product-option-list')[0];
     if (productListClasses.classList.contains('noVisibility')) {
         $('.order-form__product-option-list').removeClass('noVisibility');
