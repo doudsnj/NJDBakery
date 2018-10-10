@@ -116,7 +116,7 @@ button:focus {
     border-radius: 7.5px;
     font-family: 'Open Sans', sans-serif;
     color: #383838;
-    margin-bottom: 3px;
+    margin-bottom: 20px;
     font-size: 13.3333px;
 }
 
@@ -189,10 +189,10 @@ button:focus {
     box-sizing: border-box;
     height: 100%;
     width: 2em;  
-    padding-top: .2em; 
+    padding-top: 1em; 
     border-radius: 0 .1em .1em 0;  
     color: #8b9e98;
-    font-size: xx-large;
+    font-size: large;
     text-align: center;
   }
 
@@ -238,7 +238,6 @@ button:focus {
   
 
 /* End - styling the dropdown select box for the Product field */
-
 
 
 @media only screen and (min-width: 600px) {

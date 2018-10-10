@@ -1,12 +1,18 @@
-const Http = new XMLHttpRequest();
-const url = 'https://njd-bakery.azurewebsites.net/api/Products';
-Http.open("GET", url);
-Http.send();
+// const Http = new XMLHttpRequest();
+// const url = 'https://njd-bakery.azurewebsites.net/api/Products';
+// Http.open("GET", url);
+// Http.send();
 
-Http.onload = function () {
-    console.log(Http.responseText);
-    console.log(Http);
-};
+// Http.onload = function () {
+//     console.log(Http.responseText);
+//     console.log(Http);
+// };
+
+// var data = JSON.parse(this.response);
+
+// data.forEach(product => {
+//     console.log(product.title);
+// });
 
 
 
@@ -28,8 +34,11 @@ function addRow() {
             $("[rel='js-order-fields__rows']").append(`<div class="order-fields__row order-fields__row${rowNumber} newestRow entry${rowNumber}" rel="js-order-fields__row--${rowNumber}"></div>`);
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--left order-form__bi-column--left--${rowNumber}" rel="js-order-form__bi-column__left--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column1 order-form__quad-column1--${rowNumber}" rel="js-order-form__quad-column1--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber}" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__product-field--container--${rowNumber}']`).append(`<input type="text" name="product" class="order-form__input order-form__product order-form__product--${rowNumber}">`);
+            $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber} order-form__input" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
+            $(`[rel='js-order-form__product-field--container--${rowNumber}']`).append(`<div class="order-form__product-select-container order-form__product-select-container${rowNumber} entry${rowNumber}" tabindex="0" rel="js-order-form__product-select-container${rowNumber}">`);
+            $(`[rel='js-order-form__product-select-container${rowNumber}']`).append(`<span class="order-form__product-select--value order-form__product-select--value${rowNumber}" rel="js-order-form__product-select--value${rowNumber}">Select...</span>`);
+            $(`[rel='js-order-form__product-select--value${rowNumber}']`).after(`<ul class="order-form__product-option-list order-form__product-option-list${rowNumber} noVisibility" rel="js-order-form__product-option-list${rowNumber}">`);
+            $(`[rel='js-order-form__product-option-list${rowNumber}']`).append(`<li class="order-form__product-option order-form__product-option${rowNumber}" rel="order-form__product-option${rowNumber}">NEEDS DATA</li>`);
             $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
             $(`[rel='js-remove-row__section--${rowNumber}']`).append(`<button type="button" class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
@@ -46,8 +55,8 @@ function addRow() {
     let numberOfChildren = $('.order-fields__rows > div').length;
     console.log('numberOfChildren: ' + numberOfChildren);
 
-    if (numberOfChildren > 1) {
-        console.log('numberOfChildren is more than 1: ' + numberOfChildren);
+    if (numberOfChildren > 2) {
+        console.log('numberOfChildren is more than 2: ' + numberOfChildren);
         let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
         removeRowButton.classList.add('noVisibility');
         let removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
@@ -109,4 +118,20 @@ $(document).on('click', '.remove-row__button', function () {
     }
 });
 
+
+$(document).on('click', '.order-form__product-select-container', function () {
+    let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
+    for (var i = 0; i < listOfClassesOnSelect.length; i++) {
+        if ((listOfClassesOnSelect[i].includes)('entry')) {
+            let rowNumber = parseInt(listOfClassesOnSelect[i].substring(5), 10);
+            let productListClasses = document.getElementsByClassName(`order-form__product-option-list${rowNumber}`)[0];
+            if (productListClasses.classList.contains('noVisibility')) {
+                $(`.order-form__product-option-list${rowNumber}`).removeClass('noVisibility');
+            } else {
+                $(`.order-form__product-option-list${rowNumber}`).addClass('noVisibility');
+            }
+        }
+    }
+
+});
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Order</title>
+    <title>TESTOrder</title>
     <link rel="stylesheet" href="CSSReset.css">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -61,32 +61,63 @@
             <h1 class="order-form__order-heading">order</h1>
             <div class="order-form__order-fields" rel="js-order-fields">
                 <div class="order-fields__rows" rel="js-order-fields__rows">
+                    <div class="order-fields__row order-fields__row--labels" rel="js-order-fields__row--labels">
+                        <div class="order-form__bi-column order-form__bi-column--left" rel="js-order-form__bi-column__left--1">
+                            <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1--labels">
+                                <label for="order-form__product" class="input-label input-label__product">Product</label>
+                                <label for="remove-row__button" class="input-label input-label__remove-row noVisibility">Remove
+                                    row</label>
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2--labels">
+                                <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
+                            </div>
+                        </div>
+                        <div class="order-form__bi-column order-form__bi-column--right" rel="js-order-form__bi-column__left--labels">
+                            <div class="order-form__quad-column order-form__quad-column3" rel="js-order-form__quad-column3--labels">
+                                <label for="order-form__dietary-options" class="input-label input-label__dietary-options">Dietary
+                                    Options</label>
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4--labels">
+                                <label for="order-form__price" class="input-label input-label__price">Price</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="order-fields__row order-fields__row1 newestRow entry1" rel="js-order-fields__row--1">
                         <div class="order-form__bi-column order-form__bi-column--left" rel="js-order-form__bi-column__left--1">
+
                             <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1--1">
-                                <div class="order-form__product-field--container" rel="js-order-form__product-field--container--1">
-                                    <label for="order-form__product" class="input-label input-label__product">Product</label>
-                                    <input type="text" name="product" class="order-form__input order-form__product order-form__product1">
+                                <div class="order-form__product-field--container order-form__input" rel="js-order-form__product-field--container--1">
+                                    <div class="order-form__product-select-container order-form__product-select-container1 entry1"
+                                        tabindex="0" rel="js-order-form__product-select-container1">
+                                        <span class="order-form__product-select--value order-form__product-select--value1"
+                                            rel="js-order-form__product-select--value1">Select...</span>
+                                        <ul class="order-form__product-option-list order-form__product-option-list1 noVisibility"
+                                            rel="js-order-form__product-option-list1">
+                                            <li class="order-form__product-option order-form__product-option1" rel="order-form__product-option1">Chocolate
+                                                Chip Cookies</li>
+                                            <li class="order-form__product-option">Oatmeal Raisin Cookies</li>
+                                            <li class="order-form__product-option">Double Chocolate Chip Cookies</li>
+                                            <li class="order-form__product-option">Crunchy Chocolate Mexican Cookies</li>
+                                            <li class="order-form__product-option">Crunchy Lemon Cookies</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
-                                    <label for="remove-row__button" class="input-label input-label__remove-row noVisibility">Remove
-                                        row</label>
                                     <button type="button" class="remove-row__button remove-row__button1 noVisibility">-</button>
                                 </div>
                             </div>
                             <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2--1">
-                                <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
                                 <input type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity1">
                             </div>
                         </div>
                         <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__right--1">
                             <div class="order-form__quad-column order-form__quad-column3" rel="js-order-form__quad-column3--1">
-                                <label for="order-form__dietary-options" class="input-label input-label__dietary-options">Dietary
-                                    Options</label>
                                 <input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options1">
                             </div>
                             <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4--1">
-                                <label for="order-form__price" class="input-label input-label__price">Price</label>
                                 <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price1">
                             </div>
                         </div>
@@ -97,28 +128,7 @@
                     <button type="button" onclick="addRow()" class="add-row__button">+</button>
                     <span class="add-row__button--text input-label">Add more</span>
                 </div>
-
-
-                <!--<br> -->
-                <!-- <div class="order-form__product-fields">
-                <div class="order-form__product-dropdown">
-                    <span class="order-form__product-current-value">Chocolate Chip Cookies</span>
-                    <ul class="order-form__product-option-list">
-                        <li class="order-form__product-option">Chocolate Chip Cookies</li>
-                        <li class="order-form__product-option">Oatmeal Raisin Cookies</li>
-                        <li class="order-form__product-option">Double Chocolate Chip Cookies</li>
-                    </ul>
-                </div>
-                <select name="products" class="products">
-                    <option value="default"></option>
-                    <option value="chocolateChipCookies">Chocolate Chip Cookies</option>
-                    <option value="oatmealRaisinCookies">Oatmeal Raisin Cookies</option>
-                    <option value="doubleChocolateChipCookies">Double Chocolate Chip Cookies</option>
-                </select> -->
-                <!-- </div> -->
-
-
-
+                <br>
                 <div class="order-form__remaining-fields"></div>
                 <div class="order-form__button-row">
                     <!-- <button class="order-form__submit-button">SUBMIT</button> -->
