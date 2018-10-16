@@ -163,9 +163,9 @@ $(document).on('click', '.remove-row__button', function () {
 
 
 
-//Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
+// Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
-    let dropdown = $('.order-form__product');
+    let dropdown = $('.order-form__product1');
 
     dropdown.empty();
 
