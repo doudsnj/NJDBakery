@@ -19,7 +19,8 @@
 .order-form__quad-column1 {
     background-color: red;
 }
-/*.order-form__quad-column2 {
+
+.order-form__quad-column2 {
     background-color: orange;
 }
 .order-form__quad-column3 {
@@ -32,22 +33,21 @@
     background-color: black;
 }
 
-.dietary-options__quad-column-one{
+.dietary-options__quad-column1{
     background-color: purple;
 }
 
-.dietary-options__quad-column-two{
+.dietary-options__quad-column2{
     background-color: red; 
 }
 
-.dietary-options__quad-column-three{
+.dietary-options__quad-column3{
     background-color: green; 
 } 
 
-.dietary-options__quad-column-four{
+.dietary-options__quad-column4{
     background-color: yellow; 
 }
-
 
 
 .order-form__button-row {
@@ -134,7 +134,7 @@ button:focus {
     font-family: 'Open Sans', sans-serif;
     color: #FFFFFF;
     font-weight: 100;
-    font-size: .6em;
+    font-size: .7em;
     display: block;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -151,6 +151,16 @@ button:focus {
     color: #383838;
     margin-bottom: 20px;
     font-size: 13.3333px;
+}
+
+.order-form__dietary-options-container {
+    width: 80%;
+    height: 50px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    margin-bottom: 20px;
+    font-size: 13.3333px;
+    margin-left: 13.33%;
 }
 
 .order-form__checkbox {
@@ -174,6 +184,11 @@ button:focus {
     visibility: hidden;
 }
 
+.order-form__product-field--container {
+    width: 80%;
+    height: 50px;
+    float: left;
+} 
 
 /* .order-form__button {
     float: right;
@@ -181,11 +196,7 @@ button:focus {
 
 /*Not currently in use
     /* Start - styling the dropdown select box for the Product field */
-        /* .order-form__product-field--container {
-            width: 80%;
-            height: 50px;
-            float: left;
-        } */
+        
 
     /* These styles are required for the three states of the select widget.*/
 
@@ -346,34 +357,29 @@ button:focus {
         float: right;
     }
 
-    .order-form__dietary-options-container {
-        width: 80%;
-        height:50px;
-        margin-left: 13.33%;
-        margin-top: 10px;
-        /* background-color: #ffffff; */
-        border: 1px solid #8b9e98;
-        border-radius: 7.5px;
-    } 
 
-    .dietary-options__quad-column-one{
+    .dietary-options__quad-column1{
        float: left; 
        width: 25%;
+       margin-top: 10px;
     }
 
-    .dietary-options__quad-column-two{
+    .dietary-options__quad-column2{
         float: left; 
         width: 25%;
+        margin-top: 10px;
      }
 
-    .dietary-options__quad-column-three{
+    .dietary-options__quad-column3{
         float: left; 
         width: 25%;
+        margin-top: 10px;
         
     }
-    .dietary-options__quad-column-four{
+    .dietary-options__quad-column4{
         float: right; 
         width: 25%;
+        margin-top: 10px;
         
     }
 

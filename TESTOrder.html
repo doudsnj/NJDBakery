@@ -117,18 +117,16 @@
                         <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__right--1">
                             <div class="order-form__quad-column order-form__quad-column3" rel="js-order-form__quad-column3--1">
 
-                                <div class="order-form__dietary-options-container">
-                                    <div class="dietary-options__quad-column-one">
-                                        <input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox">
+                                <div class="order-form__dietary-options-container" rel="js-order-form__dietary-options-container--1">
+                                    <div class="dietary-options__quad-column dietary-options__quad-column1" rel="js-dietary-options__quad-column1--1">
+                                        <input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox dairyfree1">
                                         <label for="DiaryFree" class="input-label--checkbox input-label__dairy-free">Dairy
                                             Free</label><br>
                                         <input type="checkbox" name="EggFree" value="EggFree" class="order-form__checkbox">
                                         <label for="EggFree" class="input-label--checkbox input-label__egg-free">Egg
                                             Free</label><br>
-
-
                                     </div>
-                                    <div class="dietary-options__quad-column-two">
+                                    <div class="dietary-options__quad-column dietary-options__quad-column2" rel="js-dietary-options__quad-column2--1">
                                         <input type="checkbox" name="GlutenFree" value="GlutenFree" class="order-form__checkbox"
                                             checked>
                                         <label for="GlutenFree" class="input-label--checkbox input-label__gluten-free">Gluten
@@ -136,25 +134,81 @@
                                         <input type="checkbox" name="GrainFree" value="GrainFree" class="order-form__checkbox">
                                         <label for="GrainFree" class="input-label--checkbox input-label__grain-free">Grain
                                             Free</label><br>
-
                                     </div>
-                                    <div class="dietary-options__quad-column-three">
+
+
+                                    <div class="dietary-options__quad-column dietary-options__quad-column3" rel="js-dietary-options__quad-column3--1">
                                         <input type="checkbox" name="NutFree" value="NutFree" class="order-form__checkbox">
                                         <label for="NutFree" class="input-label--checkbox input-label__Nut-free">Nut
                                             Free</label><br>
                                         <input type="checkbox" name="RefinedSugarFree" value="RefinedSugarFree" class="order-form__checkbox">
-                                        <label for="RefinedSugarFree" class="input-label--checkbox input-label__refined-sugar-free">
-                                            Sugar Free*</label><br>
-
+                                        <label for="RefinedSugarFree" class="input-label--checkbox input-label__refined-sugar-free">Sugar
+                                            Free*</label><br>
                                     </div>
-                                    <div class="dietary-options__quad-column-four">
-
+                                    <div class="dietary-options__quad-column dietary-options__quad-column4" rel="js-dietary-options__quad-column4--1">
                                         <input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">
                                         <label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4--1">
+                                <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price1">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="add-row-section">
+                    <button type="button" onclick="addRow()" class="add-row__button">+</button>
+                    <span class="add-row__button--text input-label">Add more</span>
+                </div>
+                <br>
+
+                <div class="order-form__remaining-fields"></div>
+                <div class="order-form__button-row">
+                    <button class="order-form__submit-button">submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 
 
-                                    <!-- <div class="order-form__dietary-options-container">
+
+
+
+
+
+
+
+
+    </div>
+    </div>
+    </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </form>
+    <!-- <span>*Free from refined sugars. Will likely include sugars maple syrup, honey, coconut sugar, or naturally occurring
+            sugars such as those found in fruit.</span> -->
+    </div>
+
+</body>
+
+</html>
+
+<!-- <div class="order-form__dietary-options-container">
                                     <div class="dietary-options__bi-column-left">
                                         <input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox">
                                         <label for="DiaryFree" class="input-label--checkbox input-label__dairy-free">Dairy
@@ -181,34 +235,4 @@
                                         <input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">
                                         <label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>
                                     </div> -->
-                                    <!-- <input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options1">-->
-
-
-                                </div>
-
-                            </div>
-                            <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4--1">
-                                <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price1">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="add-row-section">
-                    <button type="button" onclick="addRow()" class="add-row__button">+</button>
-                    <span class="add-row__button--text input-label">Add more</span>
-                </div>
-                <br>
-                <div class="order-form__remaining-fields"></div>
-                <div class="order-form__button-row">
-                    <button class="order-form__submit-button">submit</button>
-                </div>
-
-        </form>
-        <!-- <span>*Free from refined sugars. Will likely include sugars maple syrup, honey, coconut sugar, or naturally occurring
-            sugars such as those found in fruit.</span> -->
-    </div>
-
-</body>
-
-</html>
+<!-- <input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options1">-->
