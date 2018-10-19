@@ -19,7 +19,8 @@
 .order-form__quad-column1 {
     background-color: red;
 }
-/*.order-form__quad-column2 {
+
+.order-form__quad-column2 {
     background-color: orange;
 }
 .order-form__quad-column3 {
@@ -28,6 +29,27 @@
 .order-form__quad-column4 {
     background-color: green;
 }
+.dietary-options__container{
+    background-color: black;
+}
+
+.dietary-options__quad-column1{
+    background-color: purple;
+}
+
+.dietary-options__quad-column2{
+    background-color: red; 
+}
+
+.dietary-options__quad-column3{
+    background-color: green; 
+} 
+
+.dietary-options__quad-column4{
+    background-color: yellow; 
+}
+
+
 .order-form__button-row {
     background-color: black;
 
@@ -108,6 +130,17 @@ button:focus {
     padding-bottom: 10px;
 }
 
+.input-label--checkbox {
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    font-weight: 100;
+    font-size: .7em;
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1.25em;
+}
+
 
 .order-form__input {
     width: 80%;
@@ -120,121 +153,148 @@ button:focus {
     font-size: 13.3333px;
 }
 
+.order-form__dietary-options-container {
+    width: 80%;
+    height: 50px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    margin-bottom: 20px;
+    font-size: 13.3333px;
+    margin-left: 13.33%;
+}
+
+.order-form__checkbox {
+    float: left;
+    /* height: 20px; */
+    border: 1px solid #8b9e98;
+    background-color: #ffffff;
+    border-radius: 7.5px;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
 
 .noVisibility {
     visibility: hidden;
 }
 
+.order-form__product-field--container {
+    width: 80%;
+    height: 50px;
+    float: left;
+} 
 
 /* .order-form__button {
     float: right;
 } */
 
+/*Not currently in use
+    /* Start - styling the dropdown select box for the Product field */
+        
 
-/* Start - styling the dropdown select box for the Product field */
-    .order-form__product-field--container {
-        width: 80%;
-        height: 50px;
-        float: left;
+    /* These styles are required for the three states of the select widget.*/
+
+    /* .order-form__product-select-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 50px
     }
 
-  /* These styles are required for the three states of the select widget.*/
+    .order-form__product-option-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
 
-  .order-form__product-select-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 50px
-  }
+    .order-form__product-option-list.hidden {
+        max-height: 0;
+        visibility: hidden;
+    } */
 
- .order-form__product-option-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-
-  .order-form__product-option-list.hidden {
-    max-height: 0;
-    visibility: hidden;
-  }
-
-  /*These styles make it pretty and look like a select*/
-  .order-form__product-select-container {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: .1em 2.5em .2em .5em; 
+    /*These styles make it pretty and look like a select*/
+    /* .order-form__product-select-container {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: .1em 2.5em .2em .5em; 
+        
+        border-radius: .4em; 
+        background: #ffffff;
+    }
     
-    border-radius: .4em; 
-    background: #ffffff;
-  }
-  
- .order-form__product-select--value {
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    line-height: 50px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-family: 'Open Sans', sans-serif;
-    color: #383838;
-  }
+    .order-form__product-select--value {
+        width: 100%;
+        height: 50px;
+        overflow: hidden;
+        line-height: 50px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-family: 'Open Sans', sans-serif;
+        color: #383838;
+    }
 
-  .order-form__product-select-container:after {
-    content: "▼"; 
-    position: absolute;
-    z-index: 1; 
-    top: 0;
-    right: 0;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 100%;
-    width: 2em;  
-    padding-top: 1em; 
-    border-radius: 0 .1em .1em 0;  
-    color: #8b9e98;
-    font-size: large;
-    text-align: center;
-  }
+    .order-form__product-select-container:after {
+        content: "▼"; 
+        position: absolute;
+        z-index: 1; 
+        top: 0;
+        right: 0;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+        width: 2em;  
+        padding-top: 1em; 
+        border-radius: 0 .1em .1em 0;  
+        color: #8b9e98;
+        font-size: large;
+        text-align: center;
+    }
 
- .order-form__product-option-list {
-    z-index : 2; 
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    -moz-box-sizing : border-box;
-    box-sizing: border-box;
-    min-width: 100%;
-    max-height: 10em; 
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-top: .2em solid #383838;  
-    border-top-width : .1em; 
-    border-radius: 0 0 .4em .4em; 
-    background: #ffffff;
-    outline: none;
-    box-shadow: 0 0 3px 2px #383838;
-  }
+    .order-form__product-option-list {
+        z-index : 2; 
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -moz-box-sizing : border-box;
+        box-sizing: border-box;
+        min-width: 100%;
+        max-height: 10em; 
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-top: .2em solid #383838;  
+        border-top-width : .1em; 
+        border-radius: 0 0 .4em .4em; 
+        background: #ffffff;
+        outline: none;
+        box-shadow: 0 0 3px 2px #383838;
+    }
 
- .order-form__product-option {
-    padding: .2em .3em; 
-    font-family: 'Open Sans', sans-serif;
-    color: #383838;
-  }
+    .order-form__product-option {
+        padding: .2em .3em; 
+        font-family: 'Open Sans', sans-serif;
+        color: #383838;
+    }
 
-  .order-form__product-option:hover{  
-    background-color: #F0F0F0;
-  }
-  
-  .order-form__product-select-container .highlight {
-    background: #000;
-    color: #FFFFFF;
-  }
+    .order-form__product-option:hover{  
+        background-color: #F0F0F0;
+    }
+    
+    .order-form__product-select-container .highlight {
+        background: #000;
+        color: #FFFFFF;
+    }
 
-  .order-form__product-select-container .active, 
-  .order-form__product-select-container:focus {
-    outline: none;
-    box-shadow: 0 0 3px 2px #383838;
-  }
+    .order-form__product-select-container .active, 
+    .order-form__product-select-container:focus {
+        outline: none;
+        box-shadow: 0 0 3px 2px #383838;
+    } */
   
 
 /* End - styling the dropdown select box for the Product field */
@@ -273,6 +333,9 @@ button:focus {
     .order-form__bi-column {
         width: 50%;
         display:inline-block;
+        
+
+        /* font-size: 13.3333px; */
     }
 
     .order-form__bi-column--left {
@@ -294,6 +357,31 @@ button:focus {
         float: right;
     }
 
+
+    .dietary-options__quad-column1{
+       float: left; 
+       width: 25%;
+       margin-top: 10px;
+    }
+
+    .dietary-options__quad-column2{
+        float: left; 
+        width: 25%;
+        margin-top: 10px;
+     }
+
+    .dietary-options__quad-column3{
+        float: left; 
+        width: 25%;
+        margin-top: 10px;
+        
+    }
+    .dietary-options__quad-column4{
+        float: right; 
+        width: 25%;
+        margin-top: 10px;
+        
+    }
 
     .order-form__last-name {
         float: right;
@@ -349,8 +437,12 @@ button:focus {
 
 
 
-    .add-row__button:hover,.remove-row__button:hover {
+    .add-row__button:hover,.remove-row__button:hover, {
         background-color: #ce9a51;
+    }
+
+    .order-form__submit-button:hover {
+        background-color: #ffffff;
     }
 
     .input-label__product {
@@ -384,6 +476,39 @@ button:focus {
         padding-bottom: 0px;
 
     }
+
+   
+    .order-form__product {
+        width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 2.5px;
+    }
+
+
+    .order-form__submit-button {
+        float: right;
+        height: 40px;
+        width: 60px;
+        background-color: #ce9a51;
+        font-family: 'Indie Flower', cursive;
+        font-weight: 700;
+        font-size: 1em;
+        color: #383838;
+        padding-left: 4px;
+        padding-top: 0px;
+        padding-right: 4px;
+        padding-bottom: 0px;
+        margin-right: 3px;
+        border-radius: .2em;
+        border-style: solid;
+        border-color: #ffffff;
+    }
+
+
 
 
 }

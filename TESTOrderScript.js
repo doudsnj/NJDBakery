@@ -35,7 +35,7 @@ function addRow() {
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--left order-form__bi-column--left--${rowNumber}" rel="js-order-form__bi-column__left--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column1 order-form__quad-column1--${rowNumber}" rel="js-order-form__quad-column1--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber} order-form__input" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__product-field--container--${rowNumber}']`).append(`<select type="select" name="product" class="select order-form__input order-form__product order-form__product${rowNumber}"></select>`);
+            $(`[rel='js-order-form__product-field--container--${rowNumber}']`).append(`<select type="select" name="product" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
             $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
             $(`[rel='js-remove-row__section--${rowNumber}']`).append(`<button type="button" class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
@@ -61,6 +61,9 @@ function addRow() {
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column4" rel="js-dietary-options__quad-column4--${rowNumber}"></div>`);
             $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">`);
             $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>`);
+            $(`[rel='order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__defaults dietary-options__defaults--${rowNumber}" rel="js-dietary-options__defaults--${rowNumber}">`);
+            $(`[rel='js-dietary-options__defaults--${rowNumber}']`).append(`<p class="dietary-options__defaults-text dietary-options__defaults-text${rowNumber}" rel="js-dietary-options__defaults-text${rowNumber}"></p>`);
+
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price${rowNumber}">`);
             console.log('created new row');
@@ -79,13 +82,9 @@ function addRow() {
             // Populate dropdown with list of products
             $.getJSON(url, function (data) {
                 $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+                    dropdown.append($('<option></option>').attr('value').text(entry.name));
                 })
             });
-
-
-
-
 
         };
     };
@@ -201,6 +200,126 @@ $(document).ready(function () {
     });
 });
 
+
+//Objective: When a Product option is chosen, populate its default dietary options and disable(hide?) options that can be chosen
+$(document).on('click', '.order-form__product', function () {
+    console.log('in top of choose product function');
+    let currentProduct = $('.order-form__product :selected').text();
+    console.log('currentProduct: ' + currentProduct);
+    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+    let rowNumber;
+
+    let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
+    console.log('listOfClassesOnSelect: ' + listOfClassesOnSelect);
+    //look through the array of classes on the select that was clicked, and find the one that includes the word 'entry'. Then get a substring to see what entry number/what row it is in.
+    for (var i = 0; i < listOfClassesOnSelect.length; i++) {
+        if ((listOfClassesOnSelect[i].includes)('entry')) {
+            rowNumber = (listOfClassesOnSelect[i].substring(5));
+            console.log('rowNumber: ' + rowNumber);
+            break;
+        }
+    }
+
+    let data = $.getJSON(url, function (data) {
+        console.log(data);
+
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+
+                let arrayCurrentName = (data[key].name);
+                if (arrayCurrentName === currentProduct) {
+
+                    console.log('found needed array. arrayCurrentName and currentProduct ' + arrayCurrentName + currentProduct);
+                    let currentArraySKU = (data[key].sku);
+                    console.log('currentArraySKU ' + currentArraySKU);
+
+
+
+
+                    let currentProductDairyFree = (data[key].dairyFree);
+                    console.log('currentProductDairyFree is ' + currentProductDairyFree);
+                    let currentProductEggFree = (data[key].eggFree);
+                    console.log('currentProductEggFree is ' + currentProductEggFree);
+                    let currentProductGlutenFree = (data[key].glutenFree);
+                    console.log('currentProductGlutenFree is ' + currentProductGlutenFree);
+                    let currentProductGrainFree = (data[key].grainFree);
+                    console.log('currentProductGrainFree is ' + currentProductGrainFree);
+                    let currentProductNutFree = (data[key].nutFree);
+                    console.log('currentProductNutFree is ' + currentProductNutFree);
+                    let currentProductSugarFree = (data[key].refinedSugarFree);
+                    console.log('currentProductSugarFree is ' + currentProductSugarFree);
+                    let currentProductVegan = (data[key].vegan);
+                    console.log('currentProductVegan is ' + currentProductVegan);
+
+                    // let dairyFreeCode;
+                    // let eggFreeCode;
+                    // let glutenFreeCode;
+                    // let grainFreeCode;
+                    // let nutFreeCode;
+                    // let refinedSugarFreeCode;
+                    // let veganCode;
+                    let defaultOptionsText = 'Default product is: ';
+
+
+
+                    if (currentProductDairyFree === true) {
+                        // dairyFreeCode = ' DF';
+                        defaultOptionsText = defaultOptionsText + ' DF';
+                    }
+                    // console.log('from outside of if, dairyFreeCode is ' + dairyFreeCode);
+                    console.log('from outside of if, defaultOptionsText is now ' + defaultOptionsText);
+
+
+                    if (currentProductEggFree === true) {
+                        // eggFreeCode = ' EF';
+                        defaultOptionsText = defaultOptionsText + ' EF';
+                    }
+
+                    if (currentProductGlutenFree === true) {
+                        // glutenFreeCode = ' GF';
+                        defaultOptionsText = defaultOptionsText + ' GF';
+                    }
+
+                    if (currentProductGrainFree === true) {
+                        // grainFreeCode = ' GRF';
+                        defaultOptionsText = defaultOptionsText + ' GRF';
+                    }
+
+                    if (currentProductNutFree === true) {
+                        // nutFreeCode = ' NF';
+                        defaultOptionsText = defaultOptionsText + ' NF';
+                    }
+
+                    if (currentProductSugarFree === true) {
+                        // refinedSugarFreeCode = ' RSF';
+                        defaultOptionsText = defaultOptionsText + ' RSF';
+                    }
+
+                    if (currentProductVegan === true) {
+                        // veganCode = ' V';
+                        defaultOptionsText = defaultOptionsText + ' EF';
+                    }
+
+
+                    // let defaultOptionsText = ('Default product is: ' + dairyFreeCode + eggFreeCode + glutenFreeCode + grainFreeCode + nutFreeCode + refinedSugarFreeCode + veganCode);
+                    console.log('after all options checking, defaultOptionsText is ' + defaultOptionsText);
+
+
+                    $(`[rel='js-dietary-options__defaults-text${rowNumber}']`).html(defaultOptionsText);
+                }
+
+            }
+
+        }
+
+
+
+
+    })
+
+
+
+});
 
 
 

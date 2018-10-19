@@ -163,6 +163,18 @@ button:focus {
     margin-left: 13.33%;
 }
 
+.dietary-options__defaults {
+    width: 100%;
+    display: block;
+    float: left;
+}
+
+.dietary-options__defaults-text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    
+}
+
 .order-form__checkbox {
     float: left;
     /* height: 20px; */
@@ -437,7 +449,7 @@ button:focus {
 
 
 
-    .add-row__button:hover,.remove-row__button:hover, {
+    .add-row__button:hover,.remove-row__button:hover {
         background-color: #ce9a51;
     }
 

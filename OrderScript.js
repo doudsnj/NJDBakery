@@ -35,19 +35,58 @@ function addRow() {
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--left order-form__bi-column--left--${rowNumber}" rel="js-order-form__bi-column__left--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column1 order-form__quad-column1--${rowNumber}" rel="js-order-form__quad-column1--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber} order-form__input" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__product-field--container--${rowNumber}']`).append(`<div class="order-form__product-select-container order-form__product-select-container${rowNumber} entry${rowNumber}" tabindex="0" rel="js-order-form__product-select-container${rowNumber}">`);
-            $(`[rel='js-order-form__product-select-container${rowNumber}']`).append(`<span class="order-form__product-select--value order-form__product-select--value${rowNumber}" rel="js-order-form__product-select--value${rowNumber}">Select...</span>`);
-            $(`[rel='js-order-form__product-select--value${rowNumber}']`).after(`<ul class="order-form__product-option-list order-form__product-option-list${rowNumber} noVisibility" rel="js-order-form__product-option-list${rowNumber}">`);
-            $(`[rel='js-order-form__product-option-list${rowNumber}']`).append(`<li class="order-form__product-option order-form__product-option${rowNumber}" rel="order-form__product-option${rowNumber}">NEEDS DATA</li>`);
+            $(`[rel='js-order-form__product-field--container--${rowNumber}']`).append(`<select type="select" name="product" class="select order-form__input order-form__product order-form__product${rowNumber}"></select>`);
             $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
             $(`[rel='js-remove-row__section--${rowNumber}']`).append(`<button type="button" class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<input type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity${rowNumber}">`);
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--right order-form__bi-column--right--${rowNumber}" rel="js-order-form__bi-column__right--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column3 order-form__quad-column3--${rowNumber}" rel="js-order-form__quad-column3--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__quad-column3--${rowNumber}']`).append(`<input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options${rowNumber}">`);
+            $(`[rel='js-order-form__quad-column3--${rowNumber}']`).append(`<div class="order-form__dietary-options-container" rel="js-order-form__dietary-options-container--${rowNumber}"></div>`);
+            $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column1" rel="js-dietary-options__quad-column1--${rowNumber}"></div>`);
+            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox dairy-free${rowNumber}">`);
+            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append('<label for="DiaryFree" class="input-label--checkbox input-label__dairy-free">Dairy Free</label><br>');
+            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<input type="checkbox" name="EggFree" value="EggFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<label for="EggFree" class="input-label--checkbox input-label__egg-free">Egg Free</label><br>`);
+            $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column2" rel="js-dietary-options__quad-column2--${rowNumber}"></div>`);
+            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<input type="checkbox" name="GlutenFree" value="GlutenFree" class="order-form__checkbox" checked>`);
+            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<label for="GlutenFree" class="input-label--checkbox input-label__gluten-free">Gluten Free</label><br>`);
+            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<input type="checkbox" name="GrainFree" value="GrainFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<label for="GrainFree" class="input-label--checkbox input-label__grain-free">Grain Free</label><br>`);
+            $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column3" rel="js-dietary-options__quad-column3--${rowNumber}"></div>`);
+            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<input type="checkbox" name="NutFree" value="NutFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<label for="NutFree" class="input-label--checkbox input-label__Nut-free">Nut Free</label><br>`);
+            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<input type="checkbox" name="RefinedSugarFree" value="RefinedSugarFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<label for="RefinedSugarFree" class="input-label--checkbox input-label__refined-sugar-free">Sugar Free*</label><br>`);
+            $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column4" rel="js-dietary-options__quad-column4--${rowNumber}"></div>`);
+            $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>`);
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price${rowNumber}">`);
+            console.log('created new row');
+            let specificdropdown = '.order-form__product' + `${rowNumber}`;
+            console.log('specific dropdown is: ' + specificdropdown);
+            let dropdown = $(specificdropdown);
+
+            console.log('dropdown is: ' + dropdown);
+            dropdown.empty();
+
+            dropdown.append('<option selected="true" disabled>Select...</option>');
+            dropdown.prop('selectedIndex', 0);
+
+            const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+
+            // Populate dropdown with list of products
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+                })
+            });
+
+
+
+
+
         };
     };
 
@@ -60,7 +99,6 @@ function addRow() {
         let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
         removeRowButton.classList.add('noVisibility');
         let removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
-        removeRowLabel.classList.add('noVisibility');
         removeRowButton.classList.remove('noVisibility');
         removeRowLabel.classList.remove('noVisibility');
     }
@@ -69,7 +107,8 @@ function addRow() {
 };
 
 
-
+//objective: If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
+//TODO: Enable the first row to be deleted if more than one row is showing
 $(document).on('click', '.remove-row__button', function () {
     console.log('in top of new removeRow function');
     let listOfClassesOnButton = $(this)[0].className.split(/\s+/);
@@ -106,10 +145,12 @@ $(document).on('click', '.remove-row__button', function () {
         }
 
     }
+
+    //If only one row of fields remains, hide the remove button and label
     let numberOfChildren = $('.order-fields__rows > div').length;
     console.log('numberOfChildren: ' + numberOfChildren);
 
-    if (numberOfChildren === 1) {
+    if (numberOfChildren == 2) {
         console.log('numberOfChildren is 1: ' + numberOfChildren);
         let removeRowButton = document.getElementsByClassName('remove-row__button')[0];
         removeRowButton.classList.add('noVisibility');
@@ -119,19 +160,49 @@ $(document).on('click', '.remove-row__button', function () {
 });
 
 
-$(document).on('click', '.order-form__product-select-container', function () {
-    let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
-    for (var i = 0; i < listOfClassesOnSelect.length; i++) {
-        if ((listOfClassesOnSelect[i].includes)('entry')) {
-            let rowNumber = parseInt(listOfClassesOnSelect[i].substring(5), 10);
-            let productListClasses = document.getElementsByClassName(`order-form__product-option-list${rowNumber}`)[0];
-            if (productListClasses.classList.contains('noVisibility')) {
-                $(`.order-form__product-option-list${rowNumber}`).removeClass('noVisibility');
-            } else {
-                $(`.order-form__product-option-list${rowNumber}`).addClass('noVisibility');
-            }
-        }
-    }
+//NOT CURRENTLY IN USE - using html default Select element for the time being. 
+//Objective: Show and hide the Product list when the Select field is clicked
+//TODO: Add functionality to collapse the list if anywhere else on the page is clicked
+// $(document).on('click', '.order-form__product-select-container', function () {
+//     let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
+//     for (var i = 0; i < listOfClassesOnSelect.length; i++) {
+//         if ((listOfClassesOnSelect[i].includes)('entry')) {
+//             let rowNumber = parseInt(listOfClassesOnSelect[i].substring(5), 10);
+//             let productListClasses = document.getElementsByClassName(`order-form__product-option-list${rowNumber}`)[0];
+//             if (productListClasses.classList.contains('noVisibility')) {
+//                 $(`.order-form__product-option-list${rowNumber}`).removeClass('noVisibility');
+//             } else {
+//                 $(`.order-form__product-option-list${rowNumber}`).addClass('noVisibility');
+//             }
+//         }
+//     }
 
+// });
+
+
+
+// Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
+$(document).ready(function () {
+    let dropdown = $('.order-form__product1');
+
+    dropdown.empty();
+
+    dropdown.append('<option selected="true" disabled>Select...</option>');
+    dropdown.prop('selectedIndex', 0);
+
+    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+
+    // Populate dropdown with list of products
+    $.getJSON(url, function (data) {
+        $.each(data, function (key, entry) {
+            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+            console.log('added Default Products to product dropdown');
+        })
+    });
 });
+
+
+
+
+
 
