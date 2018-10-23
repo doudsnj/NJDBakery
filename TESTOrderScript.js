@@ -67,24 +67,9 @@ function addRow() {
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price${rowNumber}">`);
             console.log('created new row');
-            let specificdropdown = '.order-form__product' + `${rowNumber}`;
-            console.log('specific dropdown is: ' + specificdropdown);
-            let dropdown = $(specificdropdown);
 
-            console.log('dropdown is: ' + dropdown);
-            dropdown.empty();
 
-            dropdown.append('<option selected="true" disabled>Select...</option>');
-            dropdown.prop('selectedIndex', 0);
 
-            const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
-
-            // Populate dropdown with list of products
-            $.getJSON(url, function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value').text(entry.name));
-                })
-            });
 
         };
     };
@@ -180,28 +165,48 @@ $(document).on('click', '.remove-row__button', function () {
 
 
 
-// Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
-$(document).ready(function () {
-    let dropdown = $('.order-form__product1');
+// Objective: Whenever a Products dropdown field is clicked, opulate that Product Select dropdown with the Parent Products from the API
+$(document).on('click', '.order-form__product', function () {
 
-    dropdown.empty();
+    let productClasses = $(this)[0].className.split(/\s+/);
 
-    dropdown.append('<option selected="true" disabled>Select...</option>');
-    dropdown.prop('selectedIndex', 0);
+    console.log('productClasses ' + productClasses);
 
-    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
 
-    // Populate dropdown with list of products
-    $.getJSON(url, function (data) {
-        $.each(data, function (key, entry) {
-            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
-            console.log('added Default Products to product dropdown');
-        })
-    });
+
+    for (var i = 0; i < productClasses.length; i++) {
+        if ((productClasses[i].includes)('entry')) {
+            //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left
+            productRowNumber = parseInt(productClasses[i].substring(5), 10);
+            console.log('productRowNumber is: ' + productRowNumber);
+            let testDropdown = ('.order-form__product' + productRowNumber);
+            console.log('testDropdown is ' + testDropdown);
+            let dropdown = $(testDropdown);
+            console.log('dropdown is ' + dropdown);
+
+
+            dropdown.empty();
+
+            dropdown.append('<option selected="true" disabled>Select...</option>');
+            dropdown.prop('selectedIndex', 0);
+
+            const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+
+            // Populate dropdown with list of products
+            $.getJSON(url, function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+                    console.log('added Default Products to product dropdown');
+                })
+            });
+
+        }
+    }
 });
 
 
-//Objective: When a Product option is chosen, populate its default dietary options and disable(hide?) options that can be chosen
+
+// Objective: When a Product option is chosen, populate its default dietary options and disable(hide ?) options that can be chosen
 $(document).on('click', '.order-form__product', function () {
     console.log('in top of choose product function');
     let currentProduct = $('.order-form__product :selected').text();
