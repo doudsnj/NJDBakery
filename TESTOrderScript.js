@@ -1,21 +1,3 @@
-// const Http = new XMLHttpRequest();
-// const url = 'https://njd-bakery.azurewebsites.net/api/Products';
-// Http.open("GET", url);
-// Http.send();
-
-// Http.onload = function () {
-//     console.log(Http.responseText);
-//     console.log(Http);
-// };
-
-// var data = JSON.parse(this.response);
-
-// data.forEach(product => {
-//     console.log(product.title);
-// });
-
-
-
 //addRow objective: find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
 function addRow() {
     console.log('top line of addRow function');
@@ -25,7 +7,7 @@ function addRow() {
     for (var i = 0; i < classList.length; i++) {
         if ((classList[i].includes)('entry')) {
             console.log('in addRow function');
-            //convert the string to a number and remove the first three characters from the string, set a variable to whatever is left plus 1
+            //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1
             let rowNumber = parseInt(classList[i].substring(5), 10) + 1;
             console.log('rowNumber is: ' + rowNumber);
             //remove the 'newest' class from the element that currently has it
@@ -61,7 +43,7 @@ function addRow() {
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column4" rel="js-dietary-options__quad-column4--${rowNumber}"></div>`);
             $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">`);
             $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>`);
-            $(`[rel='order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__defaults dietary-options__defaults--${rowNumber}" rel="js-dietary-options__defaults--${rowNumber}">`);
+            $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__defaults dietary-options__defaults--${rowNumber}" rel="js-dietary-options__defaults--${rowNumber}">`);
             $(`[rel='js-dietary-options__defaults--${rowNumber}']`).append(`<p class="dietary-options__defaults-text dietary-options__defaults-text${rowNumber}" rel="js-dietary-options__defaults-text${rowNumber}"></p>`);
 
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
@@ -86,10 +68,6 @@ function addRow() {
                     dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
                 })
             });
-
-
-
-
         };
     };
 
@@ -110,7 +88,7 @@ function addRow() {
 };
 
 
-//objective: If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
+//Objective: If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
 //TODO: Enable the first row to be deleted if more than one row is showing
 $(document).on('click', '.remove-row__button', function () {
     console.log('in top of new removeRow function');
@@ -163,68 +141,7 @@ $(document).on('click', '.remove-row__button', function () {
 });
 
 
-//NOT CURRENTLY IN USE - using html default Select element for the time being. 
-//Objective: Show and hide the Product list when the Select field is clicked
-//TODO: Add functionality to collapse the list if anywhere else on the page is clicked
-// $(document).on('click', '.order-form__product-select-container', function () {
-//     let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
-//     for (var i = 0; i < listOfClassesOnSelect.length; i++) {
-//         if ((listOfClassesOnSelect[i].includes)('entry')) {
-//             let rowNumber = parseInt(listOfClassesOnSelect[i].substring(5), 10);
-//             let productListClasses = document.getElementsByClassName(`order-form__product-option-list${rowNumber}`)[0];
-//             if (productListClasses.classList.contains('noVisibility')) {
-//                 $(`.order-form__product-option-list${rowNumber}`).removeClass('noVisibility');
-//             } else {
-//                 $(`.order-form__product-option-list${rowNumber}`).addClass('noVisibility');
-//             }
-//         }
-//     }
 
-// });
-
-
-//START RECENT COMMENTED OUT ON 10/28
-// Objective: Whenever a Products dropdown field is clicked, populate that Product Select dropdown with the Parent Products from the API
-// $(document).on('click', '.order-form__product', function () {
-
-//     let productClasses = $(this)[0].className.split(/\s+/);
-
-//     console.log('productClasses ' + productClasses);
-
-
-
-//     for (var i = 0; i < productClasses.length; i++) {
-//         if ((productClasses[i].includes)('entry')) {
-//             //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left
-//             productRowNumber = parseInt(productClasses[i].substring(5), 10);
-//             console.log('productRowNumber is: ' + productRowNumber);
-//             let testDropdown = ('.order-form__product' + productRowNumber);
-//             console.log('testDropdown is ' + testDropdown);
-//             let dropdown = $(testDropdown);
-//             console.log('dropdown is ' + dropdown);
-
-
-//             dropdown.empty();
-
-//             dropdown.append('<option selected="true" disabled>Select...</option>');
-//             dropdown.prop('selectedIndex', 0);
-
-//             const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
-
-//             // Populate dropdown with list of products
-//             $.getJSON(url, function (data) {
-//                 $.each(data, function (key, entry) {
-//                     dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
-//                     console.log('added Default Products to product dropdown');
-//                 })
-//             });
-//             console.log('populated dropdown. breaking');
-//             break;
-
-//         }
-//     }
-// });
-//END RECENT COMMENTED OUT ON 10/28
 
 // Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
@@ -250,15 +167,11 @@ $(document).ready(function () {
 
 // Objective: When a Product option is chosen, populate its default dietary options and disable(hide ?) options that can be chosen
 $(document).on('click', '.order-form__product', function () {
-    console.log('in top of choose product function');
-    let currentProduct = $('.order-form__product :selected').text();
-    console.log('currentProduct: ' + currentProduct);
-    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
     let rowNumber;
 
+    //Find the list of classes on that specific Product dropdown, and iterate through until you find the specific row number
     let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
     console.log('listOfClassesOnSelect: ' + listOfClassesOnSelect);
-    //look through the array of classes on the select that was clicked, and find the one that includes the word 'entry'. Then get a substring to see what entry number/what row it is in.
     for (var i = 0; i < listOfClassesOnSelect.length; i++) {
         if ((listOfClassesOnSelect[i].includes)('entry')) {
             rowNumber = (listOfClassesOnSelect[i].substring(5));
@@ -266,6 +179,19 @@ $(document).on('click', '.order-form__product', function () {
             break;
         }
     }
+
+    //Set a variable so it holds the class name of the specific Product dropdown that was clicked
+    let currentDropdownClass = '.order-form__product' + rowNumber;
+    console.log('currentDropdownClass: ' + currentDropdownClass);
+
+    //Get the text of the current selection of the current Product dropdown
+    let currentProduct = $(`${currentDropdownClass} option:selected`).text();
+    console.log('currentProduct is: ' + currentProduct);
+
+    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+
+
+    console.log('logging');
 
     let data = $.getJSON(url, function (data) {
         console.log(data);
@@ -313,9 +239,6 @@ $(document).on('click', '.order-form__product', function () {
                         // dairyFreeCode = ' DF';
                         defaultOptionsText = defaultOptionsText + ' DF';
                     }
-                    // console.log('from outside of if, dairyFreeCode is ' + dairyFreeCode);
-                    console.log('from outside of if, defaultOptionsText is now ' + defaultOptionsText);
-
 
                     if (currentProductEggFree === true) {
                         // eggFreeCode = ' EF';
@@ -367,6 +290,129 @@ $(document).on('click', '.order-form__product', function () {
 
 
 });
+
+
+// $(document).on('click', '.order-form__product', function () {
+//     console.log('in top of choose product function');
+//     let rowNumber;
+
+//     let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
+//     console.log('listOfClassesOnSelect: ' + listOfClassesOnSelect);
+//     //look through the array of classes on the select that was clicked, and find the one that includes the word 'entry'. Then get a substring to see what entry number/what row it is in.
+//     for (var i = 0; i < listOfClassesOnSelect.length; i++) {
+//         if ((listOfClassesOnSelect[i].includes)('entry')) {
+//             rowNumber = (listOfClassesOnSelect[i].substring(5));
+//             console.log('rowNumber: ' + rowNumber);
+//             break;
+//         }
+//     }
+//     console.log('rowNumber is' + rowNumber);
+//     let currentProductValue = $(`.order-form__product${rowNumber}`);
+//     console.log('currentProductValue: ' + currentProductValue);
+//     let currentProduct = $('currentProductValue :selected').text();
+//     console.log('currentProduct after adding rowNumber: ' + currentProduct);
+//     const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+
+
+//     console.log('logging');
+
+//     let data = $.getJSON(url, function (data) {
+//         console.log(data);
+
+//         for (var key in data) {
+//             if (data.hasOwnProperty(key)) {
+
+//                 let arrayCurrentName = (data[key].name);
+//                 if (arrayCurrentName === currentProduct) {
+
+//                     console.log('found needed array. arrayCurrentName and currentProduct ' + arrayCurrentName + currentProduct);
+//                     let currentArraySKU = (data[key].sku);
+//                     console.log('currentArraySKU ' + currentArraySKU);
+
+
+
+
+//                     let currentProductDairyFree = (data[key].dairyFree);
+//                     console.log('currentProductDairyFree is ' + currentProductDairyFree);
+//                     let currentProductEggFree = (data[key].eggFree);
+//                     console.log('currentProductEggFree is ' + currentProductEggFree);
+//                     let currentProductGlutenFree = (data[key].glutenFree);
+//                     console.log('currentProductGlutenFree is ' + currentProductGlutenFree);
+//                     let currentProductGrainFree = (data[key].grainFree);
+//                     console.log('currentProductGrainFree is ' + currentProductGrainFree);
+//                     let currentProductNutFree = (data[key].nutFree);
+//                     console.log('currentProductNutFree is ' + currentProductNutFree);
+//                     let currentProductSugarFree = (data[key].refinedSugarFree);
+//                     console.log('currentProductSugarFree is ' + currentProductSugarFree);
+//                     let currentProductVegan = (data[key].vegan);
+//                     console.log('currentProductVegan is ' + currentProductVegan);
+
+//                     // let dairyFreeCode;
+//                     // let eggFreeCode;
+//                     // let glutenFreeCode;
+//                     // let grainFreeCode;
+//                     // let nutFreeCode;
+//                     // let refinedSugarFreeCode;
+//                     // let veganCode;
+//                     let defaultOptionsText = 'Default product is: ';
+
+
+
+//                     if (currentProductDairyFree === true) {
+//                         // dairyFreeCode = ' DF';
+//                         defaultOptionsText = defaultOptionsText + ' DF';
+//                     }
+
+//                     if (currentProductEggFree === true) {
+//                         // eggFreeCode = ' EF';
+//                         defaultOptionsText = defaultOptionsText + ' EF';
+//                     }
+
+//                     if (currentProductGlutenFree === true) {
+//                         // glutenFreeCode = ' GF';
+//                         defaultOptionsText = defaultOptionsText + ' GF';
+//                     }
+
+//                     if (currentProductGrainFree === true) {
+//                         // grainFreeCode = ' GRF';
+//                         defaultOptionsText = defaultOptionsText + ' GRF';
+//                     }
+
+//                     if (currentProductNutFree === true) {
+//                         // nutFreeCode = ' NF';
+//                         defaultOptionsText = defaultOptionsText + ' NF';
+//                     }
+
+//                     if (currentProductSugarFree === true) {
+//                         // refinedSugarFreeCode = ' RSF';
+//                         defaultOptionsText = defaultOptionsText + ' RSF';
+//                     }
+
+//                     if (currentProductVegan === true) {
+//                         // veganCode = ' V';
+//                         defaultOptionsText = defaultOptionsText + ' EF';
+//                     }
+
+
+//                     // let defaultOptionsText = ('Default product is: ' + dairyFreeCode + eggFreeCode + glutenFreeCode + grainFreeCode + nutFreeCode + refinedSugarFreeCode + veganCode);
+//                     console.log('after all options checking, defaultOptionsText is ' + defaultOptionsText);
+
+
+//                     $(`[rel='js-dietary-options__defaults-text${rowNumber}']`).html(defaultOptionsText);
+//                 }
+
+//             }
+
+//         }
+
+
+
+
+//     })
+
+
+
+// });
 
 
 

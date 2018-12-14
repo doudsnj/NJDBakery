@@ -520,6 +520,16 @@ button:focus {
         border-color: #ffffff;
     }
 
+    .sugar-free-explanation{
+        font-family: 'Indie Flower', cursive;
+        font-size: 1em;
+        color: #ffffff;
+        height: 20px;
+        padding-bottom: 5px;
+       
+        display: block;
+    }
+
 
 
 
