@@ -242,7 +242,7 @@ $(document).on('click', '.order-form__product', function () {
                     let dietaryPossibilities;
 
 
-                    //Update 'defaultOptionsText' and check the boxes of the default options
+                    //Update 'defaultOptionsText' and check/disable or uncheck/enable the boxes of the default options
                     if (currentProductDairyFree === true) {
                         defaultOptionsText = defaultOptionsText + ' DF';
                         console.log('currentProductDairyFree' + currentProductDairyFree);
@@ -251,6 +251,13 @@ $(document).on('click', '.order-form__product', function () {
                         $(neededClass).attr('checked', true);
                         $(neededClass).attr('disabled', true);
                         console.log('checked and disabled dairyFree checkbox');
+                    } else {
+                        console.log('currentProductDairyFree' + currentProductDairyFree);
+                        let neededClass = '.order-form__checkbox--dairyFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('checked', false);
+                        $(neededClass).attr('disabled', false);
+                        console.log('unchecked and enabled dairyFree checkbox');
                     }
 
                     if (currentProductEggFree === true) {
@@ -261,6 +268,13 @@ $(document).on('click', '.order-form__product', function () {
                         $(neededClass).attr('checked', true);
                         $(neededClass).attr('disabled', true);
                         console.log('checked and disabled eggFree checkbox');
+                    } else {
+                        console.log('currentProductEggFree' + currentProductEggFree);
+                        let neededClass = '.order-form__checkbox--eggFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('checked', false);
+                        $(neededClass).attr('disabled', false);
+                        console.log('unchecked and enabled eggFree checkbox');
                     }
 
                     if (currentProductGlutenFree === true) {
@@ -275,6 +289,13 @@ $(document).on('click', '.order-form__product', function () {
                         $(neededClass).attr('checked', true);
                         $(neededClass).attr('disabled', true);
                         console.log('checked and disabled grainFree checkbox');
+                    } else {
+                        console.log('currentProductGrainFree' + currentProductGrainFree);
+                        let neededClass = '.order-form__checkbox--grainFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('checked', false);
+                        $(neededClass).attr('disabled', false);
+                        console.log('unchecked and enabled grainFree checkbox');
                     }
 
                     if (currentProductNutFree === true) {
@@ -285,20 +306,33 @@ $(document).on('click', '.order-form__product', function () {
                         $(neededClass).attr('checked', true);
                         $(neededClass).attr('disabled', true);
                         console.log('checked and disabled nutFree checkbox');
+                    } else {
+                        console.log('currentProductNutFree' + currentProductNutFree);
+                        let neededClass = '.order-form__checkbox--nutFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('checked', false);
+                        $(neededClass).attr('disabled', false);
+                        console.log('unchecked and enabled nutFree checkbox');
                     }
 
                     if (currentProductSugarFree === true) {
                         defaultOptionsText = defaultOptionsText + ' RSF';
                         console.log('currentProductSugarFree' + currentProductSugarFree);
-                        let neededClass = '.order-form__checkbox--sugarFree' + `${rowNumber}`;
+                        let neededClass = '.order-form__checkbox--refinedSugarFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
                         $(neededClass).attr('checked', true);
                         $(neededClass).attr('disabled', true);
-                        console.log('checked and disabledsugarFree checkbox');
+                        console.log('checked and disabled sugarFree checkbox');
+                    } else {
+                        console.log('currentProductSugarFree' + currentProductSugarFree);
+                        let neededClass = '.order-form__checkbox--refinedSugarFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('checked', false);
+                        $(neededClass).attr('disabled', false);
+                        console.log('unchecked and enabled sugarFree checkbox');
                     }
 
                     if (currentProductVegan === true) {
-                        // veganCode = ' V';
                         defaultOptionsText = defaultOptionsText + ' V';
                         console.log('currentProductVegan' + currentProductVegan);
                         let neededClass = '.order-form__checkbox--vegan' + `${rowNumber}`;
@@ -306,6 +340,13 @@ $(document).on('click', '.order-form__product', function () {
                         $(neededClass).attr('checked', true);
                         $(neededClass).attr('disabled', true);
                         console.log('checked and disabled vegan checkbox');
+                    } else {
+                        console.log('currentProductVegan' + currentProductVegan);
+                        let neededClass = '.order-form__checkbox--vegan' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('checked', false);
+                        $(neededClass).attr('disabled', false);
+                        console.log('unchecked and enabled vegan checkbox');
                     }
 
 
@@ -369,10 +410,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled vegan checkbox');
                     }
 
-                    // let defaultOptionsText = ('Default product is: ' + dairyFreeCode + eggFreeCode + glutenFreeCode + grainFreeCode + nutFreeCode + refinedSugarFreeCode + veganCode);
                     console.log('after all options checking, defaultOptionsText is ' + defaultOptionsText);
-
-
                     $(`[rel='js-dietary-options__defaults-text${rowNumber}']`).html(defaultOptionsText);
                 }
 
@@ -380,12 +418,7 @@ $(document).on('click', '.order-form__product', function () {
 
         }
 
-
-
-
     })
-
-
 
 });
 

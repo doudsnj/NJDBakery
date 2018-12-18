@@ -153,6 +153,15 @@ button:focus {
     font-size: 13.3333px;
 }
 
+.order-fields__row {
+    padding-bottom: 100px;
+}
+.order-fields__row--labels {
+    padding-bottom: 20px;
+}
+
+
+
 .order-form__dietary-options-container {
     width: 80%;
     height: 50px;
@@ -161,6 +170,18 @@ button:focus {
     margin-bottom: 20px;
     font-size: 13.3333px;
     margin-left: 13.33%;
+}
+
+.dietary-options__defaults {
+    width: 100%;
+    display: block;
+    float: left;
+}
+
+.dietary-options__defaults-text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    
 }
 
 .order-form__checkbox {
@@ -437,7 +458,7 @@ button:focus {
 
 
 
-    .add-row__button:hover,.remove-row__button:hover, {
+    .add-row__button:hover,.remove-row__button:hover {
         background-color: #ce9a51;
     }
 
@@ -506,6 +527,16 @@ button:focus {
         border-radius: .2em;
         border-style: solid;
         border-color: #ffffff;
+    }
+
+    .sugar-free-explanation{
+        font-family: 'Indie Flower', cursive;
+        font-size: 1em;
+        color: #ffffff;
+        height: 20px;
+        padding-bottom: 5px;
+       
+        display: block;
     }
 
 
