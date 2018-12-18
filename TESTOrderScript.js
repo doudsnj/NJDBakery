@@ -7,7 +7,7 @@ function addRow() {
     for (var i = 0; i < classList.length; i++) {
         if ((classList[i].includes)('entry')) {
             console.log('in addRow function');
-            //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1
+            //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1 
             let rowNumber = parseInt(classList[i].substring(5), 10) + 1;
             console.log('rowNumber is: ' + rowNumber);
             //remove the 'newest' class from the element that currently has it
@@ -26,22 +26,22 @@ function addRow() {
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column3 order-form__quad-column3--${rowNumber}" rel="js-order-form__quad-column3--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column3--${rowNumber}']`).append(`<div class="order-form__dietary-options-container" rel="js-order-form__dietary-options-container--${rowNumber}"></div>`);
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column1" rel="js-dietary-options__quad-column1--${rowNumber}"></div>`);
-            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox dairy-free${rowNumber}">`);
+            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox order-form__checkbox--dairyFree${rowNumber}" rel="js-order-form__checkbox--dairyFree${rowNumber}">`);
             $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append('<label for="DiaryFree" class="input-label--checkbox input-label__dairy-free">Dairy Free</label><br>');
-            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<input type="checkbox" name="EggFree" value="EggFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<input type="checkbox" name="EggFree" value="EggFree" class="order-form__checkbox order-form__checkbox--eggFree${rowNumber}" rel="js-order-form__checkbox--eggFree${rowNumber}">`);
             $(`[rel='js-dietary-options__quad-column1--${rowNumber}']`).append(`<label for="EggFree" class="input-label--checkbox input-label__egg-free">Egg Free</label><br>`);
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column2" rel="js-dietary-options__quad-column2--${rowNumber}"></div>`);
-            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<input type="checkbox" name="GlutenFree" value="GlutenFree" class="order-form__checkbox" checked>`);
+            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<input type="checkbox" name="GlutenFree" value="GlutenFree" class="order-form__checkbox order-form__checkbox--glutenFree${rowNumber}" rel="js-order-form__checkbox--glutenFree${rowNumber}" checked>`);
             $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<label for="GlutenFree" class="input-label--checkbox input-label__gluten-free">Gluten Free</label><br>`);
-            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<input type="checkbox" name="GrainFree" value="GrainFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<input type="checkbox" name="GrainFree" value="GrainFree" class="order-form__checkbox order-form__checkbox--grainFree${rowNumber}" rel="js-order-form__checkbox--grainFree${rowNumber}">`);
             $(`[rel='js-dietary-options__quad-column2--${rowNumber}']`).append(`<label for="GrainFree" class="input-label--checkbox input-label__grain-free">Grain Free</label><br>`);
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column3" rel="js-dietary-options__quad-column3--${rowNumber}"></div>`);
-            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<input type="checkbox" name="NutFree" value="NutFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<input type="checkbox" name="NutFree" value="NutFree" class="order-form__checkbox order-form__checkbox--nutFree${rowNumber}" rel="js-order-form__checkbox--nutFree${rowNumber}">`);
             $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<label for="NutFree" class="input-label--checkbox input-label__Nut-free">Nut Free</label><br>`);
-            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<input type="checkbox" name="RefinedSugarFree" value="RefinedSugarFree" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<input type="checkbox" name="RefinedSugarFree" value="RefinedSugarFree" class="order-form__checkbox order-form__checkbox--refinedSugarFree${rowNumber}" rel="js-order-form__checkbox--refinedSugarFree${rowNumber}">`);
             $(`[rel='js-dietary-options__quad-column3--${rowNumber}']`).append(`<label for="RefinedSugarFree" class="input-label--checkbox input-label__refined-sugar-free">Sugar Free*</label><br>`);
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__quad-column dietary-options__quad-column4" rel="js-dietary-options__quad-column4--${rowNumber}"></div>`);
-            $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">`);
+            $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox order-form__checkbox--vegan${rowNumber}" rel="js-order-form__checkbox--vegan${rowNumber}">`);
             $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>`);
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__defaults dietary-options__defaults--${rowNumber}" rel="js-dietary-options__defaults--${rowNumber}">`);
             $(`[rel='js-dietary-options__defaults--${rowNumber}']`).append(`<p class="dietary-options__defaults-text dietary-options__defaults-text${rowNumber}" rel="js-dietary-options__defaults-text${rowNumber}"></p>`);
@@ -188,10 +188,10 @@ $(document).on('click', '.order-form__product', function () {
     let currentProduct = $(`${currentDropdownClass} option:selected`).text();
     console.log('currentProduct is: ' + currentProduct);
 
+
+    //Find the entry in the API that has the same name as the option that is currently in the Product dropdown. Populate a p element with its default dietary info. 
+    //Disable dietary option checkboxes based on what the product 'can be'.
     const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
-
-
-    console.log('logging');
 
     let data = $.getJSON(url, function (data) {
         console.log(data);
@@ -201,14 +201,10 @@ $(document).on('click', '.order-form__product', function () {
 
                 let arrayCurrentName = (data[key].name);
                 if (arrayCurrentName === currentProduct) {
-
+                    //Find which dietary options the parent product is by default/when made without alterations
                     console.log('found needed array. arrayCurrentName and currentProduct ' + arrayCurrentName + currentProduct);
                     let currentArraySKU = (data[key].sku);
                     console.log('currentArraySKU ' + currentArraySKU);
-
-
-
-
                     let currentProductDairyFree = (data[key].dairyFree);
                     console.log('currentProductDairyFree is ' + currentProductDairyFree);
                     let currentProductEggFree = (data[key].eggFree);
@@ -224,17 +220,29 @@ $(document).on('click', '.order-form__product', function () {
                     let currentProductVegan = (data[key].vegan);
                     console.log('currentProductVegan is ' + currentProductVegan);
 
-                    // let dairyFreeCode;
-                    // let eggFreeCode;
-                    // let glutenFreeCode;
-                    // let grainFreeCode;
-                    // let nutFreeCode;
-                    // let refinedSugarFreeCode;
-                    // let veganCode;
+                    //Find which dietary options the product can be made to fit
+                    let canBeDairyFree = (data[key].canBeDairyFree);
+                    console.log('canBeDairyFree is ' + canBeDairyFree);
+                    let canBeEggFree = (data[key].canBeEggFree);
+                    console.log('canBeEggFree is ' + canBeEggFree);
+                    let canBeGlutenFree = (data[key].canBeGlutenFree);
+                    console.log('canBeGlutenFree is ' + canBeGlutenFree);
+                    let canBeGrainFree = (data[key].canBeGrainFree);
+                    console.log('canBeGrainFree is ' + canBeGrainFree);
+                    let canBeNutFree = (data[key].canBeNutFree);
+                    console.log('canBeNutFree is ' + canBeNutFree);
+                    let canBeSugarFree = (data[key].canBeRefinedSugarFree);
+                    console.log('canBeSugarFree is ' + canBeSugarFree);
+                    let canBeVegan = (data[key].canBeVegan);
+                    console.log('canBeVegan is ' + canBeVegan);
+
+
+
                     let defaultOptionsText = 'Default product is: ';
+                    let dietaryPossibilities;
 
 
-
+                    //Update 'defaultOptionsText'
                     if (currentProductDairyFree === true) {
                         // dairyFreeCode = ' DF';
                         defaultOptionsText = defaultOptionsText + ' DF';
@@ -270,6 +278,66 @@ $(document).on('click', '.order-form__product', function () {
                         defaultOptionsText = defaultOptionsText + ' EF';
                     }
 
+
+                    //Disable checkboxes on options that aren't available per the product
+                    if (canBeDairyFree == ! true) {
+                        console.log('canBeDairyFree' + canBeDairyFree);
+                        let neededClass = '.order-form__checkbox--dairyFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled dairyFree checkbox');
+                    }
+
+
+
+                    if (canBeEggFree == ! true) {
+                        console.log('canBeEggFree' + canBeEggFree);
+                        let neededClass = '.order-form__checkbox--eggFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled eggFree checkbox');
+
+                    }
+
+                    if (canBeGlutenFree == ! true) {
+                        console.log('canBeGlutenFree' + canBeGlutenFree);
+                        let neededClass = '.order-form__checkbox--glutenFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled glutenFree checkbox');
+                    }
+
+                    if (canBeGrainFree == ! true) {
+                        console.log('canBeGrainFree' + canBeGrainFree);
+                        let neededClass = '.order-form__checkbox--grainFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled grainFree checkbox');
+                    }
+
+                    if (canBeNutFree == ! true) {
+                        console.log('canBeNutFree' + canBeNutFree);
+                        let neededClass = '.order-form__checkbox--nutFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled nutFree checkbox');
+                    }
+
+                    if (canBeSugarFree == ! true) {
+                        console.log('canBeSugarFree' + canBeSugarFree);
+                        let neededClass = '.order-form__checkbox--sugarFree' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled sugarFree checkbox');
+                    }
+
+                    if (canBeVegan == ! true) {
+                        console.log('canBeVegan' + canVegan);
+                        let neededClass = '.order-form__checkbox--vegan' + `${rowNumber}`;
+                        console.log('neededClass is: ' + neededClass);
+                        $(neededClass).attr('disabled', true);
+                        console.log('disabled vegan checkbox');
+                    }
 
                     // let defaultOptionsText = ('Default product is: ' + dairyFreeCode + eggFreeCode + glutenFreeCode + grainFreeCode + nutFreeCode + refinedSugarFreeCode + veganCode);
                     console.log('after all options checking, defaultOptionsText is ' + defaultOptionsText);

@@ -153,6 +153,15 @@ button:focus {
     font-size: 13.3333px;
 }
 
+.order-fields__row {
+    padding-bottom: 100px;
+}
+.order-fields__row--labels {
+    padding-bottom: 20px;
+}
+
+
+
 .order-form__dietary-options-container {
     width: 80%;
     height: 50px;
