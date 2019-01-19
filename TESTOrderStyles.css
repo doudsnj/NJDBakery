@@ -31,9 +31,21 @@
 }
 .dietary-options__container{
     background-color: black;
+}*/
+
+.quantity__bi-column--left {
+    background-color: red;
 }
 
-.dietary-options__quad-column1{
+.quantity__bi-column--right {
+    background-color: green;
+}
+
+.quantity__bi-column2 {
+    background-color: blue;
+}
+
+/*.dietary-options__quad-column1{
     background-color: purple;
 }
 
@@ -152,6 +164,32 @@ button:focus {
     margin-bottom: 20px;
     font-size: 13.3333px;
 }
+
+.order-form__input--small{
+    /* width: 80%; */
+    height: 50px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    margin-bottom: 20px;
+    font-size: 13.3333px;
+}
+
+
+
+/* .generated {
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 13px;
+    padding-left: 10%;
+    padding-top: 2.5%;
+    padding-right: 10%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    line-height: 1.5em;
+} */
 
 .order-fields__row {
     padding-bottom: 100px;
@@ -367,6 +405,20 @@ button:focus {
         float: right;
     }
 
+    .quantity__bi-column {
+        width: 50%;
+    }
+
+    .quantity__bi-column--left {
+        float: left;
+        
+    }
+
+    .quantity__bi-column--right {
+        float: right;
+        
+    }
+
     .order-form__quad-column1, .order-form__quad-column3 {
         width: 50%;
         float: left;
@@ -377,6 +429,7 @@ button:focus {
         width: 50%;
         float: right;
     }
+
 
 
     .dietary-options__quad-column1{
@@ -417,12 +470,7 @@ button:focus {
         float: right;
     }
 
-    .order-form__quantity {
-        float: right;
-        margin-right: 13.33%;
-    }
-
-    .input-label__last-name, .input-label__quantity {
+    .input-label__last-name, {
         margin-left: 6.67%;
     }
 
@@ -432,6 +480,13 @@ button:focus {
 
     .input-label__phone, .input-label__price {
         margin-left: 20%;
+    }
+    .input-label__servings {
+        float: left;
+    }
+
+    .input-label__quantity {
+        float: right;
     }
 
     .add-row-section {

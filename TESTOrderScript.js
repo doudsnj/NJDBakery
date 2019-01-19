@@ -359,15 +359,12 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled dairyFree checkbox');
                     }
 
-
-
                     if (canBeEggFree == ! true) {
                         console.log('canBeEggFree' + canBeEggFree);
                         let neededClass = '.order-form__checkbox--eggFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
                         $(neededClass).attr('disabled', true);
                         console.log('disabled eggFree checkbox');
-
                     }
 
                     if (canBeGlutenFree == ! true) {
@@ -412,6 +409,13 @@ $(document).on('click', '.order-form__product', function () {
 
                     console.log('after all options checking, defaultOptionsText is ' + defaultOptionsText);
                     $(`[rel='js-dietary-options__defaults-text${rowNumber}']`).html(defaultOptionsText);
+
+
+                    //Populate servings per product batch
+                    let currentProductDefaultNumberOfServings = (data[key].defaultNumberOfServings);
+                    console.log('currentProductDefaultNumberOfServings is:' + currentProductDefaultNumberOfServings);
+                    $(`[rel='js-order-form__number-of-servings--text${rowNumber}']`).html(currentProductDefaultNumberOfServings);
+
                 }
 
             }
