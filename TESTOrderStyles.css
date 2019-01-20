@@ -224,7 +224,8 @@ button:focus {
 .order-form__servings-text {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;   
-    vertical-align: middle; 
+    line-height: 50px;
+    text-align: center;
 }
 
 .order-form__checkbox {
@@ -487,7 +488,7 @@ button:focus {
         margin-left: 20%;
     }
     .input-label__servings {
-        float: left;
+        text-align: center;
     }
 
     .input-label__quantity {
@@ -567,6 +568,17 @@ button:focus {
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: 2.5px;
+    }
+
+    .order-form__quantity {
+        width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 2.5px;
+
     }
 
 
