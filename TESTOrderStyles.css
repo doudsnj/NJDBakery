@@ -31,7 +31,7 @@
 }
 .dietary-options__container{
     background-color: black;
-}*/
+}
 
 .quantity__bi-column--left {
     background-color: red;
@@ -45,7 +45,7 @@
     background-color: blue;
 }
 
-/*.dietary-options__quad-column1{
+.dietary-options__quad-column1{
     background-color: purple;
 }
 
@@ -219,7 +219,12 @@ button:focus {
 .dietary-options__defaults-text {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;
-    
+}
+
+.order-form__servings-text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;   
+    vertical-align: middle; 
 }
 
 .order-form__checkbox {
@@ -486,7 +491,7 @@ button:focus {
     }
 
     .input-label__quantity {
-        float: right;
+        float: left;
     }
 
     .add-row-section {

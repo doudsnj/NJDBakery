@@ -21,7 +21,10 @@ function addRow() {
             $(`[rel='js-order-form__quad-column1--${rowNumber}']`).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
             $(`[rel='js-remove-row__section--${rowNumber}']`).append(`<button type="button" class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<input type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity${rowNumber}">`);
+            $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--left" rel="js-quantity__bi-column--left--${rowNumber}"></div>`);
+            $(`[rel='js-quantity__bi-column--left--${rowNumber}']`).append(`<p class="order-form__servings-text order-form__servings-text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
+            $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--${rowNumber}"></div>`);
+            $(`[rel='js-quantity__bi-column--right--${rowNumber}']`).append(`<input type="text" name="quantity" class="order-form__input--small order-form__quantity order-form__quantity${rowNumber}"></input>`);
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--right order-form__bi-column--right--${rowNumber}" rel="js-order-form__bi-column__right--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column3 order-form__quad-column3--${rowNumber}" rel="js-order-form__quad-column3--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column3--${rowNumber}']`).append(`<div class="order-form__dietary-options-container" rel="js-order-form__dietary-options-container--${rowNumber}"></div>`);
@@ -165,7 +168,7 @@ $(document).ready(function () {
 
 
 
-// Objective: When a Product option is chosen, populate its default dietary options and disable(hide ?) options that can be chosen
+// Objective: When a Product option is chosen, populate info about that product from the API
 $(document).on('click', '.order-form__product', function () {
     let rowNumber;
 
@@ -201,6 +204,7 @@ $(document).on('click', '.order-form__product', function () {
 
                 let arrayCurrentName = (data[key].name);
                 if (arrayCurrentName === currentProduct) {
+
                     //Find which dietary options the parent product is by default/when made without alterations
                     console.log('found needed array. arrayCurrentName and currentProduct ' + arrayCurrentName + currentProduct);
                     let currentArraySKU = (data[key].sku);
@@ -414,7 +418,7 @@ $(document).on('click', '.order-form__product', function () {
                     //Populate servings per product batch
                     let currentProductDefaultNumberOfServings = (data[key].defaultNumberOfServings);
                     console.log('currentProductDefaultNumberOfServings is:' + currentProductDefaultNumberOfServings);
-                    $(`[rel='js-order-form__number-of-servings--text${rowNumber}']`).html(currentProductDefaultNumberOfServings);
+                    $(`[rel='js-order-form__servings${rowNumber}']`).html(currentProductDefaultNumberOfServings);
 
                 }
 
