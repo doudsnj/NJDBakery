@@ -24,7 +24,14 @@ function addRow() {
             $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--left" rel="js-quantity__bi-column--left--${rowNumber}"></div>`);
             $(`[rel='js-quantity__bi-column--left--${rowNumber}']`).append(`<p class="order-form__servings-text order-form__servings-text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
             $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--${rowNumber}"></div>`);
-            $(`[rel='js-quantity__bi-column--right--${rowNumber}']`).append(`<input type="text" name="quantity" class="order-form__input--small order-form__quantity order-form__quantity${rowNumber}"></input>`);
+            $(`[rel='js-quantity__bi-column--right--${rowNumber}']`).append(`<select type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="0">Select...</option>');
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="1">1 batch</option>');
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="2">2 batches</option>');
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="3">3 batches</option>');
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="4">4 batches</option>');
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="5">5 batches</option>');
+
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--right order-form__bi-column--right--${rowNumber}" rel="js-order-form__bi-column__right--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column3 order-form__quad-column3--${rowNumber}" rel="js-order-form__quad-column3--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column3--${rowNumber}']`).append(`<div class="order-form__dietary-options-container" rel="js-order-form__dietary-options-container--${rowNumber}"></div>`);
@@ -63,14 +70,16 @@ function addRow() {
             dropdown.append('<option selected="true" disabled>Select...</option>');
             dropdown.prop('selectedIndex', 0);
 
-            const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+            const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
-            // Populate dropdown with list of products
+            // Populate Product dropdown with list of products
             $.getJSON(url, function (data) {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
                 })
             });
+
+
         };
     };
 
@@ -155,7 +164,7 @@ $(document).ready(function () {
     dropdown.append('<option selected="true" disabled>Select...</option>');
     dropdown.prop('selectedIndex', 0);
 
-    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+    const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
     // Populate dropdown with list of products
     $.getJSON(url, function (data) {
@@ -194,7 +203,7 @@ $(document).on('click', '.order-form__product', function () {
 
     //Find the entry in the API that has the same name as the option that is currently in the Product dropdown. Populate a p element with its default dietary info. 
     //Disable dietary option checkboxes based on what the product 'can be'.
-    const url = 'https://njd-bakery.azurewebsites.net/api/products?parentsOnly=true';
+    const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
     let data = $.getJSON(url, function (data) {
         console.log(data);
@@ -419,15 +428,10 @@ $(document).on('click', '.order-form__product', function () {
                     let currentProductDefaultNumberOfServings = (data[key].defaultNumberOfServings);
                     console.log('currentProductDefaultNumberOfServings is:' + currentProductDefaultNumberOfServings);
                     $(`[rel='js-order-form__servings${rowNumber}']`).html(currentProductDefaultNumberOfServings);
-
                 }
-
             }
-
         }
-
     })
-
 });
 
 

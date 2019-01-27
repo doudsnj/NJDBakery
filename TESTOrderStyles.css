@@ -165,8 +165,7 @@ button:focus {
     font-size: 13.3333px;
 }
 
-.order-form__input--small{
-    /* width: 80%; */
+/* .order-form__input--small{
     height: 50px;
     border: 1px solid #8b9e98;
     border-radius: 7.5px;
@@ -174,7 +173,7 @@ button:focus {
     color: #383838;
     margin-bottom: 20px;
     font-size: 13.3333px;
-}
+} */
 
 
 
@@ -476,9 +475,9 @@ button:focus {
         float: right;
     }
 
-    .input-label__last-name, {
+    .input-label__last-name {
         margin-left: 6.67%;
-    }
+      }
 
     .input-label__email, .input-label__dietary-options {
         margin-left: 13.33%;
@@ -571,7 +570,7 @@ button:focus {
     }
 
     .order-form__quantity {
-        width: 100%;
+        /* width: 80%; */
         -webkit-appearance: none;
         -moz-appearance: none;
         background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
