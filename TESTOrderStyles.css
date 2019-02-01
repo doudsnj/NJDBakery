@@ -220,11 +220,18 @@ button:focus {
     color: #ffffff;
 }
 
-.order-form__servings-text {
+.order-form__servings--text {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;   
     line-height: 50px;
     text-align: center;
+}
+
+.order-form__price--text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;   
+    line-height: 50px;
+    text-align: left;
 }
 
 .order-form__checkbox {
@@ -570,7 +577,7 @@ button:focus {
     }
 
     .order-form__quantity {
-        /* width: 80%; */
+        width: 75%;
         -webkit-appearance: none;
         -moz-appearance: none;
         background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");

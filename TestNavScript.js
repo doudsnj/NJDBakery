@@ -47,7 +47,7 @@ function generateNavLinks() {
         let url = window.location.href;
         let currentArrayURLMatches = url.includes(li.href);
         navMenuDiv.append(`<a class="nav-menu__link nav-menu__link--${li.class}" href="${li.href}">${li.linkText}</a>`);
-        if (currentArrayURLMatches) {
+        if (currentArrayURLMatches === true) {
             $(`.nav-menu__link--${li.class}`).addClass('nav-menu__link--currentPage disabled');
         };
     });

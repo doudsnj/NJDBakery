@@ -20,7 +20,7 @@
 
 <body rel="js-body">
     <div class="logo-div" rel="js-logo-div">
-        <img class="logo-div__logo" src="NJDBakeryLogoNewFont.jpg" alt="NJDBakeryLogo">
+        <img class="logo-div__logo" src="njdBakery_Logo_2_Color_web.png" alt="NJDBakeryLogo">
     </div>
     <div class="general-heading">order</div>
     <div class="explanation-container">
@@ -69,7 +69,13 @@
                                     row</label>
                             </div>
                             <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2--labels">
-                                <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
+                                <div class="quantity__bi-column quantity__bi-column--left" rel="js-quantity__bi-column--left--labels">
+                                    <label for="order-form__servings" class="input-label input-label__servings">Servings
+                                        per Batch</label>
+                                </div>
+                                <div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--labels">
+                                    <label for="order-form__quantity" class="input-label input-label__quantity">Quantity</label>
+                                </div>
                             </div>
                         </div>
                         <div class="order-form__bi-column order-form__bi-column--right" rel="js-order-form__bi-column__left--labels">
@@ -87,23 +93,8 @@
 
                     <div class="order-fields__row order-fields__row1 newestRow entry1" rel="js-order-fields__row--1">
                         <div class="order-form__bi-column order-form__bi-column--left" rel="js-order-form__bi-column__left--1">
-
                             <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1--1">
                                 <div class="order-form__product-field--container order-form__input" rel="js-order-form__product-field--container--1">
-                                    <!-- <div class="order-form__product-select-container order-form__product-select-container1 entry1"
-                                        tabindex="0" rel="js-order-form__product-select-container1">
-                                        <span class="order-form__product-select--value order-form__product-select--value1"
-                                            rel="js-order-form__product-select--value1">Select...</span>
-                                        <ul id="order-form__product-option-list" class="order-form__product-option-list order-form__product-option-list1 noVisibility"
-                                            rel="js-order-form__product-option-list1">
-                                            <li class="order-form__product-option order-form__product-option1" rel="order-form__product-option1">Chocolate
-                                                Chip Cookies</li>
-                                            <li class="order-form__product-option">Oatmeal Raisin Cookies</li>
-                                            <li class="order-form__product-option">Double Chocolate Chip Cookies</li>
-                                            <li class="order-form__product-option">Crunchy Chocolate Mexican Cookies</li>
-                                            <li class="order-form__product-option">Crunchy Lemon Cookies</li>
-                                        </ul>
-                                    </div> -->
                                     <select type="select" name="product" class="entry1 select order-form__input order-form__product order-form__product1 "></select>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
@@ -111,7 +102,20 @@
                                 </div>
                             </div>
                             <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2--1">
-                                <input type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity1">
+                                <div class="quantity__bi-column quantity__bi-column--left" rel="js-quantity__bi-column--left--1">
+                                    <p class="order-form__servings--text order-form__servings--text1" rel="js-order-form__servings1"></p>
+                                </div>
+                                <div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--1">
+                                    <select type="select" name="quantity" class=" entry1 order-form__input order-form__quantity order-form__quantity1"
+                                        rel="js-order-form__quantity1">
+                                        <option value="0">Select...</option>
+                                        <option value="1">1 batch</option>
+                                        <option value="2">2 batches</option>
+                                        <option value="3">3 batches</option>
+                                        <option value="4">4 batches</option>
+                                        <option value="5">5 batches</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="order-form__bi-column order-form__bi-column--right" rel="order-form__bi-column__right--1">
@@ -162,7 +166,7 @@
                             </div>
 
                             <div class="order-form__quad-column order-form__quad-column4" rel="js-order-form__quad-column4--1">
-                                <input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price1">
+                                <p class="order-form__price--text order-form__price--text1 generated disabled" rel="js-order-form__price1"></p>
                             </div>
 
                         </div>
@@ -193,32 +197,3 @@
 </body>
 
 </html>
-
-<!-- <div class="order-form__dietary-options-container">
-                                    <div class="dietary-options__bi-column-left">
-                                        <input type="checkbox" name="DairyFree" value="DairyFree" class="order-form__checkbox">
-                                        <label for="DiaryFree" class="input-label--checkbox input-label__dairy-free">Dairy
-                                            Free</label><br>
-                                        <input type="checkbox" name="EggFree" value="EggFree" class="order-form__checkbox">
-                                        <label for="EggFree" class="input-label--checkbox input-label__egg-free">Egg
-                                            Free</label><br>
-                                        <input type="checkbox" name="GlutenFree" value="GlutenFree" class="order-form__checkbox"
-                                            checked>
-                                        <label for="GlutenFree" class="input-label--checkbox input-label__gluten-free">Gluten
-                                            Free</label><br>
-                                        <input type="checkbox" name="GrainFree" value="GrainFree" class="order-form__checkbox">
-                                        <label for="GrainFree" class="input-label--checkbox input-label__grain-free">Grain
-                                            Free</label><br>
-
-                                    </div>
-                                    <div class="dietary-options__bi-column-right">
-                                        <input type="checkbox" name="NutFree" value="NutFree" class="order-form__checkbox">
-                                        <label for="NutFree" class="input-label--checkbox input-label__Nut-free">Nut
-                                            Free</label><br>
-                                        <input type="checkbox" name="RefinedSugarFree" value="RefinedSugarFree" class="order-form__checkbox">
-                                        <label for="RefinedSugarFree" class="input-label--checkbox input-label__refined-sugar-free">Refined
-                                            Sugar Free</label><br>
-                                        <input type="checkbox" name="Vegan" value="Vegan" class="order-form__checkbox">
-                                        <label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>
-                                    </div> -->
-<!-- <input type="text" name="dietary-options" class="order-form__input order-form__dietary-options order-form__dietary-options1">-->

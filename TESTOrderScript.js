@@ -22,16 +22,15 @@ function addRow() {
             $(`[rel='js-remove-row__section--${rowNumber}']`).append(`<button type="button" class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
             $(`[rel='js-order-form__bi-column__left--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--left" rel="js-quantity__bi-column--left--${rowNumber}"></div>`);
-            $(`[rel='js-quantity__bi-column--left--${rowNumber}']`).append(`<p class="order-form__servings-text order-form__servings-text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
+            $(`[rel='js-quantity__bi-column--left--${rowNumber}']`).append(`<p class="order-form__servings--text order-form__servings--text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
             $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--${rowNumber}"></div>`);
-            $(`[rel='js-quantity__bi-column--right--${rowNumber}']`).append(`<select type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
+            $(`[rel='js-quantity__bi-column--right--${rowNumber}']`).append(`<select type="text" name="quantity" class="order-form__input order-form__quantity order-form__quantity${rowNumber} entry${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="0">Select...</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="1">1 batch</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="2">2 batches</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="3">3 batches</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="4">4 batches</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="5">5 batches</option>');
-
             $(`[rel='js-order-fields__row--${rowNumber}']`).append(`<div class="order-form__bi-column order-form__bi-column--right order-form__bi-column--right--${rowNumber}" rel="js-order-form__bi-column__right--${rowNumber}"></div>`);
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column3 order-form__quad-column3--${rowNumber}" rel="js-order-form__quad-column3--${rowNumber}"></div>`);
             $(`[rel='js-order-form__quad-column3--${rowNumber}']`).append(`<div class="order-form__dietary-options-container" rel="js-order-form__dietary-options-container--${rowNumber}"></div>`);
@@ -55,9 +54,8 @@ function addRow() {
             $(`[rel='js-dietary-options__quad-column4--${rowNumber}']`).append(`<label for="Vegan" class="input-label--checkbox input-label__vegan">Vegan</label><br>`);
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__defaults dietary-options__defaults--${rowNumber}" rel="js-dietary-options__defaults--${rowNumber}">`);
             $(`[rel='js-dietary-options__defaults--${rowNumber}']`).append(`<p class="dietary-options__defaults-text dietary-options__defaults-text${rowNumber}" rel="js-dietary-options__defaults-text${rowNumber}"></p>`);
-
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<input type="text" value="will be generated and not an input" name="price" class="order-form__input order-form__price order-form__price${rowNumber}">`);
+            $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<p class="order-form__input order-form__price order-form__price1 generated disabled" rel="js-order-form__price${rowNumber}"></p>`);
             console.log('created new row');
 
             let specificdropdown = '.order-form__product' + `${rowNumber}`;
@@ -99,11 +97,49 @@ function addRow() {
 
 };
 
+// let currentElementType;
+
+// function findRowNumber() {
+//     console.log('in findRowNumber function')
+//     console.log('using currentElementType: ' + currentElementType);
+//     console.log('this' + this);
+
+//     let listOfClassesOnElement = $(this)[0].className.split(/\s+/);
+//     console.log('listOfClassesOnElement: ' + listOfClassesOnElement);
+//     for (var i = 0; i < listOfClassesOnElement.length; i++) {
+//         if ((listOfClassesOnElement[i].includes)('entry')) {
+//             rowNumber = (listOfClassesOnElement[i].substring(5));
+//             console.log('rowNumber: ' + rowNumber);
+//             return rowNumber;
+//             break;
+//         }
+//     }
+// };
+
+// function findRowNumber() {
+//     let listOfClassesOnElement = $('.order-form__product')[0].className.split(/\s+/);
+//     console.log('listOfClassesOnElement: ' + listOfClassesOnElement);
+//     for (var i = 0; i < listOfClassesOnElement.length; i++) {
+//         if ((listOfClassesOnElement[i].includes)('entry')) {
+//             rowNumber = (listOfClassesOnElement[i].substring(5));
+//             console.log('rowNumber: ' + rowNumber);
+//             return rowNumber;
+//             break;
+//         }
+//     }
+
+// };
+
+
+
+
+
+
 
 //Objective: If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
 //TODO: Enable the first row to be deleted if more than one row is showing
+
 $(document).on('click', '.remove-row__button', function () {
-    console.log('in top of new removeRow function');
     let listOfClassesOnButton = $(this)[0].className.split(/\s+/);
     console.log('listOfClassesOnButton: ' + listOfClassesOnButton);
     //look through the array of classes on the button that was clicked, and find the one that includes the word 'entry'. Then get a substring to see what entry number/what row it is in.
@@ -155,6 +191,7 @@ $(document).on('click', '.remove-row__button', function () {
 
 
 
+
 // Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
     let dropdown = $('.order-form__product1');
@@ -179,14 +216,20 @@ $(document).ready(function () {
 
 // Objective: When a Product option is chosen, populate info about that product from the API
 $(document).on('click', '.order-form__product', function () {
+    currentElementType = ('.order-form__product');
+
+    console.log('currentElementType is ' + currentElementType);
     let rowNumber;
 
     //Find the list of classes on that specific Product dropdown, and iterate through until you find the specific row number
-    let listOfClassesOnSelect = $(this)[0].className.split(/\s+/);
-    console.log('listOfClassesOnSelect: ' + listOfClassesOnSelect);
-    for (var i = 0; i < listOfClassesOnSelect.length; i++) {
-        if ((listOfClassesOnSelect[i].includes)('entry')) {
-            rowNumber = (listOfClassesOnSelect[i].substring(5));
+    // findRowNumber();
+
+    let listOfClassesOnElement = $(this)[0].className.split(/\s+/);
+    console.log('this is ' + this);
+    console.log('listOfClassesOnElement: ' + listOfClassesOnElement);
+    for (var i = 0; i < listOfClassesOnElement.length; i++) {
+        if ((listOfClassesOnElement[i].includes)('entry')) {
+            rowNumber = (listOfClassesOnElement[i].substring(5));
             console.log('rowNumber: ' + rowNumber);
             break;
         }
@@ -256,7 +299,7 @@ $(document).on('click', '.order-form__product', function () {
 
 
                     //Update 'defaultOptionsText' and check/disable or uncheck/enable the boxes of the default options
-                    if (currentProductDairyFree === true) {
+                    if (currentProductDairyFree) {
                         defaultOptionsText = defaultOptionsText + ' DF';
                         console.log('currentProductDairyFree' + currentProductDairyFree);
                         let neededClass = '.order-form__checkbox--dairyFree' + `${rowNumber}`;
@@ -273,7 +316,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('unchecked and enabled dairyFree checkbox');
                     }
 
-                    if (currentProductEggFree === true) {
+                    if (currentProductEggFree) {
                         defaultOptionsText = defaultOptionsText + ' EF';
                         console.log('currentProductEggFree' + currentProductEggFree);
                         let neededClass = '.order-form__checkbox--eggFree' + `${rowNumber}`;
@@ -290,11 +333,11 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('unchecked and enabled eggFree checkbox');
                     }
 
-                    if (currentProductGlutenFree === true) {
+                    if (currentProductGlutenFree) {
                         defaultOptionsText = defaultOptionsText + ' GF';
                     }
 
-                    if (currentProductGrainFree === true) {
+                    if (currentProductGrainFree) {
                         defaultOptionsText = defaultOptionsText + ' GRF';
                         console.log('currentProductGrainFree' + currentProductGrainFree);
                         let neededClass = '.order-form__checkbox--grainFree' + `${rowNumber}`;
@@ -311,7 +354,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('unchecked and enabled grainFree checkbox');
                     }
 
-                    if (currentProductNutFree === true) {
+                    if (currentProductNutFree) {
                         defaultOptionsText = defaultOptionsText + ' NF';
                         console.log('currentProductNutFree' + currentProductNutFree);
                         let neededClass = '.order-form__checkbox--nutFree' + `${rowNumber}`;
@@ -328,7 +371,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('unchecked and enabled nutFree checkbox');
                     }
 
-                    if (currentProductSugarFree === true) {
+                    if (currentProductSugarFree) {
                         defaultOptionsText = defaultOptionsText + ' RSF';
                         console.log('currentProductSugarFree' + currentProductSugarFree);
                         let neededClass = '.order-form__checkbox--refinedSugarFree' + `${rowNumber}`;
@@ -345,7 +388,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('unchecked and enabled sugarFree checkbox');
                     }
 
-                    if (currentProductVegan === true) {
+                    if (currentProductVegan) {
                         defaultOptionsText = defaultOptionsText + ' V';
                         console.log('currentProductVegan' + currentProductVegan);
                         let neededClass = '.order-form__checkbox--vegan' + `${rowNumber}`;
@@ -364,7 +407,7 @@ $(document).on('click', '.order-form__product', function () {
 
 
                     //Disable checkboxes on options that aren't available per the product
-                    if (canBeDairyFree == ! true) {
+                    if (!canBeDairyFree) {
                         console.log('canBeDairyFree' + canBeDairyFree);
                         let neededClass = '.order-form__checkbox--dairyFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -372,7 +415,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled dairyFree checkbox');
                     }
 
-                    if (canBeEggFree == ! true) {
+                    if (!canBeEggFree) {
                         console.log('canBeEggFree' + canBeEggFree);
                         let neededClass = '.order-form__checkbox--eggFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -380,7 +423,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled eggFree checkbox');
                     }
 
-                    if (canBeGlutenFree == ! true) {
+                    if (!canBeGlutenFree) {
                         console.log('canBeGlutenFree' + canBeGlutenFree);
                         let neededClass = '.order-form__checkbox--glutenFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -388,7 +431,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled glutenFree checkbox');
                     }
 
-                    if (canBeGrainFree == ! true) {
+                    if (!canBeGrainFree) {
                         console.log('canBeGrainFree' + canBeGrainFree);
                         let neededClass = '.order-form__checkbox--grainFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -396,7 +439,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled grainFree checkbox');
                     }
 
-                    if (canBeNutFree == ! true) {
+                    if (!canBeNutFree) {
                         console.log('canBeNutFree' + canBeNutFree);
                         let neededClass = '.order-form__checkbox--nutFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -404,7 +447,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled nutFree checkbox');
                     }
 
-                    if (canBeSugarFree == ! true) {
+                    if (!canBeSugarFree) {
                         console.log('canBeSugarFree' + canBeSugarFree);
                         let neededClass = '.order-form__checkbox--sugarFree' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -412,7 +455,7 @@ $(document).on('click', '.order-form__product', function () {
                         console.log('disabled sugarFree checkbox');
                     }
 
-                    if (canBeVegan == ! true) {
+                    if (!canBeVegan) {
                         console.log('canBeVegan' + canVegan);
                         let neededClass = '.order-form__checkbox--vegan' + `${rowNumber}`;
                         console.log('neededClass is: ' + neededClass);
@@ -432,6 +475,36 @@ $(document).on('click', '.order-form__product', function () {
             }
         }
     })
+});
+
+//Populate the Price for the current row
+$(document).on('click', '.order-form__quantity', function () {
+    let rowNumber;
+
+    //Find the list of classes on that specific Quantity dropdown, and iterate through until you find the specific row number
+    let listOfClassesOnElement = $(this)[0].className.split(/\s+/);
+    console.log('listOfClassesOnElement: ' + listOfClassesOnElement);
+    for (var i = 0; i < listOfClassesOnElement.length; i++) {
+        if ((listOfClassesOnElement[i].includes)('entry')) {
+            rowNumber = (listOfClassesOnElement[i].substring(5));
+            console.log('rowNumber from Quantity click: ' + rowNumber);
+            break;
+        }
+    }
+
+    //Set a variable so it holds the class name of the specific Quantity dropdown that was clicked
+    let currentQuantityDropdownClass = '.order-form__quantity' + rowNumber;
+    console.log('currentQuantityDropdownClass: ' + currentQuantityDropdownClass);
+
+    //Get the text of the current selection of the current Product dropdown
+    let currentQuantity = $(`${currentQuantityDropdownClass} option:selected`).text();
+    console.log('currentQuantity is: ' + currentQuantity);
+
+    //Retrieve the BatchPrice from the API of the current Product
+
+
+
+
 });
 
 

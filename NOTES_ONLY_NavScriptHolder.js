@@ -12,12 +12,12 @@ const navElements = [{
     href: 'Products.html',
     linkText: 'PRODUCTS'
 }
-// etc...
+    // etc...
 ]
 
 function generateNavElements() {
     let navMenuDiv = $('.nav-menu');
-    
+
     for (let index = 0; index < navElements.length; index++) {
         const el = navElements[index];
 
@@ -26,11 +26,11 @@ function generateNavElements() {
         // `http://www.${env}.com/api/${CTRL}/${ID}/products
 
         let elementToAdd = $(`<a class="nav-menu__link nav-menu__link--${el.class}" href="${el.href}">${el.linkText}</a>`);
-        
+
         //  el.class = 'index'
         // `nav-menu__link--${el.class}` // string interpolation -> preference
-        // 'nav-menu__link--' + el.class // string concatination
- 
+        // 'nav-menu__link--' + el.class // string concatenation
+
         navMenuDiv.add(elementToAdd);
     }
 
@@ -70,14 +70,14 @@ var className = "nav-menu__link--" + page;
 console.log(className);
 
 //determine which class name to find
-function setPage(){
-    if (contactResult === true){
+function setPage() {
+    if (contactResult === true) {
         console.log("It is true.")
         page = "Contact"
         console.log("page set to:" + page);
         className = "nav-menu__link--" + page;
         console.log(className);
-        }
+    }
 }
 
 
