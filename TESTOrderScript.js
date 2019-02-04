@@ -26,8 +26,7 @@ function addRow() {
             $(`[rel='js-quantity__bi-column--left--${rowNumber}']`).append(`<p class="order-form__servings--text order-form__servings--text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
             $(`[rel='js-order-form__quad-column2--${rowNumber}']`).append(`<div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--${rowNumber}"></div>`);
             $(`[rel='js-quantity__bi-column--right--${rowNumber}']`).append(`<select type="text" name="quantity" onclick="findRowNumber(this)" id="quantity${rowNumber}" class="order-form__input order-form__quantity order-form__quantity${rowNumber} entry${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
-            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="0">Select...</option>');
-            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="1">1 batch</option>');
+            $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="1" selected="selected">1 batch</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="2">2 batches</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="3">3 batches</option>');
             $(`[rel='js-order-form__quantity${rowNumber}']`).append('<option value="4">4 batches</option>');
@@ -56,7 +55,7 @@ function addRow() {
             $(`[rel='js-order-form__dietary-options-container--${rowNumber}']`).append(`<div class="dietary-options__defaults dietary-options__defaults--${rowNumber}" rel="js-dietary-options__defaults--${rowNumber}">`);
             $(`[rel='js-dietary-options__defaults--${rowNumber}']`).append(`<p class="dietary-options__defaults-text dietary-options__defaults-text${rowNumber}" rel="js-dietary-options__defaults-text${rowNumber}"></p>`);
             $(`[rel='js-order-form__bi-column__right--${rowNumber}']`).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
-            $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<p class="order-form__input order-form__price order-form__price1 generated disabled" rel="js-order-form__price${rowNumber}"></p>`);
+            $(`[rel='js-order-form__quad-column4--${rowNumber}']`).append(`<p class="order-form__price--text order-form__price--text${rowNumber} generated disabled" rel="js-order-form__price${rowNumber}"></p>`);
             console.log('created new row');
 
             const specificdropdown = '.order-form__product' + `${rowNumber}`;
@@ -134,6 +133,24 @@ function removeRow(currentId) {
         removeRowLabel.classList.add('noVisibility');
     }
 };
+
+// function calculatePrice(currentId) {
+
+//         let currentProductDefaultNumberOfServings = (data[key].defaultNumberOfServings);
+//         console.log('currentProductDefaultNumberOfServings is:' + currentProductDefaultNumberOfServings);
+//         $(`[rel='js-order-form__servings${currentRowNumber}']`).html(currentProductDefaultNumberOfServings);
+
+//         //Populate the Price for the current row, based on the number of batches selected
+//         let currentProductBatchPrice = (data[key].batchPrice);
+
+//         const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
+//         const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
+//         console.log('currentBatchSelection ' + currentBatchSelection);
+//         const pricePerRow = currentBatchSelection * currentProductBatchPrice;
+//         console.log('pricePerRow is ' + pricePerRow);
+
+//         $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+// };
 
 // Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
@@ -387,6 +404,17 @@ function populateInfo(currentId) {
                     let currentProductDefaultNumberOfServings = (data[key].defaultNumberOfServings);
                     console.log('currentProductDefaultNumberOfServings is:' + currentProductDefaultNumberOfServings);
                     $(`[rel='js-order-form__servings${currentRowNumber}']`).html(currentProductDefaultNumberOfServings);
+
+                    //Populate the Price for the current row, based on the number of batches selected
+                    let currentProductBatchPrice = (data[key].batchPrice);
+
+                    const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
+                    const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
+                    console.log('currentBatchSelection ' + currentBatchSelection);
+                    const pricePerRow = currentBatchSelection * currentProductBatchPrice;
+                    console.log('pricePerRow is ' + pricePerRow);
+
+                    $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
                 }
             }
         }
@@ -395,35 +423,6 @@ function populateInfo(currentId) {
 }
 
 
-//Populate the Price for the current row
-$(document).on('click', '.order-form__quantity', function () {
-    let rowNumber;
-
-    //Find the list of classes on that specific Quantity dropdown, and iterate through until you find the specific row number
-    let listOfClassesOnElement = $(this)[0].className.split(/\s+/);
-    console.log('listOfClassesOnElement: ' + listOfClassesOnElement);
-    for (var i = 0; i < listOfClassesOnElement.length; i++) {
-        if ((listOfClassesOnElement[i].includes)('entry')) {
-            rowNumber = (listOfClassesOnElement[i].substring(5));
-            console.log('rowNumber from Quantity click: ' + rowNumber);
-            break;
-        }
-    }
-
-    //Set a variable so it holds the class name of the specific Quantity dropdown that was clicked
-    let currentQuantityDropdownClass = '.order-form__quantity' + rowNumber;
-    console.log('currentQuantityDropdownClass: ' + currentQuantityDropdownClass);
-
-    //Get the text of the current selection of the current Product dropdown
-    let currentQuantity = $(`${currentQuantityDropdownClass} option:selected`).text();
-    console.log('currentQuantity is: ' + currentQuantity);
-
-    //Retrieve the BatchPrice from the API of the current Product
-
-
-
-
-});
 
 
 

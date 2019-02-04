@@ -235,7 +235,8 @@ button:focus {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;   
     line-height: 50px;
-    text-align: left;
+    text-align: right;
+    margin-right: 40%;
 }
 
 .order-form__checkbox {
