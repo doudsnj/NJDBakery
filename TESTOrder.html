@@ -91,14 +91,15 @@
 
 
 
-                    <div class="order-fields__row order-fields__row1 newestRow entry1" rel="js-order-fields__row--1">
+                    <div id="row1" class="order-fields__row order-fields__row1 newestRow entry1" rel="js-order-fields__row--1">
                         <div class="order-form__bi-column order-form__bi-column--left" rel="js-order-form__bi-column__left--1">
                             <div class="order-form__quad-column order-form__quad-column1" rel="js-order-form__quad-column1--1">
                                 <div class="order-form__product-field--container order-form__input" rel="js-order-form__product-field--container--1">
-                                    <select type="select" name="product" class="entry1 select order-form__input order-form__product order-form__product1 "></select>
+                                    <select type="select" name="product" onclick="populateInfo(this)" id="product1"
+                                        class="entry1 select order-form__input order-form__product order-form__product1 "></select>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
-                                    <button type="button" class="remove-row__button remove-row__button1 noVisibility">-</button>
+                                    <button type="button" id="remove-row__button1" onclick="removeRow(this)" class="remove-row__button remove-row__button1 noVisibility">-</button>
                                 </div>
                             </div>
                             <div class="order-form__quad-column order-form__quad-column2" rel="js-order-form__quad-column2--1">
@@ -106,7 +107,8 @@
                                     <p class="order-form__servings--text order-form__servings--text1" rel="js-order-form__servings1"></p>
                                 </div>
                                 <div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--1">
-                                    <select type="select" name="quantity" class=" entry1 order-form__input order-form__quantity order-form__quantity1"
+                                    <select type="select" name="quantity" onclick="findRowNumber(this)" id="quantity1"
+                                        class=" entry1 order-form__input order-form__quantity order-form__quantity1"
                                         rel="js-order-form__quantity1">
                                         <option value="0">Select...</option>
                                         <option value="1">1 batch</option>

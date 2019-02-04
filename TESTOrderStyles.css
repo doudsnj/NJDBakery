@@ -80,6 +80,10 @@
 }*/
 /*END - use to show containers*/
 
+.logo-div__logo{
+    width: 25%;
+}
+
 input:focus,
 select:focus,
 textarea:focus,

@@ -29,9 +29,13 @@
 .category-row__quad-column4 {
     background-color: purple;
 }  */
- /*END - use to show containers*/
+/*END - use to show containers*/
 
 
+
+ .logo-div__logo{
+    width: 25%;
+}
 .main-image__label {
     background-color: #8b9e98;
     font-family: 'Indie Flower', cursive;
