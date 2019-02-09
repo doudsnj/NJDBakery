@@ -80,13 +80,11 @@ const footerLinks = [{
 
 //populate footer links//
 function generateFooterLinks() {
-    let footerLinksDiv = $("[rel='js-footer-content']");
-    for (let index = 0; index < footerLinks.length; index++) {
-        let link = footerLinks[index];
-        let linkToAdd = $(`<a class="${link.class}" href="${link.href}">${link.linkText}</a>`);
+    const footerLinksDiv = $("[rel='js-footer-content']");
+    footerLinks.forEach(li => {
+        let linkToAdd = $(`<a class="${li.class}" href="${li.href}">${li.linkText}</a>`);
         footerLinksDiv.append(linkToAdd);
-    };
 
-
+    })
 };
 

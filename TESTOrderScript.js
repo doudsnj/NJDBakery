@@ -88,7 +88,6 @@ function addRow() {
     }
 };
 
-
 //Find the row number that the clicked element is in
 function findRowNumber(currentId) {
     const idOnDiv = $(currentId).closest('.order-fields__row').attr('id');
@@ -154,7 +153,7 @@ function calculatePrice(currentId) {
     });
 };
 
-// Objective: Populate the Product Select dropdown of the default row with the Parent Products from the API
+//Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
     const dropdown = $('.order-form__product1');
     dropdown.empty();
@@ -170,74 +169,11 @@ $(document).ready(function () {
     });
 });
 
-//default options lookup from API
-const defaultDietaryOptions = [{
-    varName: 'currentArraySKU',
-    dataKeyName: 'sku'
-},
-{
-    varName: 'currentProductDairyFree',
-    dataKeyName: 'dairyFree'
-},
-{
-    varName: 'currentProductEggFree',
-    dataKeyName: 'eggFree'
-},
-{
-    varName: 'currentProductGlutenFree',
-    dataKeyName: 'glutenFree'
-},
-{
-    varName: 'currentProductGrainFree',
-    dataKeyName: 'grainFree'
-},
-{
-    varName: 'currentProductNutFree',
-    dataKeyName: 'nutFree'
-},
-{
-    varName: 'currentProductSugarFree',
-    dataKeyName: 'refinedSugarFree'
-},
-{
-    varName: 'currentProductVegan',
-    dataKeyName: 'vegan'
-}
-];
 
-//available options lookup from API
-const availableDietaryOptions = [
-    {
-        varName: 'canBeDairyFree',
-        dataKeyName: 'canBeDairyFree'
-    },
-    {
-        varName: 'canBeEggFree',
-        dataKeyName: 'canBeEggFree'
-    },
-    {
-        varName: 'canBeGlutenFree',
-        dataKeyName: 'canBeGlutenFree'
-    },
-    {
-        varName: 'canBeGrainFree',
-        dataKeyName: 'canBeGrainFree'
-    },
-    {
-        varName: 'canBeNutFree',
-        dataKeyName: 'canBeNutFree'
-    },
-    {
-        varName: 'canBeSugarFree',
-        dataKeyName: 'canBeRefinedSugarFree'
-    },
-    {
-        varName: 'canBeVegan',
-        dataKeyName: 'canBeVegan'
-    }
-];
 
-// Objective: When a Product option is chosen, populate info about that product from the API
+
+
+//When a Product option is chosen, populate info about that product from the API
 function populateInfo(currentId) {
     const currentRowNumber = findRowNumber(currentId);
     const currentDropdownClass = '.order-form__product' + currentRowNumber;
@@ -258,56 +194,108 @@ function populateInfo(currentId) {
             if (currentProduct === product.name) {
                 let defaultOptionsText = 'Default product is: ';
 
-                function setCheckboxAttributes(defaultOptionsTextExtension, className, isFreeOfAllergen) {
-                    if (isFreeOfAllergen) {
-                        defaultOptionsText = `${defaultOptionsText} ${defaultOptionsTextExtension}`;
-                    }
-
-                    let neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-                    $(neededClass).attr('checked', isFreeOfAllergen);
-                    $(neededClass).attr('disabled', isFreeOfAllergen);
+                //allergen options on product
+                const allergenInfo = [{
+                    defaultOptionsTextExtension: 'DF',
+                    className: 'dairyFree',
+                    productField: product.dairyFree,
+                    canBeField: product.canBeDairyFree
+                },
+                {
+                    defaultOptionsTextExtension: 'EF',
+                    className: 'eggFree',
+                    productField: product.eggFree,
+                    canBeField: product.canBeEggFree
+                },
+                {
+                    defaultOptionsTextExtension: 'GRF',
+                    className: 'grainFree',
+                    productField: product.grainFree,
+                    canBeField: product.canBeGrainFree
+                },
+                {
+                    defaultOptionsTextExtension: 'NF',
+                    className: 'nutFree',
+                    productField: product.nutFree,
+                    canBeField: product.canBeNutFree
+                },
+                {
+                    defaultOptionsTextExtension: 'RSF',
+                    className: 'refinedSugarFree',
+                    productField: product.refinedSugarFree,
+                    canBeField: product.canBeRefinedSugarFree
+                },
+                {
+                    defaultOptionsTextExtension: 'V',
+                    className: 'vegan',
+                    productField: product.vegan,
+                    canBeField: product.canBeVegan
                 }
+                ];
+
+                // Might be used to create 'Default product is ' text
+                let defaultOptionsTextAbbreviations = [{
+                    abbreviation: 'DF',
+                    needed: 'no'
+                },
+                {
+                    abbreviation: 'EF',
+                    needed: 'no'
+                },
+                {
+                    abbreviation: 'GRF',
+                    needed: 'no'
+                },
+                {
+                    abbreviation: 'GF',
+                    needed: 'yes'
+                },
+                {
+                    abbreviation: 'NF',
+                    needed: 'no'
+                },
+                {
+                    abbreviation: 'RSF',
+                    needed: 'no'
+                },
+                {
+                    abbreviation: 'V',
+                    needed: 'no'
+                }
+                ]
+
+                //Update 'defaultOptionsText' and check/disable or uncheck/enable the boxes of the default options
+                allergenInfo.forEach(option => {
+                    setCheckboxAttributes(option.defaultOptionsTextExtension, option.className, option.productField);
+                });
+
+                //Disable checkboxes for dietary options that are not available on the current product
+                allergenInfo.forEach(option => {
+                    disableUnavailableOptions(option.className, option.canBeField);
+                });
+
+                function setCheckboxAttributes(a, b, c) {
+                    if (c) {
+                        defaultOptionsText = `${defaultOptionsText} ${a}`;
+                    }
+                    let neededClass = `.order-form__checkbox--${b}${currentRowNumber}`;
+                    $(neededClass).attr('checked', c);
+                    $(neededClass).attr('disabled', c);
+                };
 
                 function disableUnavailableOptions(className, availableOption) {
                     if (!availableOption) {
                         let neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
                         $(neededClass).attr('disabled', true);
                     }
-                }
+                };
 
-                //Update 'defaultOptionsText' and check/disable or uncheck/enable the boxes of the default options
-                setCheckboxAttributes('DF', 'dairyFree', product.dairyFree);
+                //Populate what the default version of the product has for allergens
+                //TODO: Change so the GF addition is in alphabetical order, instead of at the end of the string of abbreviations
+                //...Maybe use an array of objects (defaultOptionsTextAbbreviations) and update the array to yes/no and then set the text field only to the Yeses?
 
-                setCheckboxAttributes('EF', 'eggFree', product.eggFree);
-
-                if (product.glutenFree) {
-                    defaultOptionsText = defaultOptionsText + ' GF';
-                }
-
-                setCheckboxAttributes('GRF', 'grainFree', product.grainFree);
-
-                setCheckboxAttributes('NF', 'nutFree', product.nutFree);
-
-                setCheckboxAttributes('RSF', 'refinedSugarFree', product.refinedSugarFree);
-
-                setCheckboxAttributes('V', 'vegan', product.vegan);
-
+                defaultOptionsText = defaultOptionsText + ' GF';
                 $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
-
-                //Disable checkboxes on options that aren't available per the product
-                disableUnavailableOptions('dairyFree', product.canBeDairyFree);
-
-                disableUnavailableOptions('eggFree', product.canBeEggFree);
-
-                disableUnavailableOptions('glutenFree', product.canBeGlutenFree);
-
-                disableUnavailableOptions('grainFree', product.canBeGrainFree);
-
-                disableUnavailableOptions('nutFree', product.canBeNutFree);
-
-                disableUnavailableOptions('sugarFree', product.canBeRefinedSugarFree);
-
-                disableUnavailableOptions('vegan', product.canBeVegan);
 
                 //Populate servings per product batch
                 let currentProductDefaultNumberOfServings = (product.defaultNumberOfServings);
