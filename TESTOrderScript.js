@@ -236,31 +236,31 @@ function populateInfo(currentId) {
                 // Might be used to create 'Default product is ' text
                 let defaultOptionsTextAbbreviations = [{
                     abbreviation: 'DF',
-                    needed: 'no'
+                    needed: 'No'
                 },
                 {
                     abbreviation: 'EF',
-                    needed: 'no'
-                },
-                {
-                    abbreviation: 'GRF',
-                    needed: 'no'
+                    needed: 'No'
                 },
                 {
                     abbreviation: 'GF',
-                    needed: 'yes'
+                    needed: 'Yes'
+                },
+                {
+                    abbreviation: 'GRF',
+                    needed: 'No'
                 },
                 {
                     abbreviation: 'NF',
-                    needed: 'no'
+                    needed: 'No'
                 },
                 {
                     abbreviation: 'RSF',
-                    needed: 'no'
+                    needed: 'No'
                 },
                 {
                     abbreviation: 'V',
-                    needed: 'no'
+                    needed: 'No'
                 }
                 ]
 
@@ -274,9 +274,12 @@ function populateInfo(currentId) {
                     disableUnavailableOptions(option.className, option.canBeField);
                 });
 
+
+                updateDefaultOptionsText();
+
                 function setCheckboxAttributes(a, b, c) {
                     if (c) {
-                        defaultOptionsText = `${defaultOptionsText} ${a}`;
+                        updateDefaultOptionsTextAbbreviations(a);
                     }
                     let neededClass = `.order-form__checkbox--${b}${currentRowNumber}`;
                     $(neededClass).attr('checked', c);
@@ -290,11 +293,23 @@ function populateInfo(currentId) {
                     }
                 };
 
-                //Populate what the default version of the product has for allergens
-                //TODO: Change so the GF addition is in alphabetical order, instead of at the end of the string of abbreviations
-                //...Maybe use an array of objects (defaultOptionsTextAbbreviations) and update the array to yes/no and then set the text field only to the Yeses?
+                function updateDefaultOptionsTextAbbreviations(currentOption) {
+                    defaultOptionsTextAbbreviations.forEach(option => {
+                        if (option.abbreviation == currentOption) {
+                            option.needed = 'Yes';
+                        }
+                    });
+                }
 
-                defaultOptionsText = defaultOptionsText + ' GF';
+                function updateDefaultOptionsText() {
+                    defaultOptionsTextAbbreviations.forEach(option => {
+                        if (option.needed === 'Yes') {
+                            defaultOptionsText = defaultOptionsText + ' ' + option.abbreviation;
+                        }
+                    })
+                }
+
+                //Populate text of what the default version of the product has for allergen free info
                 $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
 
                 //Populate servings per product batch
