@@ -65,14 +65,13 @@ function addRow() {
 
             const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
-            // Populate Product dropdown with list of products
-            $.getJSON(url, function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+
+            $.getJSON(url, function (products) {
+                //Nathan - even though 'key' is not used, if i take it out, the Products won't be populated as options in the product select field on new rows that are created. I have no clue why...
+                $.each(products, function (key, product) {
+                    dropdown.append($('<option></option>').text(product.name));
                 })
             });
-
-
         };
     });
 
@@ -95,7 +94,7 @@ function findRowNumber(currentId) {
     return currentRowNumber;
 };
 
-//Objective: If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
+//If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
 function removeRow(currentId) {
     const currentRowNumber = findRowNumber(currentId);
     const rowNumberMinusOne = parseFloat(currentRowNumber) - 1;
@@ -113,7 +112,6 @@ function removeRow(currentId) {
 
     //If only one row of fields remains, hide the remove button and label
     const numberOfChildren = $('.order-fields__rows > div').length;
-
     if (numberOfChildren == 2) {
         const removeRowButton = document.getElementsByClassName('remove-row__button')[0];
         removeRowButton.classList.add('noVisibility');
@@ -122,35 +120,25 @@ function removeRow(currentId) {
     }
 };
 
+//When the quantity/number of batches is changed, calculate the price for the current row based on the number of batches selected
 function calculatePrice(currentId) {
-
     const currentRowNumber = findRowNumber(currentId);
     const currentDropdownClass = '.order-form__product' + currentRowNumber;
     const currentProduct = $(`${currentDropdownClass} option:selected`).text();
-
-    //Find the entry in the API that has the same name as the option that is currently in the Product dropdown. Populate a p element with its default dietary info. 
-    //Disable dietary option checkboxes based on what the product 'can be'.
     const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
-    const data = $.getJSON(url, function (data) {
+    $.getJSON(url, function (products) {
 
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-
-                let arrayCurrentName = (data[key].name);
-                if (arrayCurrentName === currentProduct) {
-
-                    //Populate the Price for the current row, based on the number of batches selected
-                    let currentProductBatchPrice = (data[key].batchPrice);
-
-                    const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
-                    const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
-                    const pricePerRow = currentBatchSelection * currentProductBatchPrice;
-                    $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
-                };
-            }
-        }
-    });
+        products.forEach(product => {
+            if (currentProduct === product.name) {
+                const currentProductBatchPrice = (product.batchPrice);
+                const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
+                const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
+                const pricePerRow = currentBatchSelection * currentProductBatchPrice;
+                $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+            };
+        })
+    })
 };
 
 //Populate the Product Select dropdown of the default row with the Parent Products from the API
@@ -162,16 +150,14 @@ $(document).ready(function () {
     const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
     // Populate dropdown with list of products
-    $.getJSON(url, function (data) {
-        $.each(data, function (key, entry) {
-            dropdown.append($('<option></option>').attr('value', entry.abbreviation).text(entry.name));
+    $.getJSON(url, function (products) {
+        //Nathan - Same issues as above when doing the same thing: Even though 'key' is not used, if i take it out, the Products won't be populated as options in the product select field on new rows that are created. I have no clue why...
+        //Also, should this just be a function that is called whenever a Product dropdown is clicked?
+        $.each(products, function (key, product) {
+            dropdown.append($('<option></option>').text(product.name));
         })
     });
 });
-
-
-
-
 
 //When a Product option is chosen, populate info about that product from the API
 function populateInfo(currentId) {
@@ -233,7 +219,7 @@ function populateInfo(currentId) {
                 }
                 ];
 
-                // Might be used to create 'Default product is ' text
+                // Used for creating 'Default product is ' text
                 let defaultOptionsTextAbbreviations = [{
                     abbreviation: 'DF',
                     needed: 'No'
@@ -269,7 +255,7 @@ function populateInfo(currentId) {
                     setCheckboxAttributes(option.defaultOptionsTextExtension, option.className, option.productField);
                 });
 
-                //Disable checkboxes for dietary options that are not available on the current product
+                //Disable check boxes for dietary options that are not available on the current product
                 allergenInfo.forEach(option => {
                     disableUnavailableOptions(option.className, option.canBeField);
                 });
@@ -316,12 +302,8 @@ function populateInfo(currentId) {
                 let currentProductDefaultNumberOfServings = (product.defaultNumberOfServings);
                 $(`[rel='js-order-form__servings${currentRowNumber}']`).html(currentProductDefaultNumberOfServings);
 
-                //Populate the Price for the current row, based on the number of batches selected
-                let currentProductBatchPrice = (product.batchPrice);
-                const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
-                const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
-                const pricePerRow = currentBatchSelection * currentProductBatchPrice;
-                $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+                //Populate the default price for the current row, for one batch
+                $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + product.batchPrice);
             }
         });
     });
