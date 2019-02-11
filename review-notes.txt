@@ -1,0 +1,26 @@
+I think it's time to bring some organization to the actual file structure your project.
+My favorite way of working is to group things by feature. This is highly subjective, and all that anyone should really care about is that there is some attempt at organization.
+You might try something like this and then adjust as you see fit:
+
+/root
+    .gitignore
+    README.MD
+    ... Anything at the root should really pertain to big picture stuff like source control, configuration, dev standup notes, or whatever. Just no code here.
+    /src
+        // now nest features underneath your src folder, src being short for the actual source code itself (typically this is the raw code, before it has been crammed through a build pipeline. Typically at the other end of the build pipeline, you'd see some other folder sitting at the same level as /src called something like /dist.
+        /nav
+            // note: many projects that I've interacted with would take the following and name them something like: nav-bar.html, nav-bar.js, nav-bar.css -> the reasons: most web frameworks are named using kebab-case and the type of file is simply inferred by the file extension.
+            NavBar.html
+            NavScript.js
+            NavStyles.css
+        /products
+            Products.html
+            ProductsStyles.css
+        /common (or shared)
+            my-shared-util.js // i.e. anything that is re-usable throughout the site typically will go here, could be html, css, js but is NOT feature specific
+        /... other features here
+
+    /config
+        // things here could be related to the build or general configuration
+    /test
+        // unit tests
