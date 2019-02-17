@@ -1,0 +1,52 @@
+/*start - use to show containers*/
+/* .explanation-container {
+    background-color: green;
+} */
+/* .order-form__customer-fields {
+    background-color: lightblue;
+}
+
+.order-form__product-fields {
+    background-color: #ffffff;
+} */
+/*end - use to show containers*/
+
+.logo-div__logo{
+    width: 25%;
+}
+
+.general-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #8b9e98;
+    text-align: center;
+    font-size: 50px;
+ }
+
+
+
+.explanation-container {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.explanation-container__text {
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    text-decoration: none;
+    font-size: 13px;
+    padding-left: 10%;
+    padding-top: 2.5%;
+    padding-right: 10%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>order</title>
+    <link rel="stylesheet" href="/src/shared/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/src/nav/nav-bar.css">
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="/src/footer/footer.css">
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/src/nav/testnav-bar.js"></script>
+    <script type="text/javascript" src="order.js"></script>
+    <script type="text/javascript" src="/src/footer/footer.js"></script>
+</head>
+
+<body rel="js-body">
+    <div class="logo-div" rel="js-logo-div">
+        <img class="logo-div__logo" src="/src/images/njdBakery_Logo_2_Color_web.png" alt="njd_bakery_logo">
+    </div>
+    <div class="general-heading">order</div>
+    <div class="explanation-container">
+        <p class="explanation-container__text">To place an order, fill out the form below and click the Submit button.
+            You will receive an email with a copy of your order and someone from NJD Bakery will be in contact with
+            you. Payment is handled at the time of pickup/delivery.
+            To order more than one type of product, click the Add More button.</p>
+    </div>
+    <div class="form-container">
+        <form class="order-form">
+            <h1 class="order-form__customer-heading">customer</h1>
+            <div class="order-form__customer-fields">
+                <div class="order-form__bi-column order-form__bi-column--left">
+                    <div class="order-form__quad-column order-form__quad-column1">
+                        <label for="order-form__first-name" class="input-label input-label__first-name">First
+                            Name</label>
+                        <input type="text" name="first-name" class="order-form__input order-form__customer-field
+                        order-form__first-name">
+                    </div>
+                    <div class="order-form__quad-column order-form__quad-column2">
+                        <label for="order-form__last-name" class="input-label input-label__last-name">Last Name</label>
+                        <input type="text" name="last-name" class="order-form__input order-form__customer-field
+                        order-form__last-name">
+                    </div>
+                </div>
+
+                <div class="order-form__bi-column order-form__bi-column--right">
+                    <div class="order-form__quad-column order-form__quad-column3">
+                        <label for="order-form__email" class="input-label input-label__email">Email</label>
+                        <input type="text" name="email"
+                            class="order-form__input order-form__customer-field order-form__email">
+                    </div>
+                    <div class="order-form__quad-column order-form__quad-column4">
+                        <label for="order-form__phone" class="input-label  input-label__phone">Phone</label>
+                        <input type="text" name="phone"
+                            class="order-form__input order-form__customer-field order-form__phone">
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="order-form__order-heading">order</h1>
+            <div class="order-form__order-fields" rel="js-order-fields">
+                <div class="order-fields__rows" rel="js-order-fields__rows">
+                    <div class="order-fields__row order-fields__row--labels" rel="js-order-fields__row--labels">
+                        <div class="order-form__bi-column order-form__bi-column--left"
+                            rel="js-order-form__bi-column__left--1">
+                            <div class="order-form__quad-column order-form__quad-column1"
+                                rel="js-order-form__quad-column1--labels">
+                                <label for="order-form__product"
+                                    class="input-label input-label__product">Product</label>
+                                <label for="remove-row__button"
+                                    class="input-label input-label__remove-row noVisibility">Remove
+                                    row</label>
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column2"
+                                rel="js-order-form__quad-column2--labels">
+                                <div class="quantity__bi-column quantity__bi-column--left"
+                                    rel="js-quantity__bi-column--left--labels">
+                                    <label for="order-form__servings" class="input-label input-label__servings">Servings
+                                        per Batch</label>
+                                </div>
+                                <div class="quantity__bi-column quantity__bi-column--right"
+                                    rel="js-quantity__bi-column--right--labels">
+                                    <label for="order-form__quantity"
+                                        class="input-label input-label__quantity">Quantity</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-form__bi-column order-form__bi-column--right"
+                            rel="js-order-form__bi-column__left--labels">
+                            <div class="order-form__quad-column order-form__quad-column3"
+                                rel="js-order-form__quad-column3--labels">
+                                <label for="order-form__dietary-options"
+                                    class="input-label input-label__dietary-options">Dietary
+                                    Options</label>
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column4"
+                                rel="js-order-form__quad-column4--labels">
+                                <label for="order-form__price" class="input-label input-label__price">Price</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div id="row1" class="order-fields__row order-fields__row1 newestRow entry1"
+                        rel="js-order-fields__row--1">
+                        <div class="order-form__bi-column order-form__bi-column--left"
+                            rel="js-order-form__bi-column__left--1">
+                            <div class="order-form__quad-column order-form__quad-column1"
+                                rel="js-order-form__quad-column1--1">
+                                <div class="order-form__product-field--container order-form__input"
+                                    rel="js-order-form__product-field--container--1">
+                                    <select type="select" name="product" onclick="populateInfo(this)" id="product1"
+                                        class="entry1 select order-form__input order-form__product order-form__product1 "></select>
+                                </div>
+                                <div class="remove-row__section--1" rel="js-remove-row__section--1">
+                                    <button type="button" id="remove-row__button1" onclick="removeRow(this)"
+                                        class="remove-row__button remove-row__button1 noVisibility">-</button>
+                                </div>
+                            </div>
+                            <div class="order-form__quad-column order-form__quad-column2"
+                                rel="js-order-form__quad-column2--1">
+                                <div class="quantity__bi-column quantity__bi-column--left"
+                                    rel="js-quantity__bi-column--left--1">
+                                    <p class="order-form__servings--text order-form__servings--text1"
+                                        rel="js-order-form__servings1"></p>
+                                </div>
+                                <div class="quantity__bi-column quantity__bi-column--right"
+                                    rel="js-quantity__bi-column--right--1">
+                                    <select type="select" name="quantity" id="quantity1"
+                                        onclick="findRowNumber(this);calculatePrice(this)" id="quantity1"
+                                        class=" entry1 order-form__input order-form__quantity order-form__quantity1"
+                                        rel="js-order-form__quantity1">
+                                        <option value="1" selected="selected">1 batch</option>
+                                        <option value="2">2 batches</option>
+                                        <option value="3">3 batches</option>
+                                        <option value="4">4 batches</option>
+                                        <option value="5">5 batches</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-form__bi-column order-form__bi-column--right"
+                            rel="order-form__bi-column__right--1">
+                            <div class="order-form__quad-column order-form__quad-column3"
+                                rel="js-order-form__quad-column3--1">
+
+                                <div class="order-form__dietary-options-container"
+                                    rel="js-order-form__dietary-options-container--1">
+                                    <div class="dietary-options__quad-column dietary-options__quad-column1"
+                                        rel="js-dietary-options__quad-column1--1">
+                                        <input type="checkbox" name="DairyFree" value="DairyFree"
+                                            class="order-form__checkbox order-form__checkbox--dairyFree1"
+                                            rel="js-order-form__checkbox--dairyFree1">
+                                        <label for="DiaryFree"
+                                            class="input-label--checkbox input-label__dairy-free">Dairy
+                                            Free</label><br>
+                                        <input type="checkbox" name="EggFree" value="EggFree"
+                                            class="order-form__checkbox order-form__checkbox--eggFree1"
+                                            rel="js-order-form__checkbox--eggFree1">
+                                        <label for="EggFree" class="input-label--checkbox input-label__egg-free">Egg
+                                            Free</label><br>
+                                    </div>
+                                    <div class="dietary-options__quad-column dietary-options__quad-column2"
+                                        rel="js-dietary-options__quad-column2--1">
+                                        <input type="checkbox" name="GlutenFree" value="GlutenFree"
+                                            class="order-form__checkbox order-form__checkbox--glutenFree1"
+                                            rel="js-order-form__checkbox--glutenFree1" checked disabled>
+                                        <label for="GlutenFree"
+                                            class="input-label--checkbox input-label__gluten-free">Gluten
+                                            Free</label><br>
+                                        <input type="checkbox" name="GrainFree" value="GrainFree"
+                                            class="order-form__checkbox order-form__checkbox--grainFree1"
+                                            rel="js-order-form__checkbox--grainFree1">
+                                        <label for="GrainFree"
+                                            class="input-label--checkbox input-label__grain-free">Grain
+                                            Free</label><br>
+                                    </div>
+
+
+                                    <div class="dietary-options__quad-column dietary-options__quad-column3"
+                                        rel="js-dietary-options__quad-column3--1">
+                                        <input type="checkbox" name="NutFree" value="NutFree"
+                                            class="order-form__checkbox order-form__checkbox--nutFree1">
+                                        <label for="NutFree" class="input-label--checkbox input-label__Nut-free">Nut
+                                            Free</label><br>
+                                        <input type="checkbox" name="RefinedSugarFree" value="RefinedSugarFree"
+                                            class="order-form__checkbox order-form__checkbox--refinedSugarFree1"
+                                            rel="js-order-form__checkbox--refinedSugarFree1">
+                                        <label for="RefinedSugarFree"
+                                            class="input-label--checkbox input-label__refined-sugar-free">Sugar
+                                            Free*</label><br>
+                                    </div>
+                                    <div class="dietary-options__quad-column dietary-options__quad-column4"
+                                        rel="js-dietary-options__quad-column4--1">
+                                        <input type="checkbox" name="Vegan" value="Vegan"
+                                            class="order-form__checkbox order-form__checkbox--vegan1"
+                                            rel="js-order-form__checkbox--vegan1">
+                                        <label for="Vegan"
+                                            class="input-label--checkbox input-label__vegan">Vegan</label><br>
+                                    </div>
+                                    <br>
+                                    <div class="dietary-options__defaults dietary-options__defaults--1"
+                                        rel="js-dietary-options__defaults--1">
+                                        <p class="dietary-options__defaults-text dietary-options__defaults-text1"
+                                            rel="js-dietary-options__defaults-text1"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-form__quad-column order-form__quad-column4"
+                                rel="js-order-form__quad-column4--1">
+                                <p class="order-form__price--text order-form__price--text1 generated disabled"
+                                    rel="js-order-form__price1"></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="add-row-section">
+                    <button type="button" onclick="addRow()" class="add-row__button">+</button>
+                    <span class="add-row__button--text input-label">Add more</span>
+                </div>
+                <br>
+
+                <div class="order-form__remaining-fields"></div>
+                <div class="order-form__button-row">
+                    <button class="order-form__submit-button">submit</button>
+                </div>
+            </div>
+            <span class="sugar-free-explanation">*Free from refined sugars. The product will likely contain a less
+                processed
+                sugar such as maple syrup, maple sugar, honey, coconut sugar, or naturally
+                occurring
+                sugars such as those found in fruit.</span>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

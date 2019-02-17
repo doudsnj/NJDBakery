@@ -1,0 +1,533 @@
+/*START - use to show containers*/
+/* .explanation-container {
+    background-color: green;
+}
+.order-form__customer-fields {
+    background-color: lightblue;
+}
+
+.order-form__order-fields {
+    background-color: #ffffff;
+}
+.order-form__bi-column--left {
+    background-color: pink;
+}
+.order-form__bi-column--right {
+    background-color: lightgray;
+}
+
+.order-form__quad-column1 {
+    background-color: red;
+}
+
+.order-form__quad-column2 {
+    background-color: orange;
+}
+.order-form__quad-column3 {
+    background-color: yellow;
+}
+.order-form__quad-column4 {
+    background-color: green;
+}
+.dietary-options__container{
+    background-color: black;
+}
+
+.quantity__bi-column--left {
+    background-color: red;
+}
+
+.quantity__bi-column--right {
+    background-color: green;
+}
+
+.quantity__bi-column2 {
+    background-color: blue;
+}
+
+.dietary-options__quad-column1{
+    background-color: purple;
+}
+
+.dietary-options__quad-column2{
+    background-color: red; 
+}
+
+.dietary-options__quad-column3{
+    background-color: green; 
+} 
+
+.dietary-options__quad-column4{
+    background-color: yellow; 
+}
+
+
+.order-form__button-row {
+    background-color: black;
+
+}
+
+.order-form__product-select-container {
+    background-color: brown;
+}
+
+.add-section {
+    background-color: darkslategrey;
+}
+
+.remove-row__section--1 {
+    background-color: #000;
+}*/
+/*END - use to show containers*/
+
+.logo-div__logo{
+    width: 25%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 3px 1px #383838;
+}
+
+.general-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #8b9e98;
+    text-align: center;
+    font-size: 50px;
+ }
+
+.order-form__customer-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    padding: 30px;
+}
+
+.order-form__order-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    padding-top: 90px;
+    padding-bottom: 30px;
+}
+
+.explanation-container {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.explanation-container__text {
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    text-decoration: none;
+    font-size: 13px;
+    padding-left: 10%;
+    padding-top: 2.5%;
+    padding-right: 10%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.input-label {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    font-weight: 100;
+    font-size: .75em;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.input-label--checkbox {
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    font-weight: 100;
+    font-size: .7em;
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1.25em;
+}
+
+
+.order-form__input {
+    width: 80%;
+    height: 50px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    margin-bottom: 20px;
+    font-size: 13.3333px;
+}
+
+/* .order-form__input--small{
+    height: 50px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    margin-bottom: 20px;
+    font-size: 13.3333px;
+} */
+
+
+
+/* .generated {
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 13px;
+    padding-left: 10%;
+    padding-top: 2.5%;
+    padding-right: 10%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    line-height: 1.5em;
+} */
+
+.order-fields__row {
+    padding-bottom: 100px;
+}
+.order-fields__row--labels {
+    padding-bottom: 20px;
+}
+
+
+
+.order-form__dietary-options-container {
+    width: 80%;
+    height: 50px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    margin-bottom: 20px;
+    font-size: 13.3333px;
+    margin-left: 13.33%;
+}
+
+.dietary-options__defaults {
+    width: 100%;
+    display: block;
+    float: left;
+}
+
+.dietary-options__defaults-text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+}
+
+.order-form__servings--text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;   
+    line-height: 50px;
+    text-align: center;
+}
+
+.order-form__price--text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;   
+    line-height: 50px;
+    text-align: right;
+    margin-right: 40%;
+}
+
+.order-form__checkbox {
+    float: left;
+    /* height: 20px; */
+    border: 1px solid #8b9e98;
+    background-color: #ffffff;
+    border-radius: 7.5px;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+
+
+.noVisibility {
+    visibility: hidden;
+}
+
+.order-form__product-field--container {
+    width: 80%;
+    height: 50px;
+    float: left;
+} 
+
+
+
+
+@media only screen and (min-width: 600px) {
+    .form-container {
+        background-color: #8b9e98;
+        width: 100%;
+    }
+
+    .order-form {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: inline-block;
+        position: relative;
+
+    }
+
+    .order-form__customer-fields {
+        width: 100%;
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .order-form__order-fields {
+        width: 100%;
+        height: auto;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+
+
+
+    .order-form__bi-column {
+        width: 50%;
+        display:inline-block;
+        
+
+        /* font-size: 13.3333px; */
+    }
+
+    .order-form__bi-column--left {
+        float: left;
+    }
+
+    .order-form__bi-column--right {
+        float: right;
+    }
+
+    /* .order-form__customer-bi-column {
+        width: 50%;
+    } */
+
+    .order-form__customer-bi-column--left {
+        width: 45%;
+        float: left;
+    }
+
+    .order-form__customer-bi-column--right {
+        width: 45%;
+        float: right;
+    }
+
+    .quantity__bi-column {
+        width: 50%;
+    }
+
+    .quantity__bi-column--left {
+        float: left;
+    }
+
+    .quantity__bi-column--right {
+        float: right;
+    }
+
+    .order-form__quad-column1, .order-form__quad-column3 {
+        width: 50%;
+        float: left;
+        position: relative;
+    }
+
+    .order-form__quad-column2, .order-form__quad-column4 {
+        width: 50%;
+        float: right;
+    }
+
+
+
+    .dietary-options__quad-column1{
+       float: left; 
+       width: 25%;
+       margin-top: 10px;
+    }
+
+    .dietary-options__quad-column2{
+        float: left; 
+        width: 25%;
+        margin-top: 10px;
+     }
+
+    .dietary-options__quad-column3{
+        float: left; 
+        width: 25%;
+        margin-top: 10px;
+        
+    }
+    .dietary-options__quad-column4{
+        float: right; 
+        width: 25%;
+        margin-top: 10px;
+        
+    }
+
+    .order-form__last-name {
+        float: right;
+        margin-right: 13.33%;
+    }
+    .order-form__email, .order-form__dietary-options {
+        margin-left: 13.33%;
+
+    }
+
+    .order-form__phone, .order-form__price {
+        float: right;
+    }
+
+    .input-label__last-name {
+        margin-left: 6.67%;
+      }
+
+    .input-label__email, .input-label__dietary-options {
+        margin-left: 13.33%;
+    }
+
+    .input-label__phone, .input-label__price {
+        margin-left: 20%;
+    }
+    .input-label__servings {
+        text-align: center;
+    }
+
+    .input-label__quantity {
+        float: left;
+    }
+
+    .add-row-section {
+        width: 100%;
+        display: inline-block;
+        line-height: 25px;
+      }
+
+    .add-row__button, .remove-row__button {
+        background-color: #ffffff;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        color: #383838;
+        float: left;
+        padding-left: 4px;
+        padding-top: 0px;
+        padding-right: 4px;
+        padding-bottom: 0px;
+        margin-right: 3px;
+        border-radius: .2em;
+        border-style: solid;
+        border-color: #ffffff;
+    }
+
+
+
+    .add-row__button:hover,.remove-row__button:hover {
+        background-color: #ce9a51;
+    }
+
+    .order-form__submit-button:hover {
+        background-color: #ffffff;
+    }
+
+    .input-label__product {
+        width: 80%;
+        float: left;
+    }
+
+
+    .remove-row__section--1 {
+        width: 19%;
+        float: right;
+        display: block;
+    }
+
+    .remove-row__button {
+        padding-left: 6px;
+        padding-right: 6px;
+        margin-left: 4px; 
+        margin-top: 17px;
+        margin-bottom: 17px;
+    }
+
+
+
+    /* .add-row-section__button:focus {
+        background-color: #ce9a51;
+    } */
+
+    .add-row__button--text, .remove-row__button--text {
+        float: left;
+        padding-bottom: 0px;
+
+    }
+
+   
+    .order-form__product {
+        width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 2.5px;
+    }
+
+    .order-form__quantity {
+        width: 75%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 2.5px;
+
+    }
+
+
+    .order-form__submit-button {
+        float: right;
+        height: 40px;
+        width: 60px;
+        background-color: #ce9a51;
+        font-family: 'Indie Flower', cursive;
+        font-weight: 700;
+        font-size: 1em;
+        color: #383838;
+        padding-left: 4px;
+        padding-top: 0px;
+        padding-right: 4px;
+        padding-bottom: 0px;
+        margin-right: 3px;
+        border-radius: .2em;
+        border-style: solid;
+        border-color: #ffffff;
+    }
+
+    .sugar-free-explanation{
+        font-family: 'Indie Flower', cursive;
+        font-size: 1em;
+        color: #ffffff;
+        height: 20px;
+        padding-bottom: 5px;
+       
+        display: block;
+    }
+
+
+
+
+}
