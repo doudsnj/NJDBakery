@@ -1,0 +1,38 @@
+
+
+select {
+	background: #F0F3FB;
+	border: 1px solid #F0F3FB;
+	border-radius: 4px;
+	width: 100%;
+	padding: 20px;
+	font-size: 16px;
+	color: #3F3F3F;
+
+	/* Here's the code we need */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	 -o-appearance: none;
+		appearance: none;
+}
+
+.select-wrapper {
+	position: relative;	
+}
+
+.select-wrapper:after {
+	font-family: FontAwesome;
+  	content: '\f107';
+  	font-size: 28px;
+  	position: absolute;
+  	top: 12px;
+  	right: 20px;
+  	color: #434B67;
+  	pointer-events: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+

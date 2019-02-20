@@ -10,17 +10,19 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/src/nav/nav-bar.css">
-    <link rel="stylesheet" href="testorder.css">
+    <link rel="stylesheet" href="./testorder.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/src/footer/footer.css">
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/src/nav/testnav-bar.js"></script>
-    <script type="text/javascript" src="testorder.js"></script>
+    <script type="text/javascript" src="/src/order/testorder-service.js"></script>
+    <script type="text/javascript" src="/src/order/testorder.js"></script>
     <script type="text/javascript" src="/src/footer/footer.js"></script>
 </head>
 
 <body rel="js-body">
     <div class="logo-div" rel="js-logo-div">
-        <img class="logo-div__logo" src="/src/images/njdBakery_Logo_2_Color_web.png" alt="njd_bakery_logo">
+        <img class="logo-div__logo" src="/assets/njdBakery_Logo_2_Color_web.png" alt="njd_bakery_logo">
     </div>
     <div class="general-heading">TESTorder</div>
     <div class="explanation-container">
@@ -141,16 +143,19 @@
                                 </div>
                                 <div class="quantity__bi-column quantity__bi-column--right"
                                     rel="js-quantity__bi-column--right--1">
-                                    <select type="select" name="quantity" id="quantity1"
-                                        onclick="findRowNumber(this);calculatePrice(this)" id="quantity1"
-                                        class=" entry1 order-form__input order-form__quantity order-form__quantity1"
-                                        rel="js-order-form__quantity1">
-                                        <option value="1" selected="selected">1 batch</option>
-                                        <option value="2">2 batches</option>
-                                        <option value="3">3 batches</option>
-                                        <option value="4">4 batches</option>
-                                        <option value="5">5 batches</option>
-                                    </select>
+                                    <div class="order-form__quantity-field--container"
+                                        rel="js-order-form__quantity-field-container--1">
+                                        <select type="select" name="quantity" id="quantity1"
+                                            onclick="findRowNumber(this);calculatePrice(this)" id="quantity1"
+                                            class=" entry1 order-form__input order-form__quantity order-form__quantity1"
+                                            rel="js-order-form__quantity1">
+                                            <option value="1" selected="selected">1 batch</option>
+                                            <option value="2">2 batches</option>
+                                            <option value="3">3 batches</option>
+                                            <option value="4">4 batches</option>
+                                            <option value="5">5 batches</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -20,14 +20,16 @@ $(document).ready(function () {
 //find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
 //runs when the Add more button is clicked
 function addRow() {
+    const rowNumber = findNewestRow();
+
     //find the element with 'newest' class on it and look through its classes for the one that contains 'entry'
-    const classList = document.getElementsByClassName('newestRow')[0].className.split(/\s+/);
-    const neededClass = classList.find(function (nameOfClass) {
-        return nameOfClass.includes('entry');
-    })
+    // const classList = document.getElementsByClassName('newestRow')[0].className.split(/\s+/);
+    // const neededClass = classList.find(function (nameOfClass) {
+    //     return nameOfClass.includes('entry');
+    // })
 
     //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1 
-    const rowNumber = parseInt(neededClass.substring(5), 10) + 1;
+    // const rowNumber = parseInt(neededClass.substring(5), 10) + 1;
 
     //remove the 'newest' class from the element that currently has it (The commented out jquery just does not work for whatever reason...)
     //$("newestRow").removeClass("newestRow");
@@ -45,6 +47,7 @@ function addRow() {
     const mainQuadColumn4 = `[rel='js-order-form__quad-column4--${rowNumber}']`;
     const leftQuantityBiColumn = `[rel='js-quantity__bi-column--left--${rowNumber}']`;
     const rightQuantityBiColumn = `[rel='js-quantity__bi-column--right--${rowNumber}']`;
+    const quantityContainer = `[rel='js-order-form__quantity-field-container--${rowNumber}']`;
     const quantitySelect = `[rel='js-order-form__quantity${rowNumber}']`;
     const dietaryOptions = `[rel='js-order-form__dietary-options-container--${rowNumber}']`;
     const dietOptsQuad1 = `[rel='js-dietary-options__quad-column1--${rowNumber}']`;
@@ -65,7 +68,8 @@ function addRow() {
     $(mainQuadColumn2).append(`<div class="quantity__bi-column quantity__bi-column--left" rel="js-quantity__bi-column--left--${rowNumber}"></div>`);
     $(leftQuantityBiColumn).append(`<p class="order-form__servings--text order-form__servings--text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
     $(mainQuadColumn2).append(`<div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--${rowNumber}"></div>`);
-    $(rightQuantityBiColumn).append(`<select type="text" name="quantity" id="quantity${rowNumber}" onclick="findRowNumber(this);calculatePrice(this)"  class="order-form__input order-form__quantity order-form__quantity${rowNumber} entry${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
+    $(rightQuantityBiColumn).append(`<div class="order-form__quantity-field--container" rel="js-order-form__quantity-field-container--${rowNumber}"></div>`);
+    $(quantityContainer).append(`<select type="text" name="quantity" id="quantity${rowNumber}" onclick="findRowNumber(this);calculatePrice(this)"  class="order-form__input order-form__quantity order-form__quantity${rowNumber} entry${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
     $(quantitySelect).append('<option value="1" selected="selected">1 batch</option>');
     $(quantitySelect).append('<option value="2">2 batches</option>');
     $(quantitySelect).append('<option value="3">3 batches</option>');
@@ -97,22 +101,24 @@ function addRow() {
     $(rightMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
     $(mainQuadColumn4).append(`<p class="order-form__price--text order-form__price--text${rowNumber} generated disabled" rel="js-order-form__price${rowNumber}"></p>`);
 
-    const specificDropdown = `.order-form__product${rowNumber}`;
-    const dropdown = $(specificDropdown);
+    // const specificDropdown = `.order-form__product${rowNumber}`;
+    // const dropdown = $(specificDropdown);
 
-    dropdown.empty();
+    // dropdown.empty();
 
-    dropdown.append('<option selected="true" disabled>Select...</option>');
-    dropdown.prop('selectedIndex', 0);
+    // dropdown.append('<option selected="true" disabled>Select...</option>');
+    // dropdown.prop('selectedIndex', 0);
 
-    const url = 'http://localhost:56886/api/products?parentsOnly=true';
+    // const url = 'http://localhost:56886/api/products?parentsOnly=true';
 
-    $.getJSON(url, function (products) {
-        //Nathan - even though 'key' is not used, if i take it out, the Products won't be populated as options in the product select field on new rows that are created. I have no clue why...
-        $.each(products, function (key, product) {
-            dropdown.append($('<option></option>').text(product.name));
-        })
-    });
+    getParentsOnlyProducts();
+
+    // $.getJSON(url, function (products) {
+    //     //Nathan - even though 'key' is not used, if i take it out, the Products won't be populated as options in the product select field on new rows that are created. I have no clue why...
+    //     $.each(products, function (key, product) {
+    //         dropdown.append($('<option></option>').text(product.name));
+    //     })
+    // });
 
     //hide or show Remove Row button and label depending on if there is more than one row showing
     const numberOfChildren = $('.order-fields__rows > div').length;
@@ -145,6 +151,18 @@ function calculatePrice(currentId) {
             };
         })
     })
+}
+
+function findNewestRow() {
+    //find the element with 'newest' class on it and look through its classes for the one that contains 'entry'
+    const classList = document.getElementsByClassName('newestRow')[0].className.split(/\s+/);
+    const neededClass = classList.find(function (nameOfClass) {
+        return nameOfClass.includes('entry');
+    })
+
+    //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1 
+    const rowNumber = parseInt(neededClass.substring(5), 10) + 1;
+    return rowNumber;
 }
 
 //Find the row number that the clicked element is in

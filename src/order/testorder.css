@@ -201,8 +201,6 @@ button:focus {
     padding-bottom: 20px;
 }
 
-
-
 .order-form__dietary-options-container {
     width: 80%;
     height: 50px;
@@ -433,8 +431,6 @@ button:focus {
         border-color: #ffffff;
     }
 
-
-
     .add-row__button:hover,.remove-row__button:hover {
         background-color: #ce9a51;
     }
@@ -447,7 +443,6 @@ button:focus {
         width: 80%;
         float: left;
     }
-
 
     .remove-row__section--1 {
         width: 19%;
@@ -463,8 +458,6 @@ button:focus {
         margin-bottom: 17px;
     }
 
-
-
     /* .add-row-section__button:focus {
         background-color: #ce9a51;
     } */
@@ -474,29 +467,107 @@ button:focus {
         padding-bottom: 0px;
 
     }
-
    
     .order-form__product {
         width: 100%;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-        background-repeat: no-repeat;
-        background-position-x: 100%;
-        background-position-y: 2.5px;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+    }
+
+    
+    .order-form__product-field--container {
+        position: relative;	
+    }
+    
+    .order-form__product-field--container:after {
+        font-family: FontAwesome;
+        content: '\f107';
+        font-size: 28px;
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        color: #434B67;
+        pointer-events: none;
+    }
+    
+    select::-ms-expand {
+      display: none;
     }
 
     .order-form__quantity {
+        width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+    }
+
+    
+    .order-form__quantity-field--container {
+        width:75%;
+        position: relative;	
+    }
+    
+    .order-form__quantity-field--container:after {
+        font-family: FontAwesome;
+        content: '\f107';
+        font-size: 28px;
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        color: #434B67;
+        pointer-events: none;
+    }
+
+    /*.order-form__quantity {
         width: 75%;
         -webkit-appearance: none;
         -moz-appearance: none;
-        background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: 2.5px;
+    } */
 
-    }
+    /* .order-form__quantity {
+        width: 75%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 2.5px;
+    } */
 
+    /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");*/
+
+    /* select {
+        color: black;
+        font-size: 18px;
+        width: 50%;
+        margin-left: 25%;
+        margin-top: 50px;
+        padding: 20px 0 20px 10px;
+        border: 0 !important;
+        /* needed */
+        /* -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none; */
+        /* SVG background image */
+        /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
+        background-size: 12px;
+        background-position: calc(100% - 20px) center;
+        background-repeat: no-repeat;
+        background-color: #efefef;
+    }  */
+    
 
     .order-form__submit-button {
         float: right;
@@ -523,11 +594,6 @@ button:focus {
         color: #ffffff;
         height: 20px;
         padding-bottom: 5px;
-       
         display: block;
     }
-
-
-
-
 }
