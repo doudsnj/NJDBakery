@@ -1,9 +1,9 @@
 function getParentsOnlyProducts() {
+    const rowNumber = findNewestRow();
     const specificDropdown = `.order-form__product${rowNumber}`;
     const dropdown = $(specificDropdown);
 
     dropdown.empty();
-
     dropdown.append('<option selected="true" disabled>Select...</option>');
     dropdown.prop('selectedIndex', 0);
     const url = 'http://localhost:56886/api/products?parentsOnly=true';
@@ -12,5 +12,5 @@ function getParentsOnlyProducts() {
         $.each(products, function (key, product) {
             dropdown.append($('<option></option>').text(product.name));
         })
-    });
+    })
 }

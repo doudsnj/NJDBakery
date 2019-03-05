@@ -1,38 +1,15 @@
 //Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
-    const dropdown = $('.order-form__product1');
-    dropdown.empty();
-    dropdown.append('<option selected="true" disabled>Select...</option>');
-    dropdown.prop('selectedIndex', 0);
-    const url = 'http://localhost:56886/api/products?parentsOnly=true';
+    getParentsOnlyProducts();
+})
 
-    // Populate dropdown with list of products
-    $.getJSON(url, function (products) {
-        //Nathan - Same issues as above when doing the same thing: Even though 'key' is not used, if i take it out, the Products won't be populated as options in the product select field on new rows that are created. I have no clue why...
-        //Also, should this just be a function that is called whenever a Product dropdown is clicked?
-        $.each(products, function (key, product) {
-            dropdown.append($('<option></option>').text(product.name));
-        })
-    });
-
-
-});
 //find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
 //runs when the Add more button is clicked
 function addRow() {
-    const rowNumber = findNewestRow();
-
-    //find the element with 'newest' class on it and look through its classes for the one that contains 'entry'
-    // const classList = document.getElementsByClassName('newestRow')[0].className.split(/\s+/);
-    // const neededClass = classList.find(function (nameOfClass) {
-    //     return nameOfClass.includes('entry');
-    // })
-
-    //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1 
-    // const rowNumber = parseInt(neededClass.substring(5), 10) + 1;
+    const rowNumber = findNewestRow() + 1;
 
     //remove the 'newest' class from the element that currently has it (The commented out jquery just does not work for whatever reason...)
-    //$("newestRow").removeClass("newestRow");
+    //$("newestRow").removeClass("newestRow"); THIS DOES NOT WORK.
     document.getElementsByClassName('newestRow')[0].classList.remove('newestRow');
 
     const rowsContainer = "[rel='js-order-fields__rows']";
@@ -101,24 +78,7 @@ function addRow() {
     $(rightMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
     $(mainQuadColumn4).append(`<p class="order-form__price--text order-form__price--text${rowNumber} generated disabled" rel="js-order-form__price${rowNumber}"></p>`);
 
-    // const specificDropdown = `.order-form__product${rowNumber}`;
-    // const dropdown = $(specificDropdown);
-
-    // dropdown.empty();
-
-    // dropdown.append('<option selected="true" disabled>Select...</option>');
-    // dropdown.prop('selectedIndex', 0);
-
-    // const url = 'http://localhost:56886/api/products?parentsOnly=true';
-
     getParentsOnlyProducts();
-
-    // $.getJSON(url, function (products) {
-    //     //Nathan - even though 'key' is not used, if i take it out, the Products won't be populated as options in the product select field on new rows that are created. I have no clue why...
-    //     $.each(products, function (key, product) {
-    //         dropdown.append($('<option></option>').text(product.name));
-    //     })
-    // });
 
     //hide or show Remove Row button and label depending on if there is more than one row showing
     const numberOfChildren = $('.order-fields__rows > div').length;
@@ -148,7 +108,7 @@ function calculatePrice(currentId) {
                 const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
                 const pricePerRow = currentBatchSelection * currentProductBatchPrice;
                 $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
-            };
+            }
         })
     })
 }
@@ -160,8 +120,8 @@ function findNewestRow() {
         return nameOfClass.includes('entry');
     })
 
-    //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left plus 1 
-    const rowNumber = parseInt(neededClass.substring(5), 10) + 1;
+    //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left
+    const rowNumber = parseInt(neededClass.substring(5), 10);
     return rowNumber;
 }
 
@@ -180,7 +140,7 @@ function populateInfo(currentId) {
 
     //Reset Quantity field to default option
     //TODO: Find a way to only do this if the select option is actually changed, and not just when the Product field is clicked
-    const currentQuantity = 'quantity' + currentRowNumber
+    const currentQuantity = 'quantity' + currentRowNumber;
     $('#' + currentQuantity).val('1');
 
     //Find the entry in the API that has the same name as the option that is currently in the Product dropdown. Populate a p element with its default dietary info. 
@@ -273,7 +233,6 @@ function populateInfo(currentId) {
                     disableUnavailableOptions(option.className, option.canBeField);
                 })
 
-
                 updateDefaultOptionsText();
 
                 function setCheckboxAttributes(a, b, c) {
@@ -319,7 +278,7 @@ function populateInfo(currentId) {
                 $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + product.batchPrice);
             }
         });
-    });
+    })
 }
 
 //If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
@@ -340,7 +299,7 @@ function removeRow(currentId) {
 
     //If only one row of fields remains, hide the remove button and label
     const numberOfChildren = $('.order-fields__rows > div').length;
-    if (numberOfChildren == 2) {
+    if (numberOfChildren === 2) {
         const removeRowButton = document.getElementsByClassName('remove-row__button')[0];
         removeRowButton.classList.add('noVisibility');
         const removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
