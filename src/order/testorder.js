@@ -235,13 +235,13 @@ function populateInfo(currentId) {
 
                 updateDefaultOptionsText();
 
-                function setCheckboxAttributes(a, b, c) {
-                    if (c) {
-                        updateDefaultOptionsTextAbbreviations(a);
+                function setCheckboxAttributes(defaultOptionsTextExtension, className, productField) {
+                    if (productField) {
+                        updateDefaultOptionsTextAbbreviations(defaultOptionsTextExtension);
                     }
-                    const neededClass = `.order-form__checkbox--${b}${currentRowNumber}`;
-                    $(neededClass).attr('checked', c);
-                    $(neededClass).attr('disabled', c);
+                    const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
+                    $(neededClass).attr('checked', productField);
+                    $(neededClass).attr('disabled', productField);
                 }
 
                 function disableUnavailableOptions(className, availableOption) {
@@ -256,7 +256,7 @@ function populateInfo(currentId) {
                         if (option.abbreviation == currentOption) {
                             option.needed = 'Yes';
                         }
-                    });
+                    })
                 }
 
                 function updateDefaultOptionsText() {
@@ -277,7 +277,7 @@ function populateInfo(currentId) {
                 //Populate the default price for the current row, for one batch
                 $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + product.batchPrice);
             }
-        });
+        })
     })
 }
 
