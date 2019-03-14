@@ -1,6 +1,6 @@
 //Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
-    getParentsOnlyProducts();
+    populateProductDropdownOptions();
 })
 
 //find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
@@ -78,7 +78,7 @@ function addRow() {
     $(rightMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column4 order-form__quad-column4--${rowNumber}" rel="js-order-form__quad-column4--${rowNumber}"></div>`);
     $(mainQuadColumn4).append(`<p class="order-form__price--text order-form__price--text${rowNumber} generated disabled" rel="js-order-form__price${rowNumber}"></p>`);
 
-    getParentsOnlyProducts();
+    populateProductDropdownOptions(rowNumber);
 
     //hide or show Remove Row button and label depending on if there is more than one row showing
     const numberOfChildren = $('.order-fields__rows > div').length;
@@ -114,6 +114,7 @@ function calculatePrice(currentId) {
 }
 
 function findNewestRow() {
+    console.log('in findNewestRow function');
     //find the element with 'newest' class on it and look through its classes for the one that contains 'entry'
     const classList = document.getElementsByClassName('newestRow')[0].className.split(/\s+/);
     const neededClass = classList.find(function (nameOfClass) {
@@ -122,6 +123,7 @@ function findNewestRow() {
 
     //convert the string to a number and remove the first five characters from the string, set a variable to whatever is left
     const rowNumber = parseInt(neededClass.substring(5), 10);
+    console.log('rowNumber is ' + rowNumber);
     return rowNumber;
 }
 
@@ -130,6 +132,25 @@ function findRowNumber(currentId) {
     const idOnDiv = $(currentId).closest('.order-fields__row').attr('id');
     const currentRowNumber = (idOnDiv.substring(3));
     return currentRowNumber;
+}
+
+function prepProductDropdown(rowNumber) {
+    console.log('in prepDropdown function');
+
+    if (!rowNumber) {
+        rowNumber = findNewestRow();
+    }
+    const specificDropdown = `.order-form__product${rowNumber}`;
+
+    console.log('specificDropdown is ' + specificDropdown);
+    const dropdown = $(specificDropdown);
+    console.log('dropdown right after being set to specificDropdown is ', dropdown);
+
+    dropdown.empty();
+    dropdown.append('<option selected="true" disabled>Select...</option>');
+    dropdown.prop('selectedIndex', 0);
+    console.log('dropdown is ', dropdown);
+    return dropdown;
 }
 
 //When a Product option is chosen, populate info about that product from the API
@@ -281,6 +302,14 @@ function populateInfo(currentId) {
     })
 }
 
+function populateProductDropdownOptions(rowNumber) {
+    let dropdown = prepProductDropdown(rowNumber);
+    getParentsOnlyProducts(parentProducts => {
+        // inside the callback function with the payload from getJSON assigned to foo
+        setProductDropdown(parentProducts, dropdown)
+    });
+}
+
 //If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
 function removeRow(currentId) {
     const currentRowNumber = findRowNumber(currentId);
@@ -308,15 +337,24 @@ function removeRow(currentId) {
 }
 
 //TODO: add validation to Pickup/Delivery date field
-// function setNeededDateMin(currentID) {
-//     const today = new Date();
-//     console.log('today is ' + today);
-//     const minDate = (today + 5);
-//     console.log('minDate is ' + minDate);
-//     const newMinDate = (new Date() + 5);
-//     console.log('newMinDate is ' + newMinDate)
+function setNeededDateMin(currentID) {
+    const minDate = moment().add(10, 'days').calendar();
+
+    console.log('minDate is ' + minDate);
+
+    document.getElementById('neededDate').min = minDate;
+
+    // $(`[rel='js-order-fields__needed-date']`).moment({
+    //     minDate: minDate
+    // });
 
 
-//     $(`[rel='js-order-fields__needed-date']`).attr(min, minDate);
+    //$(`[rel='js-order-fields__needed-date']`).attr(min, minDate);
+}
 
-// }
+function setProductDropdown(products, dropdown) {
+    console.log('in setProductDropdown function');
+    $.each(products, function (key, product) {
+        dropdown.append($('<option></option>').text(product.name));
+    })
+}

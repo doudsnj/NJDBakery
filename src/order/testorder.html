@@ -14,6 +14,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/src/footer/footer.css">
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/node_modules/moment/moment.js"></script>
     <script type="text/javascript" src="/src/nav/testnav-bar.js"></script>
     <script type="text/javascript" src="/src/order/testorder-service.js"></script>
     <script type="text/javascript" src="/src/order/testorder.js"></script>
@@ -64,7 +65,7 @@
                         <div class="order-form__customer-bi-column order-form__customer-bi-column--right">
                             <label for="needed-date" class="input-label  input-label__needed-date">Pickup/Delivery
                                 Date</label>
-                            <input type="date" name="needed-date" min="2019-02-24"
+                            <input type="date" name="needed-date" min="" id="neededDate"
                                 class="order-form__input order-form__customer-field order-form__needed-date"
                                 onclick="setNeededDateMin(this)" rel="js-order-fields__needed-date">
                         </div>
