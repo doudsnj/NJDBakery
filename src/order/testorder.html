@@ -127,7 +127,9 @@
                                 rel="js-order-form__quad-column1--1">
                                 <div class="order-form__product-field--container order-form__input"
                                     rel="js-order-form__product-field--container--1">
-                                    <select type="select" name="product" onclick="populateInfo(this)" id="product1"
+                                    <select type="select" name="product"
+                                        onchange="populateInfo(this);resetQuantity(this);calculatePrice(this)"
+                                        id="product"
                                         class="entry1 select order-form__input order-form__product order-form__product1 "></select>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
