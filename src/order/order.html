@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>order</title>
+    <title>Order</title>
     <link rel="stylesheet" href="/src/shared/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/src/nav/nav-bar.css">
-    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="./order.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/src/footer/footer.css">
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/node_modules/moment/moment.js"></script>
     <script type="text/javascript" src="/src/nav/nav-bar.js"></script>
-    <script type="text/javascript" src="order.js"></script>
+    <script type="text/javascript" src="/src/order/order-service.js"></script>
+    <script type="text/javascript" src="/src/order/order.js"></script>
     <script type="text/javascript" src="/src/footer/footer.js"></script>
 </head>
 
@@ -31,7 +34,7 @@
     </div>
     <div class="form-container">
         <form class="order-form">
-            <h1 class="order-form__customer-heading">customer</h1>
+            <h1 class="order-form__customer-heading">customer information</h1>
             <div class="order-form__customer-fields">
                 <div class="order-form__bi-column order-form__bi-column--left">
                     <div class="order-form__quad-column order-form__quad-column1">
@@ -54,14 +57,24 @@
                             class="order-form__input order-form__customer-field order-form__email">
                     </div>
                     <div class="order-form__quad-column order-form__quad-column4">
-                        <label for="order-form__phone" class="input-label  input-label__phone">Phone</label>
-                        <input type="text" name="phone"
-                            class="order-form__input order-form__customer-field order-form__phone">
+                        <div class="order-form__customer-bi-column order-form__customer-bi-column--left">
+                            <label for="order-form__phone" class="input-label  input-label__phone">Phone</label>
+                            <input type="text" name="phone"
+                                class="order-form__input order-form__customer-field order-form__phone">
+                        </div>
+                        <div class="order-form__customer-bi-column order-form__customer-bi-column--right">
+                            <label for="needed-date" class="input-label  input-label__needed-date">Pickup/Delivery
+                                Date</label>
+                            <input type="date" name="needed-date" min="" id="neededDate"
+                                class="order-form__input order-form__customer-field order-form__needed-date"
+                                onclick="setNeededDateMin(this)" rel="js-order-fields__needed-date">
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <h1 class="order-form__order-heading">order</h1>
+            <h1 class="order-form__order-heading">order details</h1>
             <div class="order-form__order-fields" rel="js-order-fields">
                 <div class="order-fields__rows" rel="js-order-fields__rows">
                     <div class="order-fields__row order-fields__row--labels" rel="js-order-fields__row--labels">
@@ -114,7 +127,8 @@
                                 rel="js-order-form__quad-column1--1">
                                 <div class="order-form__product-field--container order-form__input"
                                     rel="js-order-form__product-field--container--1">
-                                    <select type="select" name="product" onclick="populateInfo(this)" id="product1"
+                                    <select type="select" name="product"
+                                        onchange="populateInfo(this);resetQuantity(this);updatePrice(this)" id="product"
                                         class="entry1 select order-form__input order-form__product order-form__product1 "></select>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
@@ -131,16 +145,19 @@
                                 </div>
                                 <div class="quantity__bi-column quantity__bi-column--right"
                                     rel="js-quantity__bi-column--right--1">
-                                    <select type="select" name="quantity" id="quantity1"
-                                        onclick="findRowNumber(this);calculatePrice(this)" id="quantity1"
-                                        class=" entry1 order-form__input order-form__quantity order-form__quantity1"
-                                        rel="js-order-form__quantity1">
-                                        <option value="1" selected="selected">1 batch</option>
-                                        <option value="2">2 batches</option>
-                                        <option value="3">3 batches</option>
-                                        <option value="4">4 batches</option>
-                                        <option value="5">5 batches</option>
-                                    </select>
+                                    <div class="order-form__quantity-field--container"
+                                        rel="js-order-form__quantity-field-container--1">
+                                        <select type="select" name="quantity" id="quantity1"
+                                            onchange="findRowNumber(this);updatePrice(this)" id="quantity1"
+                                            class=" entry1 order-form__input order-form__quantity order-form__quantity1"
+                                            rel="js-order-form__quantity1">
+                                            <option value="1" selected="selected">1 batch</option>
+                                            <option value="2">2 batches</option>
+                                            <option value="3">3 batches</option>
+                                            <option value="4">4 batches</option>
+                                            <option value="5">5 batches</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>

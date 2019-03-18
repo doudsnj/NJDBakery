@@ -128,8 +128,7 @@
                                 <div class="order-form__product-field--container order-form__input"
                                     rel="js-order-form__product-field--container--1">
                                     <select type="select" name="product"
-                                        onchange="populateInfo(this);resetQuantity(this);calculatePrice(this)"
-                                        id="product"
+                                        onchange="populateInfo(this);resetQuantity(this);updatePrice(this)" id="product"
                                         class="entry1 select order-form__input order-form__product order-form__product1 "></select>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
@@ -149,7 +148,7 @@
                                     <div class="order-form__quantity-field--container"
                                         rel="js-order-form__quantity-field-container--1">
                                         <select type="select" name="quantity" id="quantity1"
-                                            onclick="findRowNumber(this);calculatePrice(this)" id="quantity1"
+                                            onchange="findRowNumber(this);updatePrice(this)" id="quantity1"
                                             class=" entry1 order-form__input order-form__quantity order-form__quantity1"
                                             rel="js-order-form__quantity1">
                                             <option value="1" selected="selected">1 batch</option>

@@ -40,7 +40,7 @@ function addRow() {
     $(productRow).append(`<div class="order-form__bi-column order-form__bi-column--left order-form__bi-column--left--${rowNumber}" rel="js-order-form__bi-column__left--${rowNumber}"></div>`);
     $(leftMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column1 order-form__quad-column1--${rowNumber}" rel="js-order-form__quad-column1--${rowNumber}"></div>`);
     $(mainQuadColumn1).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber} order-form__input" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
-    $(productContainer).append(`<select type="select" name="product" onclick="populateInfo(this);resetQuantity(this, calculatePrice)" id="product${rowNumber}" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
+    $(productContainer).append(`<select type="select" name="product" onchange="populateInfo(this);resetQuantity(this);updatePrice(this)" id="product${rowNumber}" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
     $(mainQuadColumn1).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
     $(removeRowSection).append(`<button type="button" id="remove-row__button${rowNumber}" onclick="removeRow(this)"class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
     $(leftMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
@@ -48,7 +48,7 @@ function addRow() {
     $(leftQuantityBiColumn).append(`<p class="order-form__servings--text order-form__servings--text${rowNumber}" rel="js-order-form__servings${rowNumber}"></p>`);
     $(mainQuadColumn2).append(`<div class="quantity__bi-column quantity__bi-column--right" rel="js-quantity__bi-column--right--${rowNumber}"></div>`);
     $(rightQuantityBiColumn).append(`<div class="order-form__quantity-field--container" rel="js-order-form__quantity-field-container--${rowNumber}"></div>`);
-    $(quantityContainer).append(`<select type="text" name="quantity" id="quantity${rowNumber}" onclick="findRowNumber(this);calculatePrice(this)"  class="order-form__input order-form__quantity order-form__quantity${rowNumber} entry${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
+    $(quantityContainer).append(`<select type="text" name="quantity" id="quantity${rowNumber}" onchange="findRowNumber(this);updatePrice(this)"  class="order-form__input order-form__quantity order-form__quantity${rowNumber} entry${rowNumber}" rel="js-order-form__quantity${rowNumber}"></select>`);
     $(quantitySelect).append('<option value="1" selected="selected">1 batch</option>');
     $(quantitySelect).append('<option value="2">2 batches</option>');
     $(quantitySelect).append('<option value="3">3 batches</option>');
@@ -94,26 +94,39 @@ function addRow() {
     }
 }
 
-//When the quantity/number of batches is changed, calculate the price for the current row based on the number of batches selected
-function calculatePrice(currentId) {
-    const currentRowNumber = findRowNumber(currentId);
-    const currentDropdownClass = '.order-form__product' + currentRowNumber;
-    const currentProduct = $(`${currentDropdownClass} option:selected`).text();
-    const url = 'http://localhost:56886/api/products?parentsOnly=true';
-
-    $.getJSON(url, function (products) {
-
-        products.forEach(product => {
-            if (currentProduct === product.name) {
-                const currentProductBatchPrice = (product.batchPrice);
-                const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
-                const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
-                const pricePerRow = currentBatchSelection * currentProductBatchPrice;
-                $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
-            }
-        })
+function findCurrentBatchPrice(products, currentRowNumber, currentProduct) {
+    products.forEach(product => {
+        if (currentProduct === product.name) {
+            const currentProductBatchPrice = (product.batchPrice);
+            const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
+            const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
+            const pricePerRow = currentBatchSelection * currentProductBatchPrice;
+            $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+        }
     })
 }
+
+//NATHAN - This calcuatePrice function is what I split out and is now handled by the udpatePrice()
+//When the quantity/number of batches is changed, calculate the price for the current row based on the number of batches selected
+// function calculatePrice(currentId) {
+//     const currentRowNumber = findRowNumber(currentId);
+//     const currentDropdownClass = '.order-form__product' + currentRowNumber;
+//     const currentProduct = $(`${currentDropdownClass} option:selected`).text();
+//     const url = 'http://localhost:56886/api/products?parentsOnly=true';
+
+//     $.getJSON(url, function (products) {
+
+//         products.forEach(product => {
+//             if (currentProduct === product.name) {
+//                 const currentProductBatchPrice = (product.batchPrice);
+//                 const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
+//                 const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
+//                 const pricePerRow = currentBatchSelection * currentProductBatchPrice;
+//                 $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+//             }
+//         })
+//     })
+// }
 
 
 //Finds the row number on the row that was most recently created
@@ -134,6 +147,13 @@ function findRowNumber(currentId) {
     const idOnDiv = $(currentId).closest('.order-fields__row').attr('id');
     const currentRowNumber = (idOnDiv.substring(3));
     return currentRowNumber;
+}
+
+function findSelectedProduct(currentId) {
+    const currentRowNumber = findRowNumber(currentId);
+    const currentDropdownClass = '.order-form__product' + currentRowNumber;
+    const currentProduct = $(`${currentDropdownClass} option:selected`).text();
+    return currentProduct;
 }
 
 //Prepares the current product dropdown for API population
@@ -157,8 +177,6 @@ function populateInfo(currentId) {
     const currentRowNumber = findRowNumber(currentId);
     const currentDropdownClass = '.order-form__product' + currentRowNumber;
     const currentProduct = $(`${currentDropdownClass} option:selected`).text();
-
-
 
     //Find the entry in the API that has the same name as the option that is currently in the Product dropdown. 
     //Populate a p element with its default dietary info. 
@@ -503,4 +521,12 @@ function setProductDropdown(products, dropdown) {
     $.each(products, function (key, product) {
         dropdown.append($('<option></option>').text(product.name));
     })
+}
+
+function updatePrice(currentId, rowNumber) {
+    let currentRowNumber = findRowNumber(currentId);
+    let currentProduct = findSelectedProduct(currentId);
+    getParentsOnlyProducts(products => {
+        findCurrentBatchPrice(products, currentRowNumber, currentProduct);
+    });
 }
