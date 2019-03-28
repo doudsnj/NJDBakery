@@ -16,10 +16,14 @@
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/node_modules/moment/moment.js"></script>
     <script type="text/javascript" src="/src/nav/testnav-bar.js"></script>
+    <script type="text/javascript" src="/src/order/testorder-helper.js"></script>
     <script type="text/javascript" src="/src/order/testorder-service.js"></script>
     <script type="text/javascript" src="/src/order/testorder.js"></script>
     <script type="text/javascript" src="/src/footer/footer.js"></script>
 </head>
+
+<!-- onchange="populateProductInfo(this);resetQuantity(this);updatePrice(this)" -->
+
 
 <body rel="js-body">
     <div class="logo-div" rel="js-logo-div">
@@ -127,8 +131,8 @@
                                 rel="js-order-form__quad-column1--1">
                                 <div class="order-form__product-field--container order-form__input"
                                     rel="js-order-form__product-field--container--1">
-                                    <select type="select" name="product"
-                                        onchange="populateInfo(this);resetQuantity(this);updatePrice(this)" id="product"
+                                    <select type="select" name="product" onchange="populateProductInfo(this)""
+                                        id=" product"
                                         class="entry1 select order-form__input order-form__product order-form__product1 "></select>
                                 </div>
                                 <div class="remove-row__section--1" rel="js-remove-row__section--1">
