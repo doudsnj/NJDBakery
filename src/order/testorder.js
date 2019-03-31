@@ -40,7 +40,7 @@ function addRow() {
     $(productRow).append(`<div class="order-form__bi-column order-form__bi-column--left order-form__bi-column--left--${rowNumber}" rel="js-order-form__bi-column__left--${rowNumber}"></div>`);
     $(leftMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column1 order-form__quad-column1--${rowNumber}" rel="js-order-form__quad-column1--${rowNumber}"></div>`);
     $(mainQuadColumn1).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber} order-form__input" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
-    $(productContainer).append(`<select type="select" name="product" onchange="populateInfo(this);resetQuantity(this);updatePrice(this)" id="product${rowNumber}" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
+    $(productContainer).append(`<select type="select" name="product" onchange="populateProductInfo(this);resetQuantity(this);updatePrice(this)" id="product${rowNumber}" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
     $(mainQuadColumn1).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
     $(removeRowSection).append(`<button type="button" id="remove-row__button${rowNumber}" onclick="removeRow(this)"class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
     $(leftMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
@@ -95,7 +95,7 @@ function addRow() {
 }
 
 
-function findCurrentBatchPrice(products, currentRowNumber, currentProduct) {
+function findCurrentBatchInfo(products, currentRowNumber, currentProduct) {
     products.forEach(product => {
         if (currentProduct === product.name) {
             const currentProductBatchPrice = (product.batchPrice);
@@ -103,32 +103,10 @@ function findCurrentBatchPrice(products, currentRowNumber, currentProduct) {
             const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
             const pricePerRow = currentBatchSelection * currentProductBatchPrice;
             $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+            $(`[rel='js-order-form__servings${currentRowNumber}']`).html(product.defaultNumberOfServings);
         }
     })
 }
-
-//NATHAN - This calculatePrice function is what I split out and is now handled by the updatePrice()
-//When the quantity/number of batches is changed, calculate the price for the current row based on the number of batches selected
-// function calculatePrice(currentId) {
-//     const currentRowNumber = findRowNumber(currentId);
-//     const currentDropdownClass = '.order-form__product' + currentRowNumber;
-//     const currentProduct = $(`${currentDropdownClass} option:selected`).text();
-//     const url = 'http://localhost:56886/api/products?parentsOnly=true';
-
-//     $.getJSON(url, function (products) {
-
-//         products.forEach(product => {
-//             if (currentProduct === product.name) {
-//                 const currentProductBatchPrice = (product.batchPrice);
-//                 const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
-//                 const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
-//                 const pricePerRow = currentBatchSelection * currentProductBatchPrice;
-//                 $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
-//             }
-//         })
-//     })
-// }
-
 
 //Finds the row number on the row that was most recently created
 function findNewestRow() {
@@ -179,57 +157,134 @@ function resetQuantity(currentId) {
     $('#' + currentQuantity).val('1');
 }
 
-//TODO: WORKING HERE 3/28/2019 - this is just the beginnings of splitting out the populateInfo function into svc layer vs text layer
-function populateProductInfo(currentId, duplicateAllergenInfo) {
-    let currentRowNumber = findRowNumber(currentId);
+//TODO: WORKING HERE 3/29/2019 - this is just the beginnings of splitting out the populateInfo function into svc layer vs text layer
+function populateProductInfo(currentId) {
     getParentsOnlyProducts(products => {
-        updateAllergenInfoArray(products, allergenInfo, allergenInfo.allergenOptionAbbreviation, currentId);
+        updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText);
     });
 }
 
-function updateAllergenInfoArray(products, allergenInfoArray, allergenOptionAbbreviation, currentId, updateDefaultOptionsText, duplicateAllergenInfo) {
+function updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText) {
     let currentProduct = findSelectedProduct(currentId);
 
+    let duplicateAllergenInfo;
     $.each(products, function (key, product) {
         if (currentProduct === product.name) {
-            var duplicateAllergenInfo = JSON.parse(JSON.stringify(allergenInfoArray));
+            duplicateAllergenInfo = JSON.parse(JSON.stringify(allergenInfo));
+
+            const allergenInfoAdditions = [{
+                abbreviation: 'DF',
+                defaultAllergenType: product.dairyFree,
+                canBeAllergenType: product.canBeDairyFree,
+                arrayIndex: 0
+            },
+            {
+                abbreviation: 'EF',
+                defaultAllergenType: product.eggFree,
+                canBeAllergenType: product.canBeEggFree,
+                arrayIndex: 1
+            },
+            {
+                abbreviation: 'GF',
+                defaultAllergenType: product.glutenFree,
+                canBeAllergenType: product.canBeGlutenFree,
+                arrayIndex: 2
+            },
+            {
+                abbreviation: 'GRF',
+                defaultAllergenType: product.grainFree,
+                canBeAllergenType: product.canBeGrainFree,
+                arrayIndex: 3
+            },
+            {
+                abbreviation: 'NF',
+                defaultAllergenType: product.nutFree,
+                canBeAllergenType: product.canBeNutFree,
+                arrayIndex: 4
+            },
+            {
+                abbreviation: 'RSF',
+                defaultAllergenType: product.refinedSugarFree,
+                canBeAllergenType: product.canBeRefinedSugarFree,
+                arrayIndex: 5
+            },
+            {
+                abbreviation: 'V',
+                defaultAllergenType: product.vegan,
+                canBeAllergenType: product.canBeVegan,
+                arrayIndex: 6
+            },
+            ]
+
+            //Where the abbreviation from the object in allergenInfoAdditions[] matches the abbreviation of the 
+            //current object/current iteration of the loop, add the defaultAllergenType key value pair and the 
+            //canBeAllergenType key value pair from the matching object that's in the allergenInfoAdditions array to the
+            //current object/iteration of the duplicateAllergenInfo array
             duplicateAllergenInfo.forEach(allergenObject => {
-                if (allergenObject.allergenOptionAbbreviation === 'DF') {
-                    duplicateAllergenInfo[0].defaultAllergenType = product.dairyFree;
-                    duplicateAllergenInfo[0].canBeAllergenType = product.canBeDairyFree;
-                } else if (allergenObject.allergenOptionAbbreviation === 'EF') {
-                    duplicateAllergenInfo[1].defaultAllergenType = product.eggFree;
-                    duplicateAllergenInfo[1].canBeAllergenType = product.canBeEggFree;
-                } else if (allergenObject.allergenOptionAbbreviation === 'GF') {
-                    duplicateAllergenInfo[2].defaultAllergenType = product.glutenFree;
-                    duplicateAllergenInfo[2].canBeAllergenType = product.canBeGlutenFree;
-                } else if (allergenObject.allergenOptionAbbreviation === 'GRF') {
-                    duplicateAllergenInfo[3].defaultAllergenType = product.grainFree;
-                    duplicateAllergenInfo[3].canBeAllergenType = product.canBeGrainFree;
-                } else if (allergenObject.allergenOptionAbbreviation === 'NF') {
-                    duplicateAllergenInfo[4].defaultAllergenType = product.nutFree;
-                    duplicateAllergenInfo[4].canBeAllergenType = product.canBeNutFree;
-                } else if (allergenObject.allergenOptionAbbreviation === 'RSF') {
-                    duplicateAllergenInfo[5].defaultAllergenType = product.refinedSugarFree;
-                    duplicateAllergenInfo[5].canBeAllergenType = product.canBeRefinedSugarFree;
-                } else if (allergenObject.allergenOptionAbbreviation === 'V') {
-                    duplicateAllergenInfo[6].defaultAllergenType = product.vegan;
-                    duplicateAllergenInfo[6].canBeAllergenType = product.canBeVegan;
-                }
-            })
+                const currentAbbreviation = allergenObject.allergenOptionAbbreviation;
+                allergenInfoAdditions.forEach(additionObject => {
+                    if (additionObject.abbreviation === currentAbbreviation) {
+                        const arrayIndex = additionObject.arrayIndex;
+                        duplicateAllergenInfo[arrayIndex].defaultAllergenType = additionObject.defaultAllergenType;
+                        duplicateAllergenInfo[arrayIndex].canBeAllergenType = additionObject.canBeAllergenType;
+                    }
+                })
+            });
+            console.log('duplicateAllergenInfo after updates', duplicateAllergenInfo);
         }
     })
-    // updateDefaultOptionsText(duplicateAllergenInfo);
+
+    updateDefaultOptionsText(duplicateAllergenInfo, currentId);
+
+    duplicateAllergenInfo.forEach(option => {
+        disableUnavailableOptions(option.className, option.canBeAllergenType, currentId);
+    })
+
+    duplicateAllergenInfo.forEach(option => {
+        setCheckboxAttributes(currentId, option.className, option.defaultAllergenType);
+    })
 }
 
-function updateDefaultOptionsText(duplicateAllergenInfo) {
+//Update the text under the options so it shows the abbreviations of the what the default options are on that product
+function updateDefaultOptionsText(duplicateAllergenInfo, currentId) {
     let defaultOptionsText = 'Default product is: ';
+    const currentRowNumber = findRowNumber(currentId);
     duplicateAllergenInfo.forEach(option => {
-        if (option.needed === 'Yes') {
-            defaultOptionsText = defaultOptionsText + ' ' + option.abbreviation;
+        if (option.defaultAllergenType) {
+            defaultOptionsText = defaultOptionsText + ' ' + option.allergenOptionAbbreviation;
         }
     })
+    $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
 }
+
+//Disable check boxes for dietary options that are not available on the current product
+function disableUnavailableOptions(className, availableOption, currentId) {
+    const currentRowNumber = findRowNumber(currentId);
+    if (!availableOption) {
+        const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
+        $(neededClass).attr('disabled', true);
+    }
+}
+
+//Check/enable the boxes of the default options
+function setCheckboxAttributes(currentId, className, defaultAllergenType) {
+    console.log('within setCheckboxAttributes function, called from within updateAllergenInfoArray');
+    // if (defaultAllergenType) {
+    //     updateDefaultOptionsTextAbbreviations(allergenOptionAbbreviation);
+    // }
+    const currentRowNumber = findRowNumber(currentId);
+    const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
+    $(neededClass).attr('checked', defaultAllergenType);
+    $(neededClass).attr('disabled', defaultAllergenType);
+}
+
+
+
+
+
+
+
+
 
 //TODO: this is just the beginnings of splitting out the populateInfo function into svc layer vs text layer
 // function setAllergenOptions(){
@@ -424,6 +479,6 @@ function updatePrice(currentId, rowNumber) {
     let currentRowNumber = findRowNumber(currentId);
     let currentProduct = findSelectedProduct(currentId);
     getParentsOnlyProducts(products => {
-        findCurrentBatchPrice(products, currentRowNumber, currentProduct);
+        findCurrentBatchInfo(products, currentRowNumber, currentProduct);
     });
 }

@@ -56,40 +56,29 @@
 const allergenInfo = [{
     allergenOptionAbbreviation: 'DF',
     className: 'dairyFree',
-    abbreviationNeeded: 'No'
 },
 {
     allergenOptionAbbreviation: 'EF',
     className: 'eggFree',
-    abbreviationNeeded: 'No'
 },
 {
     allergenOptionAbbreviation: 'GF',
     className: 'glutenFree',
-    abbreviationNeeded: 'Yes'
 },
 {
     allergenOptionAbbreviation: 'GRF',
     className: 'grainFree',
-    abbreviationNeeded: 'No'
 },
 {
     allergenOptionAbbreviation: 'NF',
     className: 'nutFree',
-    abbreviationNeeded: 'No'
 },
 {
     allergenOptionAbbreviation: 'RSF',
     className: 'refinedSugarFree',
-    abbreviationNeeded: 'No'
 },
 {
     allergenOptionAbbreviation: 'V',
     className: 'vegan',
-    abbreviationNeeded: 'No'
 }
 ]
-console.log('allergenInfo from helper', allergenInfo);
-
-
-
