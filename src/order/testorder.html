@@ -22,9 +22,6 @@
     <script type="text/javascript" src="/src/footer/footer.js"></script>
 </head>
 
-<!-- onchange="populateProductInfo(this);resetQuantity(this);updatePrice(this)" -->
-
-
 <body rel="js-body">
     <div class="logo-div" rel="js-logo-div">
         <img class="logo-div__logo" src="/assets/njdBakery_Logo_2_Color_web.png" alt="njd_bakery_logo">
@@ -44,16 +41,15 @@
                     <div class="order-form__quad-column order-form__quad-column1">
                         <label for="order-form__first-name" class="input-label input-label__first-name">First
                             Name</label>
-                        <input type="text" name="first-name" class="order-form__input order-form__customer-field
-                        order-form__first-name">
+                        <input type="text" name="first-name"
+                            class="order-form__input order-form__customer-field order-form__first-name">
                     </div>
                     <div class="order-form__quad-column order-form__quad-column2">
                         <label for="order-form__last-name" class="input-label input-label__last-name">Last Name</label>
-                        <input type="text" name="last-name" class="order-form__input order-form__customer-field
-                        order-form__last-name">
+                        <input type="text" name="last-name"
+                            class="order-form__input order-form__customer-field order-form__last-name">
                     </div>
                 </div>
-
                 <div class="order-form__bi-column order-form__bi-column--right">
                     <div class="order-form__quad-column order-form__quad-column3">
                         <label for="order-form__email" class="input-label input-label__email">Email</label>
@@ -67,8 +63,7 @@
                                 class="order-form__input order-form__customer-field order-form__phone">
                         </div>
                         <div class="order-form__customer-bi-column order-form__customer-bi-column--right">
-                            <label for="needed-date" class="input-label  input-label__needed-date">Pickup/Delivery
-                                Date</label>
+                            <label for="needed-date" class="input-label  input-label__needed-date">Pickup/Delivery Date</label>
                             <input type="date" name="needed-date" min="" id="neededDate"
                                 class="order-form__input order-form__customer-field order-form__needed-date"
                                 onclick="setNeededDateMin(this)" rel="js-order-fields__needed-date">
@@ -77,7 +72,6 @@
                     </div>
                 </div>
             </div>
-
             <h1 class="order-form__order-heading">TESTorder details</h1>
             <div class="order-form__order-fields" rel="js-order-fields">
                 <div class="order-fields__rows" rel="js-order-fields__rows">
@@ -86,18 +80,15 @@
                             rel="js-order-form__bi-column__left--1">
                             <div class="order-form__quad-column order-form__quad-column1"
                                 rel="js-order-form__quad-column1--labels">
-                                <label for="order-form__product"
-                                    class="input-label input-label__product">Product</label>
+                                <label for="order-form__product" class="input-label input-label__product">Product</label>
                                 <label for="remove-row__button"
-                                    class="input-label input-label__remove-row noVisibility">Remove
-                                    row</label>
+                                    class="input-label input-label__remove-row noVisibility">Remove row</label>
                             </div>
                             <div class="order-form__quad-column order-form__quad-column2"
                                 rel="js-order-form__quad-column2--labels">
                                 <div class="quantity__bi-column quantity__bi-column--left"
                                     rel="js-quantity__bi-column--left--labels">
-                                    <label for="order-form__servings" class="input-label input-label__servings">Servings
-                                        per Batch</label>
+                                    <label for="order-form__servings" class="input-label input-label__servings">Servings per Batch</label>
                                 </div>
                                 <div class="quantity__bi-column quantity__bi-column--right"
                                     rel="js-quantity__bi-column--right--labels">
@@ -111,8 +102,7 @@
                             <div class="order-form__quad-column order-form__quad-column3"
                                 rel="js-order-form__quad-column3--labels">
                                 <label for="order-form__dietary-options"
-                                    class="input-label input-label__dietary-options">Dietary
-                                    Options</label>
+                                    class="input-label input-label__dietary-options">Dietary Options</label>
                             </div>
                             <div class="order-form__quad-column order-form__quad-column4"
                                 rel="js-order-form__quad-column4--labels">
@@ -120,9 +110,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div id="row1" class="order-fields__row order-fields__row1 newestRow entry1"
                         rel="js-order-fields__row--1">
                         <div class="order-form__bi-column order-form__bi-column--left"
@@ -170,7 +157,6 @@
                             rel="order-form__bi-column__right--1">
                             <div class="order-form__quad-column order-form__quad-column3"
                                 rel="js-order-form__quad-column3--1">
-
                                 <div class="order-form__dietary-options-container"
                                     rel="js-order-form__dietary-options-container--1">
                                     <div class="dietary-options__quad-column dietary-options__quad-column1"
@@ -202,8 +188,6 @@
                                             class="input-label--checkbox input-label__grain-free">Grain
                                             Free</label><br>
                                     </div>
-
-
                                     <div class="dietary-options__quad-column dietary-options__quad-column3"
                                         rel="js-dietary-options__quad-column3--1">
                                         <input type="checkbox" name="NutFree" value="NutFree"
@@ -233,38 +217,29 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="order-form__quad-column order-form__quad-column4"
                                 rel="js-order-form__quad-column4--1">
                                 <p class="order-form__price--text order-form__price--text1 generated disabled"
                                     rel="js-order-form__price1"></p>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
                 <div class="add-row-section">
                     <button type="button" onclick="addRow()" class="add-row__button">+</button>
                     <span class="add-row__button--text input-label">Add more</span>
                 </div>
                 <br>
-
                 <div class="order-form__remaining-fields"></div>
                 <div class="order-form__button-row">
                     <button class="order-form__submit-button">submit</button>
                 </div>
             </div>
             <span class="sugar-free-explanation">*Free from refined sugars. The product will likely contain a less
-                processed
-                sugar such as maple syrup, maple sugar, honey, coconut sugar, or naturally
-                occurring
+                processed sugar such as maple syrup, maple sugar, honey, coconut sugar, or naturally occurring
                 sugars such as those found in fruit.</span>
         </form>
-
     </div>
-
 </body>
 
 </html>

@@ -1,15 +1,14 @@
 //Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
     populateProductDropdownOptions();
-})
+});
 
-//find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
+//find the 'entry' number of the last/newest created order fields row, increment by one make that the number on the next row that will be created
 //runs when the Add more button is clicked
 function addRow() {
     const rowNumber = findNewestRow() + 1;
 
-    //remove the 'newest' class from the element that currently has it (The commented out jquery just does not work for whatever reason...)
-    //$("newestRow").removeClass("newestRow"); THIS DOES NOT WORK.
+    //remove the 'newest' class from the element that currently has it 
     document.getElementsByClassName('newestRow')[0].classList.remove('newestRow');
 
     const rowsContainer = "[rel='js-order-fields__rows']";
@@ -151,7 +150,7 @@ function populateProductDropdownOptions(rowNumber) {
 
 //populates the default allergen info and the available options
 function populateProductInfo(currentId) {
-    // uncheckAllOptions(currentId);
+    uncheckAllOptions(currentId);
     getParentsOnlyProducts(products => {
         updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText);
     });
@@ -209,8 +208,8 @@ function resetQuantity(currentId) {
 function setCheckboxAttributes(currentId, className, defaultAllergenType) {
     const currentRowNumber = findRowNumber(currentId);
     const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-    $(neededClass).attr('checked', defaultAllergenType);
-    $(neededClass).attr('disabled', defaultAllergenType);
+    $(neededClass).prop('checked', defaultAllergenType);
+    $(neededClass).prop('disabled', defaultAllergenType);
 }
 
 //TODO: add validation to Pickup/Delivery date field
@@ -229,22 +228,22 @@ function setNeededDateMin(currentID) {
 
 //Populates the current product dropdown with parent products that were retrieved from the API
 function setProductDropdown(products, dropdown) {
-    $.each(products, function (key, product) {
+    $.each(products, (key, product) => {
         dropdown.append($('<option></option>').text(product.name));
     })
 }
 
 //TODO: FINISH - when a new product is chosen in a row that already had products chosen, uncheck any dietary options the user checked in that row
-// function uncheckAllOptions(currentId, className, allergenInfo) {
-//     const currentRowNumber = findRowNumber(currentId);
-//     console.log('currentRwoNumber from within uncheckAll Options', currentRowNumber);
+function uncheckAllOptions(currentId) {
+    const currentRowNumber = findRowNumber(currentId);
 
-//     allergenInfo.forEach(allergen => {
-//         let neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-//         console.log('neededClass is', neededClass);
-//         $(neededClass).attr('checked', false);
-//     });
-// }
+    console.log('currentRowNumber from within uncheckAll Options', currentRowNumber);
+    allergenInfo.forEach(allergenObject => {
+        const neededClass = `.order-form__checkbox--${allergenObject.className}${currentRowNumber}`;
+        console.log('neededClass', neededClass);
+        $(neededClass).prop('checked', false);
+    });
+}
 
 function updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText) {
     let currentProduct = findSelectedProduct(currentId);
@@ -255,47 +254,47 @@ function updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaul
             duplicateAllergenInfo = JSON.parse(JSON.stringify(allergenInfo));
 
             const allergenInfoAdditions = [{
-                abbreviation: 'DF',
-                defaultAllergenType: product.dairyFree,
-                canBeAllergenType: product.canBeDairyFree,
-                arrayIndex: 0
-            },
-            {
-                abbreviation: 'EF',
-                defaultAllergenType: product.eggFree,
-                canBeAllergenType: product.canBeEggFree,
-                arrayIndex: 1
-            },
-            {
-                abbreviation: 'GF',
-                defaultAllergenType: product.glutenFree,
-                canBeAllergenType: product.canBeGlutenFree,
-                arrayIndex: 2
-            },
-            {
-                abbreviation: 'GRF',
-                defaultAllergenType: product.grainFree,
-                canBeAllergenType: product.canBeGrainFree,
-                arrayIndex: 3
-            },
-            {
-                abbreviation: 'NF',
-                defaultAllergenType: product.nutFree,
-                canBeAllergenType: product.canBeNutFree,
-                arrayIndex: 4
-            },
-            {
-                abbreviation: 'RSF',
-                defaultAllergenType: product.refinedSugarFree,
-                canBeAllergenType: product.canBeRefinedSugarFree,
-                arrayIndex: 5
-            },
-            {
-                abbreviation: 'V',
-                defaultAllergenType: product.vegan,
-                canBeAllergenType: product.canBeVegan,
-                arrayIndex: 6
-            },
+                    abbreviation: 'DF',
+                    defaultAllergenType: product.dairyFree,
+                    canBeAllergenType: product.canBeDairyFree,
+                    arrayIndex: 0
+                },
+                {
+                    abbreviation: 'EF',
+                    defaultAllergenType: product.eggFree,
+                    canBeAllergenType: product.canBeEggFree,
+                    arrayIndex: 1
+                },
+                {
+                    abbreviation: 'GF',
+                    defaultAllergenType: product.glutenFree,
+                    canBeAllergenType: product.canBeGlutenFree,
+                    arrayIndex: 2
+                },
+                {
+                    abbreviation: 'GRF',
+                    defaultAllergenType: product.grainFree,
+                    canBeAllergenType: product.canBeGrainFree,
+                    arrayIndex: 3
+                },
+                {
+                    abbreviation: 'NF',
+                    defaultAllergenType: product.nutFree,
+                    canBeAllergenType: product.canBeNutFree,
+                    arrayIndex: 4
+                },
+                {
+                    abbreviation: 'RSF',
+                    defaultAllergenType: product.refinedSugarFree,
+                    canBeAllergenType: product.canBeRefinedSugarFree,
+                    arrayIndex: 5
+                },
+                {
+                    abbreviation: 'V',
+                    defaultAllergenType: product.vegan,
+                    canBeAllergenType: product.canBeVegan,
+                    arrayIndex: 6
+                },
             ]
 
             //Where the abbreviation from the object in allergenInfoAdditions[] matches the abbreviation of the 

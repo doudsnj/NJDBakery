@@ -1,17 +1,14 @@
-
-
 //Populate the Product Select dropdown of the default row with the Parent Products from the API
 $(document).ready(function () {
     populateProductDropdownOptions();
-})
+});
 
-//find the 'entry' number of the last/newest created order fields row, to then add 1 to it and make that the number on the next row that will be created
+//find the 'entry' number of the last/newest created order fields row, increment by one make that the number on the next row that will be created
 //runs when the Add more button is clicked
 function addRow() {
     const rowNumber = findNewestRow() + 1;
 
-    //remove the 'newest' class from the element that currently has it (The commented out jquery just does not work for whatever reason...)
-    //$("newestRow").removeClass("newestRow"); THIS DOES NOT WORK.
+    //remove the 'newest' class from the element that currently has it 
     document.getElementsByClassName('newestRow')[0].classList.remove('newestRow');
 
     const rowsContainer = "[rel='js-order-fields__rows']";
@@ -40,7 +37,7 @@ function addRow() {
     $(productRow).append(`<div class="order-form__bi-column order-form__bi-column--left order-form__bi-column--left--${rowNumber}" rel="js-order-form__bi-column__left--${rowNumber}"></div>`);
     $(leftMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column1 order-form__quad-column1--${rowNumber}" rel="js-order-form__quad-column1--${rowNumber}"></div>`);
     $(mainQuadColumn1).append(`<div class="order-form__product-field--container order-form__product-field--container--${rowNumber} order-form__input" rel="js-order-form__product-field--container--${rowNumber}"></div>`);
-    $(productContainer).append(`<select type="select" name="product" onchange="populateInfo(this);resetQuantity(this);updatePrice(this)" id="product${rowNumber}" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
+    $(productContainer).append(`<select type="select" name="product" onchange="populateProductInfo(this);resetQuantity(this);updatePrice(this)" id="product${rowNumber}" class="select order-form__input order-form__product order-form__product${rowNumber}  entry${rowNumber}"></select>`);
     $(mainQuadColumn1).append(`<div class="remove-row__section remove-row__section--${rowNumber}" rel="js-remove-row__section--${rowNumber}"></div>`);
     $(removeRowSection).append(`<button type="button" id="remove-row__button${rowNumber}" onclick="removeRow(this)"class="remove-row__button remove-row__button${rowNumber} entry${rowNumber} ">-</button>`);
     $(leftMainBiColumn).append(`<div class="order-form__quad-column order-form__quad-column2 order-form__quad-column2--${rowNumber}" rel="js-order-form__quad-column2--${rowNumber}"></div>`);
@@ -94,7 +91,16 @@ function addRow() {
     }
 }
 
-function findCurrentBatchPrice(products, currentRowNumber, currentProduct) {
+//Disable check boxes for dietary options that are not available on the current product
+function disableUnavailableOptions(className, availableOption, currentId) {
+    const currentRowNumber = findRowNumber(currentId);
+    if (!availableOption) {
+        const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
+        $(neededClass).attr('disabled', true);
+    }
+}
+
+function findCurrentBatchInfo(products, currentRowNumber, currentProduct) {
     products.forEach(product => {
         if (currentProduct === product.name) {
             const currentProductBatchPrice = (product.batchPrice);
@@ -102,32 +108,10 @@ function findCurrentBatchPrice(products, currentRowNumber, currentProduct) {
             const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
             const pricePerRow = currentBatchSelection * currentProductBatchPrice;
             $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
+            $(`[rel='js-order-form__servings${currentRowNumber}']`).html(product.defaultNumberOfServings);
         }
     })
 }
-
-//NATHAN - This calcuatePrice function is what I split out and is now handled by the udpatePrice()
-//When the quantity/number of batches is changed, calculate the price for the current row based on the number of batches selected
-// function calculatePrice(currentId) {
-//     const currentRowNumber = findRowNumber(currentId);
-//     const currentDropdownClass = '.order-form__product' + currentRowNumber;
-//     const currentProduct = $(`${currentDropdownClass} option:selected`).text();
-//     const url = 'http://localhost:56886/api/products?parentsOnly=true';
-
-//     $.getJSON(url, function (products) {
-
-//         products.forEach(product => {
-//             if (currentProduct === product.name) {
-//                 const currentProductBatchPrice = (product.batchPrice);
-//                 const currentQuantityDropdownClass = '.order-form__quantity' + currentRowNumber;
-//                 const currentBatchSelection = $(`${currentQuantityDropdownClass} option:selected`).val();
-//                 const pricePerRow = currentBatchSelection * currentProductBatchPrice;
-//                 $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + pricePerRow);
-//             }
-//         })
-//     })
-// }
-
 
 //Finds the row number on the row that was most recently created
 function findNewestRow() {
@@ -156,6 +140,22 @@ function findSelectedProduct(currentId) {
     return currentProduct;
 }
 
+//Calls functions in a specific order to populate the Product dropdown with a list of parent products from the API
+function populateProductDropdownOptions(rowNumber) {
+    let dropdown = prepProductDropdown(rowNumber);
+    getParentsOnlyProducts(parentProducts => {
+        setProductDropdown(parentProducts, dropdown)
+    });
+}
+
+//populates the default allergen info and the available options
+function populateProductInfo(currentId) {
+    uncheckAllOptions(currentId);
+    getParentsOnlyProducts(products => {
+        updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText);
+    });
+}
+
 //Prepares the current product dropdown for API population
 function prepProductDropdown(rowNumber) {
 
@@ -170,311 +170,6 @@ function prepProductDropdown(rowNumber) {
     dropdown.append('<option selected="true" disabled>Select...</option>');
     dropdown.prop('selectedIndex', 0);
     return dropdown;
-}
-
-//When a Product option is chosen, populate info about that product from the API
-function populateInfo(currentId) {
-    const currentRowNumber = findRowNumber(currentId);
-    const currentDropdownClass = '.order-form__product' + currentRowNumber;
-    const currentProduct = $(`${currentDropdownClass} option:selected`).text();
-
-
-
-    //Find the entry in the API that has the same name as the option that is currently in the Product dropdown. 
-    //Populate a p element with its default dietary info. 
-    //Disable dietary option checkboxes based on what the product 'can be'.
-    const url = 'http://localhost:56886/api/products?parentsOnly=true';
-
-    $.getJSON(url, function (products) {
-
-        products.forEach(product => {
-            if (currentProduct === product.name) {
-                let defaultOptionsText = 'Default product is: ';
-
-                //allergen options on product
-                const allergenInfo = [{
-                    defaultOptionsTextExtension: 'DF',
-                    className: 'dairyFree',
-                    productField: product.dairyFree,
-                    canBeField: product.canBeDairyFree
-                },
-                {
-                    defaultOptionsTextExtension: 'EF',
-                    className: 'eggFree',
-                    productField: product.eggFree,
-                    canBeField: product.canBeEggFree
-                },
-                {
-                    defaultOptionsTextExtension: 'GRF',
-                    className: 'grainFree',
-                    productField: product.grainFree,
-                    canBeField: product.canBeGrainFree
-                },
-                {
-                    defaultOptionsTextExtension: 'NF',
-                    className: 'nutFree',
-                    productField: product.nutFree,
-                    canBeField: product.canBeNutFree
-                },
-                {
-                    defaultOptionsTextExtension: 'RSF',
-                    className: 'refinedSugarFree',
-                    productField: product.refinedSugarFree,
-                    canBeField: product.canBeRefinedSugarFree
-                },
-                {
-                    defaultOptionsTextExtension: 'V',
-                    className: 'vegan',
-                    productField: product.vegan,
-                    canBeField: product.canBeVegan
-                }
-                ];
-
-                // Used for creating 'Default product is ' text
-                let defaultOptionsTextAbbreviations = [{
-                    abbreviation: 'DF',
-                    needed: 'No'
-                },
-                {
-                    abbreviation: 'EF',
-                    needed: 'No'
-                },
-                {
-                    abbreviation: 'GF',
-                    needed: 'Yes'
-                },
-                {
-                    abbreviation: 'GRF',
-                    needed: 'No'
-                },
-                {
-                    abbreviation: 'NF',
-                    needed: 'No'
-                },
-                {
-                    abbreviation: 'RSF',
-                    needed: 'No'
-                },
-                {
-                    abbreviation: 'V',
-                    needed: 'No'
-                }
-                ]
-
-                //Update 'defaultOptionsText' and check/disable or uncheck/enable the boxes of the default options
-                allergenInfo.forEach(option => {
-                    setCheckboxAttributes(option.defaultOptionsTextExtension, option.className, option.productField);
-                })
-
-                //Disable check boxes for dietary options that are not available on the current product
-                allergenInfo.forEach(option => {
-                    disableUnavailableOptions(option.className, option.canBeField);
-                })
-
-                updateDefaultOptionsText();
-
-                function setCheckboxAttributes(defaultOptionsTextExtension, className, productField) {
-                    if (productField) {
-                        updateDefaultOptionsTextAbbreviations(defaultOptionsTextExtension);
-                    }
-                    const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-                    $(neededClass).attr('checked', productField);
-                    $(neededClass).attr('disabled', productField);
-                }
-
-                function disableUnavailableOptions(className, availableOption) {
-                    if (!availableOption) {
-                        const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-                        $(neededClass).attr('disabled', true);
-                    }
-                }
-
-                function updateDefaultOptionsTextAbbreviations(currentOption) {
-                    defaultOptionsTextAbbreviations.forEach(option => {
-                        if (option.abbreviation == currentOption) {
-                            option.needed = 'Yes';
-                        }
-                    })
-                }
-
-                function updateDefaultOptionsText() {
-                    defaultOptionsTextAbbreviations.forEach(option => {
-                        if (option.needed === 'Yes') {
-                            defaultOptionsText = defaultOptionsText + ' ' + option.abbreviation;
-                        }
-                    })
-                }
-
-                //Populate text of what the default version of the product has for allergen free info
-                $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
-
-                //Populate servings per product batch
-                const currentProductDefaultNumberOfServings = (product.defaultNumberOfServings);
-                $(`[rel='js-order-form__servings${currentRowNumber}']`).html(currentProductDefaultNumberOfServings);
-
-                //Populate the default price for the current row, for one batch
-                $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + product.batchPrice);
-            }
-        })
-    })
-}
-
-//Reset Quantity field to default option when the Product selection changes, then recalculate the price. THe callback function is defined in the onchange in the html 
-function resetQuantity(currentId) {
-    const currentQuantity = 'quantity' + findRowNumber(currentId);
-    $('#' + currentQuantity).val('1');
-}
-
-
-
-//TODO: this is just the beginnings of splitting out the populateInfo function into svc layer vs text layer
-// function populateProductInfo() {
-
-//     getParentsOnlyProducts(parentProducts => {
-//         setProductDropdown(parentProducts, dropdown)
-//     });
-// }
-
-
-//TODO: this is just the beginnings of splitting out the populateInfo function into svc layer vs text layer
-// function setAllergenOptions(){
-//     products.forEach(product => {
-//         if (currentProduct === product.name) {
-//             let defaultOptionsText = 'Default product is: ';
-
-//             //allergen options on product
-//             const allergenInfo = [{
-//                 defaultOptionsTextExtension: 'DF',
-//                 className: 'dairyFree',
-//                 productField: product.dairyFree,
-//                 canBeField: product.canBeDairyFree
-//             },
-//             {
-//                 defaultOptionsTextExtension: 'EF',
-//                 className: 'eggFree',
-//                 productField: product.eggFree,
-//                 canBeField: product.canBeEggFree
-//             },
-//             {
-//                 defaultOptionsTextExtension: 'GRF',
-//                 className: 'grainFree',
-//                 productField: product.grainFree,
-//                 canBeField: product.canBeGrainFree
-//             },
-//             {
-//                 defaultOptionsTextExtension: 'NF',
-//                 className: 'nutFree',
-//                 productField: product.nutFree,
-//                 canBeField: product.canBeNutFree
-//             },
-//             {
-//                 defaultOptionsTextExtension: 'RSF',
-//                 className: 'refinedSugarFree',
-//                 productField: product.refinedSugarFree,
-//                 canBeField: product.canBeRefinedSugarFree
-//             },
-//             {
-//                 defaultOptionsTextExtension: 'V',
-//                 className: 'vegan',
-//                 productField: product.vegan,
-//                 canBeField: product.canBeVegan
-//             }
-//             ];
-
-//             // Used for creating 'Default product is ' text
-//             let defaultOptionsTextAbbreviations = [{
-//                 abbreviation: 'DF',
-//                 needed: 'No'
-//             },
-//             {
-//                 abbreviation: 'EF',
-//                 needed: 'No'
-//             },
-//             {
-//                 abbreviation: 'GF',
-//                 needed: 'Yes'
-//             },
-//             {
-//                 abbreviation: 'GRF',
-//                 needed: 'No'
-//             },
-//             {
-//                 abbreviation: 'NF',
-//                 needed: 'No'
-//             },
-//             {
-//                 abbreviation: 'RSF',
-//                 needed: 'No'
-//             },
-//             {
-//                 abbreviation: 'V',
-//                 needed: 'No'
-//             }
-//             ]
-
-//             //Update 'defaultOptionsText' and check/disable or uncheck/enable the boxes of the default options
-//             allergenInfo.forEach(option => {
-//                 setCheckboxAttributes(option.defaultOptionsTextExtension, option.className, option.productField);
-//             })
-
-//             //Disable check boxes for dietary options that are not available on the current product
-//             allergenInfo.forEach(option => {
-//                 disableUnavailableOptions(option.className, option.canBeField);
-//             })
-
-//             updateDefaultOptionsText();
-
-//             function setCheckboxAttributes(defaultOptionsTextExtension, className, productField) {
-//                 if (productField) {
-//                     updateDefaultOptionsTextAbbreviations(defaultOptionsTextExtension);
-//                 }
-//                 const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-//                 $(neededClass).attr('checked', productField);
-//                 $(neededClass).attr('disabled', productField);
-//             }
-
-//             function disableUnavailableOptions(className, availableOption) {
-//                 if (!availableOption) {
-//                     const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
-//                     $(neededClass).attr('disabled', true);
-//                 }
-//             }
-
-//             function updateDefaultOptionsTextAbbreviations(currentOption) {
-//                 defaultOptionsTextAbbreviations.forEach(option => {
-//                     if (option.abbreviation == currentOption) {
-//                         option.needed = 'Yes';
-//                     }
-//                 })
-//             }
-
-//             function updateDefaultOptionsText() {
-//                 defaultOptionsTextAbbreviations.forEach(option => {
-//                     if (option.needed === 'Yes') {
-//                         defaultOptionsText = defaultOptionsText + ' ' + option.abbreviation;
-//                     }
-//                 })
-//             }
-
-//             //Populate text of what the default version of the product has for allergen free info
-//             $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
-
-//             //Populate servings per product batch
-//             const currentProductDefaultNumberOfServings = (product.defaultNumberOfServings);
-//             $(`[rel='js-order-form__servings${currentRowNumber}']`).html(currentProductDefaultNumberOfServings);
-
-//             //Populate the default price for the current row, for one batch
-//             $(`[rel='js-order-form__price${currentRowNumber}']`).html('$' + product.batchPrice);
-//         }
-//     })
-// }
-
-//Calls functions in a specific order to populate the Product dropdown with a list of parent products from the API
-function populateProductDropdownOptions(rowNumber) {
-    let dropdown = prepProductDropdown(rowNumber);
-    getParentsOnlyProducts(parentProducts => {
-        setProductDropdown(parentProducts, dropdown)
-    });
 }
 
 //If a remove row button is clicked, remove all fields in that row and set the previous row to the 'newest' row. If only one row remains, hide the remove option.
@@ -503,6 +198,20 @@ function removeRow(currentId) {
     }
 }
 
+//Reset Quantity field to default option when the Product selection changes, then recalculate the price. THe callback function is defined in the onchange in the html 
+function resetQuantity(currentId) {
+    const currentQuantity = 'quantity' + findRowNumber(currentId);
+    $('#' + currentQuantity).val('1');
+}
+
+//Check/enable the boxes of the default options
+function setCheckboxAttributes(currentId, className, defaultAllergenType) {
+    const currentRowNumber = findRowNumber(currentId);
+    const neededClass = `.order-form__checkbox--${className}${currentRowNumber}`;
+    $(neededClass).prop('checked', defaultAllergenType);
+    $(neededClass).prop('disabled', defaultAllergenType);
+}
+
 //TODO: add validation to Pickup/Delivery date field
 function setNeededDateMin(currentID) {
     const minDate = moment().add(10, 'days').calendar();
@@ -517,18 +226,121 @@ function setNeededDateMin(currentID) {
     //$(`[rel='js-order-fields__needed-date']`).attr(min, minDate);
 }
 
-
 //Populates the current product dropdown with parent products that were retrieved from the API
 function setProductDropdown(products, dropdown) {
-    $.each(products, function (key, product) {
+    $.each(products, (key, product) => {
         dropdown.append($('<option></option>').text(product.name));
     })
+}
+
+//TODO: FINISH - when a new product is chosen in a row that already had products chosen, uncheck any dietary options the user checked in that row
+function uncheckAllOptions(currentId) {
+    const currentRowNumber = findRowNumber(currentId);
+
+    console.log('currentRowNumber from within uncheckAll Options', currentRowNumber);
+    allergenInfo.forEach(allergenObject => {
+        const neededClass = `.order-form__checkbox--${allergenObject.className}${currentRowNumber}`;
+        console.log('neededClass', neededClass);
+        $(neededClass).prop('checked', false);
+    });
+}
+
+function updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText) {
+    let currentProduct = findSelectedProduct(currentId);
+
+    let duplicateAllergenInfo;
+    $.each(products, function (key, product) {
+        if (currentProduct === product.name) {
+            duplicateAllergenInfo = JSON.parse(JSON.stringify(allergenInfo));
+
+            const allergenInfoAdditions = [{
+                    abbreviation: 'DF',
+                    defaultAllergenType: product.dairyFree,
+                    canBeAllergenType: product.canBeDairyFree,
+                    arrayIndex: 0
+                },
+                {
+                    abbreviation: 'EF',
+                    defaultAllergenType: product.eggFree,
+                    canBeAllergenType: product.canBeEggFree,
+                    arrayIndex: 1
+                },
+                {
+                    abbreviation: 'GF',
+                    defaultAllergenType: product.glutenFree,
+                    canBeAllergenType: product.canBeGlutenFree,
+                    arrayIndex: 2
+                },
+                {
+                    abbreviation: 'GRF',
+                    defaultAllergenType: product.grainFree,
+                    canBeAllergenType: product.canBeGrainFree,
+                    arrayIndex: 3
+                },
+                {
+                    abbreviation: 'NF',
+                    defaultAllergenType: product.nutFree,
+                    canBeAllergenType: product.canBeNutFree,
+                    arrayIndex: 4
+                },
+                {
+                    abbreviation: 'RSF',
+                    defaultAllergenType: product.refinedSugarFree,
+                    canBeAllergenType: product.canBeRefinedSugarFree,
+                    arrayIndex: 5
+                },
+                {
+                    abbreviation: 'V',
+                    defaultAllergenType: product.vegan,
+                    canBeAllergenType: product.canBeVegan,
+                    arrayIndex: 6
+                },
+            ]
+
+            //Where the abbreviation from the object in allergenInfoAdditions[] matches the abbreviation of the 
+            //current object/current iteration of the loop, add the defaultAllergenType key value pair and the 
+            //canBeAllergenType key value pair from the matching object that's in the allergenInfoAdditions array to the
+            //current object/iteration of the duplicateAllergenInfo array
+            duplicateAllergenInfo.forEach(allergenObject => {
+                const currentAbbreviation = allergenObject.allergenOptionAbbreviation;
+                allergenInfoAdditions.forEach(additionObject => {
+                    if (additionObject.abbreviation === currentAbbreviation) {
+                        const arrayIndex = additionObject.arrayIndex;
+                        duplicateAllergenInfo[arrayIndex].defaultAllergenType = additionObject.defaultAllergenType;
+                        duplicateAllergenInfo[arrayIndex].canBeAllergenType = additionObject.canBeAllergenType;
+                    }
+                })
+            });
+        }
+    })
+
+    updateDefaultOptionsText(duplicateAllergenInfo, currentId);
+
+    duplicateAllergenInfo.forEach(option => {
+        disableUnavailableOptions(option.className, option.canBeAllergenType, currentId);
+    })
+
+    duplicateAllergenInfo.forEach(option => {
+        setCheckboxAttributes(currentId, option.className, option.defaultAllergenType);
+    })
+}
+
+//Update the text under the options so it shows the abbreviations of the what the default options are on that product
+function updateDefaultOptionsText(duplicateAllergenInfo, currentId) {
+    let defaultOptionsText = 'Default product is: ';
+    const currentRowNumber = findRowNumber(currentId);
+    duplicateAllergenInfo.forEach(option => {
+        if (option.defaultAllergenType) {
+            defaultOptionsText = defaultOptionsText + ' ' + option.allergenOptionAbbreviation;
+        }
+    })
+    $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
 }
 
 function updatePrice(currentId, rowNumber) {
     let currentRowNumber = findRowNumber(currentId);
     let currentProduct = findSelectedProduct(currentId);
     getParentsOnlyProducts(products => {
-        findCurrentBatchPrice(products, currentRowNumber, currentProduct);
+        findCurrentBatchInfo(products, currentRowNumber, currentProduct);
     });
 }
