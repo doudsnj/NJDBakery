@@ -237,7 +237,6 @@ function setProductDropdown(products, dropdown) {
 function uncheckAllOptions(currentId) {
     const currentRowNumber = findRowNumber(currentId);
 
-    console.log('currentRowNumber from within uncheckAll Options', currentRowNumber);
     allergenInfo.forEach(allergenObject => {
         const neededClass = `.order-form__checkbox--${allergenObject.className}${currentRowNumber}`;
         console.log('neededClass', neededClass);
