@@ -91,6 +91,43 @@ function addRow() {
     }
 }
 
+//Updates the subtotal at the bottom of the form whenever the price of any row changes
+//Called updatePrice()
+function calculateSubtotal() {
+    console.log('in calculateSubtotal function');
+    const priceArray = document.querySelectorAll('.order-form__price--text');
+    console.log('priceArray is', priceArray);
+    const numberOfPrices = document.getElementsByClassName('order-form__price--text').length;
+    console.log('numberOfPrices is', numberOfPrices);
+    const prices = [];
+    priceArray.forEach(price => {
+        const rowPrice = price.innerHTML;
+        console.log('rowPrice is', rowPrice);
+        // const prices = [];
+        prices.push(rowPrice);
+        console.log('prices is ', prices);
+    });
+
+    let sum = 0;
+    for (var i = 0; i < prices.length; i++) {
+        sum += prices[i];
+        console.log('sum is', sum);
+    }
+
+    // let newPrice = 0;
+    // prices.forEach(price => {
+    //     let newPrice = newPrice + price;
+    //     console.log('newPrice is ', newPrice);
+
+    // })
+
+
+
+
+
+
+}
+
 //Disable check boxes for dietary options that are not available on the current product
 function disableUnavailableOptions(className, availableOption, currentId) {
     const currentRowNumber = findRowNumber(currentId);
@@ -336,10 +373,14 @@ function updateDefaultOptionsText(duplicateAllergenInfo, currentId) {
     $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
 }
 
+
+//trigged by onchange on the Product field
 function updatePrice(currentId, rowNumber) {
+    console.log('in updatePrice function');
     let currentRowNumber = findRowNumber(currentId);
     let currentProduct = findSelectedProduct(currentId);
     getParentsOnlyProducts(products => {
         findCurrentBatchInfo(products, currentRowNumber, currentProduct);
+        calculateSubtotal();
     });
 }
