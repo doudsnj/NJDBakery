@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/src/nav/nav-bar.css">
-    <link rel="stylesheet" href="./order.css">
+    <link rel="stylesheet" href="./testorder.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/src/footer/footer.css">
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
@@ -226,13 +226,25 @@
                     </div>
                 </div>
                 <div class="add-row-section">
-                    <button type="button" onclick="addRow()" class="add-row__button">+</button>
-                    <span class="add-row__button--text input-label">Add more</span>
+                    <div class="order-form__bi-column order-form__bi-column--left">
+                        <button type="button" onclick="addRow()" class="add-row__button">+</button>
+                        <span class="add-row__button--text input-label">Add more</span>
+                    </div>
+                    <div class="order-form__bi-column order-form__bi-column--right">
+                        <div class="order-form__quad-column order-form__quad-column3"></div>
+                        <div class="order-form__quad-column order-form__quad-column4">
+                            <div class="order-form__subtotal-section">
+                                <label for="subtotal" class="input-label input-label__subtotal">(Sub-total)</label>
+                                <p class="order-form__subtotal--text generated disabled" rel="js-order-form__subtotal"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br>
-                <div class="order-form__remaining-fields"></div>
-                <div class="order-form__button-row">
-                    <button class="order-form__submit-button">submit</button>
+                <div class="order-form__remaining-fields">
+                    <div class="order-form__button-row">
+                        <button class="order-form__submit-button">submit</button>
+                    </div>
                 </div>
             </div>
             <span class="sugar-free-explanation">*Free from refined sugars. The product will likely contain a less

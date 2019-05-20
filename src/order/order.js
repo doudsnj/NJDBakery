@@ -91,6 +91,33 @@ function addRow() {
     }
 }
 
+//Updates the subtotal at the bottom of the form whenever the price of any row changes
+//Called by updatePrice() and removeRow()
+function calculateSubtotal() {
+    console.log('in calculateSubtotal function');
+    const priceArray = document.querySelectorAll('.order-form__price--text');
+    console.log('priceArray is', priceArray);
+    const numberOfPrices = document.getElementsByClassName('order-form__price--text').length;
+    console.log('numberOfPrices is', numberOfPrices);
+    const prices = [];
+    priceArray.forEach(price => {
+        const rowPrice = price.innerHTML;
+        console.log('rowPrice is', rowPrice);
+        // const prices = [];
+        prices.push(rowPrice);
+        console.log('prices is ', prices);
+    });
+
+    let sum = 0;
+    for (var i = 0; i < prices.length; i++) {
+        const priceString = prices[i].slice(1);
+        console.log('priceString is', priceString);
+        sum += +priceString;
+        console.log('sum is', sum);
+    }
+    $(`[rel='js-order-form__subtotal']`).html('$' + sum);
+}
+
 //Disable check boxes for dietary options that are not available on the current product
 function disableUnavailableOptions(className, availableOption, currentId) {
     const currentRowNumber = findRowNumber(currentId);
@@ -196,6 +223,7 @@ function removeRow(currentId) {
         const removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
         removeRowLabel.classList.add('noVisibility');
     }
+    calculateSubtotal();
 }
 
 //Reset Quantity field to default option when the Product selection changes, then recalculate the price. THe callback function is defined in the onchange in the html 
@@ -237,7 +265,6 @@ function setProductDropdown(products, dropdown) {
 function uncheckAllOptions(currentId) {
     const currentRowNumber = findRowNumber(currentId);
 
-    console.log('currentRowNumber from within uncheckAll Options', currentRowNumber);
     allergenInfo.forEach(allergenObject => {
         const neededClass = `.order-form__checkbox--${allergenObject.className}${currentRowNumber}`;
         console.log('neededClass', neededClass);
@@ -337,10 +364,14 @@ function updateDefaultOptionsText(duplicateAllergenInfo, currentId) {
     $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
 }
 
+
+//trigged by onchange on the Product field
 function updatePrice(currentId, rowNumber) {
+    console.log('in updatePrice function');
     let currentRowNumber = findRowNumber(currentId);
     let currentProduct = findSelectedProduct(currentId);
     getParentsOnlyProducts(products => {
         findCurrentBatchInfo(products, currentRowNumber, currentProduct);
+        calculateSubtotal();
     });
 }

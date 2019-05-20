@@ -229,7 +229,7 @@ button:focus {
     text-align: center;
 }
 
-.order-form__price--text {
+.order-form__price--text, .order-form__subtotal--text {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;   
     line-height: 50px;
@@ -398,7 +398,7 @@ button:focus {
         margin-left: 13.33%;
     }
 
-    .input-label__phone, .input-label__price {
+    .input-label__phone, .input-label__price, .input-label__subtotal {
         margin-left: 20%;
     }
     .input-label__servings {

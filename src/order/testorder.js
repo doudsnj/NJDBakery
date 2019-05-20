@@ -92,7 +92,7 @@ function addRow() {
 }
 
 //Updates the subtotal at the bottom of the form whenever the price of any row changes
-//Called updatePrice()
+//Called by updatePrice() and removeRow()
 function calculateSubtotal() {
     console.log('in calculateSubtotal function');
     const priceArray = document.querySelectorAll('.order-form__price--text');
@@ -110,22 +110,12 @@ function calculateSubtotal() {
 
     let sum = 0;
     for (var i = 0; i < prices.length; i++) {
-        sum += prices[i];
+        const priceString = prices[i].slice(1);
+        console.log('priceString is', priceString);
+        sum += +priceString;
         console.log('sum is', sum);
     }
-
-    // let newPrice = 0;
-    // prices.forEach(price => {
-    //     let newPrice = newPrice + price;
-    //     console.log('newPrice is ', newPrice);
-
-    // })
-
-
-
-
-
-
+    $(`[rel='js-order-form__subtotal']`).html('$' + sum);
 }
 
 //Disable check boxes for dietary options that are not available on the current product
@@ -233,6 +223,7 @@ function removeRow(currentId) {
         const removeRowLabel = document.getElementsByClassName('input-label__remove-row')[0];
         removeRowLabel.classList.add('noVisibility');
     }
+    calculateSubtotal();
 }
 
 //Reset Quantity field to default option when the Product selection changes, then recalculate the price. THe callback function is defined in the onchange in the html 
