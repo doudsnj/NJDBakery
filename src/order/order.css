@@ -77,6 +77,14 @@
 
 .remove-row__section--1 {
     background-color: #000;
+}
+
+.input-label__subtotal {
+    background-color: green;
+} 
+
+.order-form__subtotal--text {
+    background-color: peru;
 }*/
 /*END - use to show containers*/
 
@@ -229,7 +237,7 @@ button:focus {
     text-align: center;
 }
 
-.order-form__price--text, .order-form__subtotal--text {
+.order-form__price--text {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;   
     line-height: 50px;
@@ -237,9 +245,16 @@ button:focus {
     margin-right: 40%;
 }
 
+.order-form__subtotal--text {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;   
+    text-align: right;
+    margin-right: 40%;
+    float: right;
+}
+
 .order-form__checkbox {
     float: left;
-    /* height: 20px; */
     border: 1px solid #8b9e98;
     background-color: #ffffff;
     border-radius: 7.5px;
@@ -398,8 +413,18 @@ button:focus {
         margin-left: 13.33%;
     }
 
-    .input-label__phone, .input-label__price, .input-label__subtotal {
+    .input-label__phone, .input-label__price {
         margin-left: 20%;
+    }
+
+    .order-form__subtotal-section {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .input-label__subtotal {
+        margin-left: 20%;
+        float: left;
     }
     .input-label__servings {
         text-align: center;
