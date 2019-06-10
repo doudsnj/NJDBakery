@@ -253,7 +253,7 @@ function setProductDropdown(products, dropdown) {
     })
 }
 
-//TODO: FINISH - when a new product is chosen in a row that already had products chosen, uncheck any dietary options the user checked in that row
+//When a new product is chosen in a row that already had products chosen, uncheck any dietary options the user checked in that row
 function uncheckAllOptions(currentId) {
     const currentRowNumber = findRowNumber(currentId);
 
@@ -262,6 +262,7 @@ function uncheckAllOptions(currentId) {
         $(neededClass).prop('checked', false);
     });
 }
+
 
 function updateAllergenInfoArray(products, allergenInfo, currentId, updateDefaultOptionsText) {
     let currentProduct = findSelectedProduct(currentId);
@@ -355,7 +356,7 @@ function updateDefaultOptionsText(duplicateAllergenInfo, currentId) {
     $(`[rel='js-dietary-options__defaults-text${currentRowNumber}']`).html(defaultOptionsText);
 }
 
-//trigged by onchange on the Product field
+//Trigged by onchange on the Product field
 function updatePrice(currentId, rowNumber) {
     let currentRowNumber = findRowNumber(currentId);
     let currentProduct = findSelectedProduct(currentId);
@@ -363,4 +364,18 @@ function updatePrice(currentId, rowNumber) {
         findCurrentBatchInfo(products, currentRowNumber, currentProduct);
         calculateSubtotal();
     });
+}
+
+//Triggered by onchange on the email field
+function validateEmailAddress() {
+    const emailInput = document.getElementById("email").value;
+    console.log('emailInput', emailInput);
+    console.log('in validateEmailAddress function');
+    if (emailInput.match(/\S+@\S+\.\S+/)) {
+        document.getElementById("email").className = document.getElementById("email").className.replace(" error", "");
+    } else {
+        document.getElementById("email").className = document.getElementById("email").className + " error";
+        alert('Please enter a valid email address.');
+
+    }
 }
