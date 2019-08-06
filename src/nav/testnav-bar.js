@@ -9,35 +9,35 @@ $(function () {
 
 //set nav attributes
 const navLinks = [{
-    class: 'index',
-    href: '/src/index/index.html',
-    linkText: 'HOME'
-},
-{
-    class: 'Products',
-    href: '/src/products/products.html',
-    linkText: 'PRODUCTS'
-},
-{
-    class: 'order',
-    href: '/src/order/order.html',
-    linkText: 'ORDER'
-},
-{
-    class: 'MeetNadine',
-    href: '/src/meet-nadine/meet-nadine.html',
-    linkText: 'MEET NADINE'
-},
-{
-    class: 'IngredientInfo',
-    href: '/src/ingredients/ingredients.html',
-    linkText: 'INGREDIENT INFO'
-},
-{
-    class: 'Contact',
-    href: '/src/contact/contact.html',
-    linkText: 'CONTACT'
-},
+        class: 'index',
+        href: '/src/index/index.html',
+        linkText: 'HOME'
+    },
+    {
+        class: 'Products',
+        href: '/src/products/products.html',
+        linkText: 'PRODUCTS'
+    },
+    {
+        class: 'order',
+        href: '/src/order/order.html',
+        linkText: 'ORDER'
+    },
+    {
+        class: 'MeetNadine',
+        href: '/src/meet-nadine/meet-nadine.html',
+        linkText: 'MEET NADINE'
+    },
+    {
+        class: 'IngredientInfo',
+        href: '/src/ingredients/ingredients.html',
+        linkText: 'INGREDIENT INFO'
+    },
+    {
+        class: 'Contact',
+        href: '/src/contact/contact.html',
+        linkText: 'CONTACT'
+    },
 ];
 
 //create nav links, and add class to current page's nav link for CSS needs
@@ -51,4 +51,13 @@ function generateNavLinks() {
             $(`.nav-menu__link--${li.class}`).addClass('nav-menu__link--currentPage disabled');
         }
     })
+}
+
+function toggleNav() {
+    let nav = document.getElementById('reusable-nav');
+    if (nav.style.display === 'none') {
+        nav.style.display = 'block';
+    } else {
+        nav.style.display = 'none';
+    }
 }

@@ -29,13 +29,25 @@
 .category-row__quad-column4 {
     background-color: purple;
 }  */
-/*END - use to show containers*/
+ /*END - use to show containers*/
+
+/*
+*
+* Viewport Agnostic
+*
+*
+*/
+
+img, embed, object, video {
+    Max-width: 100%;
+}
 
 
-
- .logo-div__logo{
+.logo-div__logo{
     width: 25%;
 }
+
+
 .main-image__label {
     background-color: #8b9e98;
     font-family: 'Indie Flower', cursive;
@@ -52,11 +64,12 @@
     padding-bottom: 10px;
     position: relative;
     z-index: 1;   
-   }
+}
 
 .main-image__label--left {
     margin-right: 15%;
 }
+
 .category-image__label {
     background-color: #8b9e98;
     font-family: 'Indie Flower', cursive;

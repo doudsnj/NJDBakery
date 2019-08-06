@@ -1,0 +1,142 @@
+/*container backgrounds*/
+/*
+.header {
+    background-color: #ce9a51;
+}
+
+.logo-div {
+    background-color: #8b9e98;
+}
+.logo-div__logo{
+    background-color: bisque;
+}
+.header-buttons{
+    background-color: aqua;
+}
+*/
+
+body, 
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+img, embed, object, video {
+    max-width: 100%;
+}
+
+.logo-div__logo{
+    width: 25%;
+}
+
+.search-icon {
+    position: relative;
+    float: right;
+    margin: 8px;
+    border: none;
+    background-color: transparent;
+    color: #898989;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-bar__icon {
+    position: relative;
+    float: left;
+    margin: 8px;
+    border: none;
+    background-color: transparent;
+    color: #898989;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-menu__link {
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.nav-menu__link:hover, .nav-menu__link:focus {
+    color: #8b9e98;
+}
+
+.nav-menu__link:active {
+    color: #ce9a51;
+}
+
+.nav-menu__link--currentPage {
+    color: #ce9a51;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+
+  
+
+
+
+@media only screen and (max-width: 480px) {
+    .header{
+        display: flex;
+        box-sizing: border-box;
+    }
+    
+    .logo-div {
+        width: 60%;
+    }
+
+    .logo-div__logo {
+        width: 95%;
+        float: left;
+        margin: 4px;
+    }
+
+    .header-buttons {
+        font-size: 24px;
+        display: flex;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search-container {
+        width: 50%;
+    }
+
+    .nav-icon__container {
+        width: 50%;
+    }
+
+    .reusable-nav {
+        width: 100%;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
+    .nav-menu {
+        width: 100%;
+        background-color: #898989;
+    }
+
+    .nav-menu__link {
+        color: white;
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        border-bottom: 1px solid #8b9e98;
+    }
+}
+

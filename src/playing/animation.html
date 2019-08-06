@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+    body {
+        background-color: #FFF;
+        margin: 30px;
+        margin-top: 10px;
+    }
+
+    #contentContainer {
+        width: 550px;
+        height: 350px;
+        border: 5px black solid;
+        overflow: hidden;
+        background-color: #FFFF00;
+    }
+
+    #thing {
+        position: relative;
+        left: 50px;
+        top: 25px;
+    }
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/src/playing/animation.css">
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/src/playing/animation.js"></script> -->
+</head>
+<body>
+   <div id="contentContainer" >
+    <img id="thing" src="http://www.kirupa.com/html5/images/donut.png" height = "300" width="300">
+    </div>
+</body>
+<script>
+    let theThing = document.querySelector("#thing");
+    let currentPosition = 0;
+
+    function moveThing() {
+        currentPosition += 5;
+        //optimally would use translate3d - using style for simplicity's sake here
+        theThing.style.left = currentPosition + "px";
+        if (Math.abs(currentPosition) >= 900) {
+            currentPosition = -500;
+        }
+        requestAnimationFrame(moveThing);
+    }
+    moveThing();
+
+</script>
+</html>

@@ -1,0 +1,82 @@
+
+@media only screen and (max-width: 599px) { 
+    .logo-div {
+        text-align: center;
+    }
+
+    .logo-div__logo {
+        display: inline-block;
+        padding: 30px;
+    }
+    
+    /* .nav-bar__icon {
+        display:none;
+    } */
+
+    .nav-menu {
+        text-align: center;
+    }
+
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+
+
+    .nav-menu__link {
+         display: inline-block;
+         padding: 30px;
+    }
+
+    .reusable-nav {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 2%;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
+
+    /*big grouping - start - to get line to show on either side of nav  - start */
+   
+    .nav-menu {
+        position: relative;
+        font-size: 100%;
+        z-index: 1;
+        overflow: hidden;
+        text-align: center;
+    }
+    .nav-menu:before, .nav-menu:after {
+        position: absolute;
+        top: 51%;
+        overflow: hidden;
+        width: 50%;
+        height: 1px;
+        content: '\a0';
+        background-color: #8b9e98;
+    }
+    .nav-menu:before {
+        /*this moves the nav line farther to the left of the Home link.
+        50 makes the left and right lines equidistant from their nearest links. 
+        Doing the reverse on the right does not have the same effect.
+        TO DO: Find a way to add 5% more to each side*/
+        margin-left: -50%;
+        text-align: right;
+    }
+
+    /*This does not work
+    .nav-menu:after {
+        margin-right: -55%;
+        text-align: left;
+    }*/
+
+
+
+
+
+      /*big grouping - end - to get line to show on either side of nav  - end */
+
+
+}

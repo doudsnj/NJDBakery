@@ -88,6 +88,19 @@
 }*/
 /*END - use to show containers*/
 
+
+/*
+*
+*
+* Size Agnostic
+*
+*
+*/
+
+Img, embed, object, video {
+    Max-width: 100%;
+}
+
 .logo-div__logo{
     width: 25%;
 }
@@ -550,50 +563,6 @@ button:focus {
         pointer-events: none;
     }
 
-    /*.order-form__quantity {
-        width: 75%;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
-        background-repeat: no-repeat;
-        background-position-x: 100%;
-        background-position-y: 2.5px;
-    } */
-
-    /* .order-form__quantity {
-        width: 75%;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
-        background-repeat: no-repeat;
-        background-position-x: 100%;
-        background-position-y: 2.5px;
-    } */
-
-    /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='#8b9e98' height='48' viewBox='0 0 24 24' width='48' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");*/
-
-    /* select {
-        color: black;
-        font-size: 18px;
-        width: 50%;
-        margin-left: 25%;
-        margin-top: 50px;
-        padding: 20px 0 20px 10px;
-        border: 0 !important;
-        /* needed */
-        /* -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none; */
-        /* SVG background image */
-        /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat;
-        background-size: 12px;
-        background-position: calc(100% - 20px) center;
-        background-repeat: no-repeat;
-        background-color: #efefef;
-    }  */
     
 
     .order-form__submit-button {
