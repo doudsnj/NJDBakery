@@ -28,8 +28,10 @@ img, embed, object, video {
     max-width: 100%;
 }
 
-.logo-div__logo{
-    width: 25%;
+.hide {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
 }
 
 .search-icon {
@@ -53,34 +55,6 @@ img, embed, object, video {
     top: 50%;
     transform: translateY(-50%);
 }
-
-.nav-menu__link {
-    font-family: 'Open Sans', sans-serif;
-    color: #383838;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-.nav-menu__link:hover, .nav-menu__link:focus {
-    color: #8b9e98;
-}
-
-.nav-menu__link:active {
-    color: #ce9a51;
-}
-
-.nav-menu__link--currentPage {
-    color: #ce9a51;
-}
-
-.disabled {
-    pointer-events: none;
-}
-
-
-  
-
 
 
 @media only screen and (max-width: 480px) {
@@ -115,11 +89,8 @@ img, embed, object, video {
         width: 50%;
     }
 
-    .reusable-nav {
-        width: 100%;
-    }
 
-    .nav-bar {
+    #reusable-nav {
         width: 100%;
     }
 
@@ -128,15 +99,476 @@ img, embed, object, video {
         background-color: #898989;
     }
 
+    .close-container {
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+    .close-nav__icon {
+        width: 100%;
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        background: #898989;
+        border: none;
+        padding-right: .5em;
+    }
+
+    .close-nav__icon:hover {
+        color: #ce9a51;
+    }
+
     .nav-menu__link {
         color: white;
         width: 100%;
         display: block;
         text-align: center;
+        text-decoration: none;
         font-size: 24px;
         padding-top: .5em;
         padding-bottom: .5em;
         border-bottom: 1px solid #8b9e98;
     }
+
+    .nav-menu__link:hover {
+        color: #8b9e98;
+    }
+    
+    .nav-menu__link:active {
+        color: #ce9a51;
+    }
+    
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+    
+    .disabled {
+        pointer-events: none;
+    }
 }
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+    .header{
+        display: flex;
+        box-sizing: border-box;
+    }
+    
+    .logo-div {
+        width: 60%;
+    }
+
+    .logo-div__logo {
+        width: 95%;
+        float: left;
+        margin: 4px;
+    }
+
+    .header-buttons {
+        font-size: 24px;
+        display: flex;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search-container {
+        width: 75%;
+    }
+
+    .nav-icon__container {
+        width: 25%;
+    }
+
+    #reusable-nav {
+        width: 75%;
+        float: right;
+    }
+
+    .nav-menu {
+        width: 100%;
+        background-color: #898989;
+    }
+
+    .close-container{
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+    .close-nav__icon{
+        width: 100%;
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        background: #898989;
+        border: none;
+        padding-right: .5em;
+    }
+
+    .nav-menu__link {
+        color: white;
+        width: 100%;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 24px;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px){
+    .header{
+        display: flex;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    
+    .logo-div {
+        width: 75%;
+        
+    }
+
+    .logo-div__logo {
+        width: 75%;
+        float: right;
+        margin: 4px;
+        
+    }
+
+    .header-buttons {
+        font-size: 24px;
+        display: flex;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search-container {
+        width: 75%;
+    }
+
+    .nav-icon__container {
+        width: 25%;
+    }
+
+    #reusable-nav {
+        width: 33%;
+        float: right;
+    }
+
+    .nav-menu {
+        width: 100%;
+        background-color: #898989;
+    }
+
+    .close-container{
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+    .close-nav__icon{
+        width: 100%;
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        background: #898989;
+        border: none;
+        padding-right: .5em;
+    }
+
+    .nav-menu__link {
+        color: white;
+        width: 100%;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 24px;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+    .nav-menu__link:hover, .nav-menu__link:active {
+        color: #8b9e98;
+    }
+    
+    /* .nav-menu__link:active {
+        color: #ce9a51;
+    } */
+    
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+    
+    .disabled {
+        pointer-events: none;
+    }
+
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px){
+    .header{
+        display: flex;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    
+    .logo-div {
+        width: 100%;
+        text-align: center;
+    
+    }
+
+    .logo-div__logo {
+        width: 25%;
+        display: inline-block;
+        padding: 30px;
+    }
+
+    .header-buttons {
+        font-size: 24px;
+        display: none;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+    } 
+
+    .search-container {
+        width: 75%;
+    }
+
+    .nav-icon__container {
+        width: 25%;
+    } 
+
+    #reusable-nav {
+        width: 100%;
+        display: block;
+        float: right;
+    }   
+
+    .close-container{
+        width: 100%;
+        display: none;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+
+    .nav-menu {
+        text-align: center;
+    }
+
+    .nav-menu__link {
+        font-family: 'Open Sans', sans-serif;
+        color: #383838;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+    }
+
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+
+
+    .nav-menu__link {
+        display: inline-block;
+        padding: 30px;
+    }
+
+    .nav-menu__link:hover {
+        color: #8b9e98;
+    }
+    
+    .nav-menu__link:active {
+        color: #ce9a51;
+    }
+    
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+    
+    .disabled {
+        pointer-events: none;
+    }
+
+    .reusable-nav {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 2%;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
+
+    /*big grouping - start - to get line to show on either side of nav  - start */
+   
+    .nav-menu {
+        position: relative;
+        font-size: 100%;
+        z-index: 1;
+        overflow: hidden;
+        text-align: center;
+    }
+    .nav-menu:before, .nav-menu:after {
+        position: absolute;
+        top: 51%;
+        overflow: hidden;
+        width: 50%;
+        height: 1px;
+        content: '\a0';
+        background-color: #8b9e98;
+    }
+    .nav-menu:before {
+        /*this moves the nav line farther to the left of the Home link.
+        50 makes the left and right lines equidistant from their nearest links. 
+        Doing the reverse on the right does not have the same effect.
+        TO DO: Find a way to add 5% more to each side*/
+        margin-left: -50%;
+        text-align: right;
+    }
+
+    /*This does not work
+    .nav-menu:after {
+        margin-right: -55%;
+        text-align: left;
+    }*/
+
+
+    
+
+}
+
+@media only screen and (min-width: 1201px){
+    .header{
+        display: flex;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    
+    .logo-div {
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo-div__logo {
+        width: 25%;
+        display: inline-block;
+        padding: 30px;
+    }
+
+    .header-buttons {
+        font-size: 24px;
+        display: none;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+    } 
+
+    .search-container {
+        width: 75%;
+    }
+
+    .nav-icon__container {
+        width: 25%;
+    } 
+
+    .close-container{
+        width: 100%;
+        display: none;
+        border-bottom: 1px solid #8b9e98;
+    }
+
+    .nav-menu {
+        text-align: center;
+    }
+
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+
+    .nav-menu__link {
+        display: inline-block;
+        padding: 30px;
+    }
+
+    .reusable-nav {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 2%;
+    }
+
+    .nav-bar {
+        width: 100%;
+    }
+
+    /*big grouping - start - to get line to show on either side of nav  - start */
+   
+    .nav-menu {
+        position: relative;
+        font-size: 100%;
+        z-index: 1;
+        overflow: hidden;
+        text-align: center;
+    }
+    .nav-menu:before, .nav-menu:after {
+        position: absolute;
+        top: 51%;
+        overflow: hidden;
+        width: 50%;
+        height: 1px;
+        content: '\a0';
+        background-color: #8b9e98;
+    }
+    .nav-menu:before {
+        /*this moves the nav line farther to the left of the Home link.
+        50 makes the left and right lines equidistant from their nearest links. 
+        Doing the reverse on the right does not have the same effect.
+        TO DO: Find a way to add 5% more to each side*/
+        margin-left: -50%;
+        text-align: right;
+    }
+
+    .nav-menu__link {
+        font-family: 'Open Sans', sans-serif;
+        color: #383838;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+    }
+
+    /*This does not work
+    .nav-menu:after {
+        margin-right: -55%;
+        text-align: left;
+    }*/
+
+    .nav-menu__link:hover {
+        color: #8b9e98;
+    }
+    
+    .nav-menu__link:active {
+        color: #ce9a51;
+    }
+    
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+    
+    .disabled {
+        pointer-events: none;
+    }
+
+}
+
+
 

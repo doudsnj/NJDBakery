@@ -1,9 +1,10 @@
 //create nav elements
 $(function () {
-    $("[rel='js-logo-div']").after('<div class="reusable-nav" rel="js-reusable-nav"></div>');
+    $("[rel='js-header']").after('<div id="reusable-nav" class="reusable-nav" rel="js-reusable-nav"></div>');
     $("[rel='js-reusable-nav']").append('<div class="nav-bar" rel="js-nav-bar"></div>');
-    $("[rel='js-nav-bar']").append('<button onclick="showNav()" class="nav-bar__icon" rel="js-nav-bar__icon"><i class="fa fa-bars"></i></button>')
-    $("[rel='js-nav-bar__icon']").after('<div class="nav-menu" rel="js-nav-menu"></div>');
+    $("[rel='js-nav-bar']").append('<div class="nav-menu" rel="js-nav-menu"></div>');
+    $("[rel='js-nav-menu']").append('<div class="close-container"><button class="close-nav__icon" onclick="hideNav()"><i class="fas fa-times"></i></button></div>');
+
     generateNavLinks();
 });
 
@@ -53,11 +54,12 @@ function generateNavLinks() {
     })
 }
 
-function toggleNav() {
+//when the x is clicked on the mobile nav, hide the nav
+function hideNav() {
     let nav = document.getElementById('reusable-nav');
-    if (nav.style.display === 'none') {
-        nav.style.display = 'block';
+    if ($(nav).hasClass('hide')) {
+        $(nav).removeClass('hide');
     } else {
-        nav.style.display = 'none';
+        $(nav).addClass('hide');
     }
 }

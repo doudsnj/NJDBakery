@@ -1,4 +1,58 @@
+/*container backgrounds*/
+/*
+.header {
+    background-color: #ce9a51;
+}
 
+.logo-div {
+    background-color: #8b9e98;
+}
+.logo-div__logo{
+    background-color: bisque;
+}
+.header-buttons{
+    background-color: aqua;
+}
+*/
+
+body, 
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+img, embed, object, video {
+    max-width: 100%;
+}
+
+.logo-div__logo{
+    width: 25%;
+}
+
+.search-icon {
+    position: relative;
+    float: right;
+    margin: 8px;
+    border: none;
+    background-color: transparent;
+    color: #898989;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-bar__icon {
+    position: relative;
+    float: left;
+    margin: 8px;
+    border: none;
+    background-color: transparent;
+    color: #898989;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 .nav-menu__link {
     font-family: 'Open Sans', sans-serif;
@@ -6,9 +60,9 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 13px;
-    }
+}
 
-.nav-menu__link:hover, .nav-menu__link:focus {
+.nav-menu__link:hover,.nav-menu__link:focus {
     color: #8b9e98;
 }
 
@@ -23,90 +77,84 @@
 .disabled {
     pointer-events: none;
 }
+
+
   
 
 
 
-
-
-@media only screen and (min-width: 600px) { 
+@media only screen and (max-width: 480px) {
+    .header{
+        display: flex;
+        box-sizing: border-box;
+    }
+    
     .logo-div {
-        text-align: center;
+        width: 60%;
     }
 
     .logo-div__logo {
-        display: inline-block;
-        padding: 30px;
-    }
-    
-    .nav-bar__icon {
-        display:none;
+        width: 95%;
+        float: left;
+        margin: 4px;
     }
 
-    .nav-menu {
-        text-align: center;
+    .header-buttons {
+        font-size: 24px;
+        display: flex;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .nav-menu__link--currentPage {
-        color: #ce9a51;
+    .search-container {
+        width: 50%;
+    }
+
+    .nav-icon__container {
+        width: 50%;
     }
 
 
-    .nav-menu__link {
-         display: inline-block;
-         padding: 30px;
-    }
-
-    .reusable-nav {
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-bottom: 2%;
+    #reusable-nav {
+        width: 100%;
+        display: none;
     }
 
     .nav-bar {
         width: 100%;
     }
 
-
-    /*big grouping - start - to get line to show on either side of nav  - start */
-   
     .nav-menu {
-        position: relative;
-        font-size: 100%;
-        z-index: 1;
-        overflow: hidden;
-        text-align: center;
+        width: 100%;
+        background-color: #898989;
     }
-    .nav-menu:before, .nav-menu:after {
-        position: absolute;
-        top: 51%;
-        overflow: hidden;
-        width: 50%;
-        height: 1px;
-        content: '\a0';
-        background-color: #8b9e98;
+
+    .close-container{
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #8b9e98;
     }
-    .nav-menu:before {
-        /*this moves the nav line farther to the left of the Home link.
-        50 makes the left and right lines equidistant from their nearest links. 
-        Doing the reverse on the right does not have the same effect.
-        TO DO: Find a way to add 5% more to each side*/
-        margin-left: -50%;
+
+    .close-nav__icon{
+        width: 100%;
         text-align: right;
+        font-size: 48px;
+        color: white;
+        background: #898989;
+        border: none;
+        padding-right: .5em;
     }
 
-    /*This does not work
-    .nav-menu:after {
-        margin-right: -55%;
-        text-align: left;
-    }*/
-
-
-
-
-
-      /*big grouping - end - to get line to show on either side of nav  - end */
-
-
+    .nav-menu__link {
+        color: white;
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        border-bottom: 1px solid #8b9e98;
+    }
 }
+
