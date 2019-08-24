@@ -1,11 +1,15 @@
 //create nav elements
 $(function () {
-    $("[rel='js-header']").after('<div id="reusable-nav" class="reusable-nav" rel="js-reusable-nav"></div>');
+    $("[rel='js-header']").after('<div id="reusable-nav" class="reusable-nav hide" rel="js-reusable-nav"></div>');
     $("[rel='js-reusable-nav']").append('<div class="nav-bar" rel="js-nav-bar"></div>');
     $("[rel='js-nav-bar']").append('<div class="nav-menu" rel="js-nav-menu"></div>');
     $("[rel='js-nav-menu']").append('<div class="close-container"><button class="close-nav__icon" onclick="hideNav()"><i class="fas fa-times"></i></button></div>');
+    $("[rel='js-header']").after('<div id="search-bar__container" onclick="hideSearch()" class="search-bar hide" rel="js-search-bar"></div>');
+    $("[rel='js-search-bar']").append('<input type="text" name="search-input" placeholder="Search..." class="search-input">');
+    $("[rel='js-search-bar']").append('<button class="close-search__icon"><i class="fas fa-times"></i></button>');
 
     generateNavLinks();
+    showNavForLargeViewports();
 });
 
 //set nav attributes
@@ -63,3 +67,30 @@ function hideNav() {
         $(nav).addClass('hide');
     }
 }
+
+//when the x is clicked on the search bar, hide the search bar
+function hideSearch() {
+    let nav = document.getElementById('search-bar__container');
+    if ($(nav).hasClass('hide')) {
+        $(nav).removeClass('hide');
+    } else {
+        $(nav).addClass('hide');
+    }
+}
+
+function showNavForLargeViewports() {
+    var viewport = document.body.clientWidth;
+    let nav = document.getElementById('reusable-nav');
+    if (viewport >= 992) {
+
+        if ($(nav).hasClass('hide')) {
+            $(nav).removeClass('hide');
+        }
+    } else {
+        $(nav).addClass('hide');
+    }
+};
+
+$(window).resize(function () {
+    showNavForLargeViewports();
+});
