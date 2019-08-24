@@ -1,9 +1,12 @@
 //create nav elements
 $(function () {
-    $("[rel='js-header']").after('<div id="reusable-nav" class="reusable-nav" rel="js-reusable-nav"></div>');
+    $("[rel='js-header']").after('<div id="reusable-nav" class="reusable-nav hide" rel="js-reusable-nav"></div>');
     $("[rel='js-reusable-nav']").append('<div class="nav-bar" rel="js-nav-bar"></div>');
     $("[rel='js-nav-bar']").append('<div class="nav-menu" rel="js-nav-menu"></div>');
     $("[rel='js-nav-menu']").append('<div class="close-container"><button class="close-nav__icon" onclick="hideNav()"><i class="fas fa-times"></i></button></div>');
+    $("[rel='js-header']").after('<div id="search-bar__container" class="search-bar" rel="js-search-bar"></div>');
+    $("[rel='js-search-bar']").append('<input type="text" name="search-input" placeholder="Search..." class="search-input">');
+    $("[rel='js-search-bar']").append('<button class="close-search__icon"><i class="fas fa-times"></i></button>');
 
     generateNavLinks();
 });

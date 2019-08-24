@@ -34,6 +34,10 @@ img, embed, object, video {
     left: -9999px !important;
 }
 
+.search-container{
+    width: 66%;
+}
+
 .search-icon {
     position: relative;
     float: right;
@@ -45,10 +49,15 @@ img, embed, object, video {
     transform: translateY(-50%);
 }
 
+.nav-icon__container{
+    width: 33%;
+}
+
 .nav-bar__icon {
     position: relative;
-    float: left;
+    float: right;
     margin: 8px;
+    padding-right: .75em;
     border: none;
     background-color: transparent;
     color: #898989;
@@ -56,11 +65,34 @@ img, embed, object, video {
     transform: translateY(-50%);
 }
 
+#search-bar__container {
+    width: 100%;
+    background-color: #8e744f;
+    display: block;
+}
+
+.search-input {
+    width: 70%;
+    height: 50px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    border: 1px solid #8b9e98;
+    border-radius: 7.5px;
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+}
+
 
 @media only screen and (max-width: 480px) {
     .header{
         display: flex;
         box-sizing: border-box;
+        margin-top: 25px;
+        margin-bottom: 25px;
     }
     
     .logo-div {
@@ -70,7 +102,7 @@ img, embed, object, video {
     .logo-div__logo {
         width: 95%;
         float: left;
-        margin: 4px;
+        margin-left: 25px;
     }
 
     .header-buttons {
@@ -80,15 +112,6 @@ img, embed, object, video {
         margin-left: auto;
         margin-right: auto;
     }
-
-    .search-container {
-        width: 50%;
-    }
-
-    .nav-icon__container {
-        width: 50%;
-    }
-
 
     #reusable-nav {
         width: 100%;
@@ -105,14 +128,33 @@ img, embed, object, video {
         border-bottom: 1px solid #8b9e98;
     }
 
-    .close-nav__icon {
-        width: 100%;
+    /* .close-icon {
         text-align: right;
         font-size: 48px;
         color: white;
-        background: #898989;
         border: none;
         padding-right: .5em;
+    } */
+
+    .close-nav__icon {
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        border: none;
+        padding-right: .5em;
+        width: 100%;
+        background: #898989;
+    }
+
+    .close-search__icon {
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        border: none;
+        padding-right: .5em;
+        float: right;
+        line-height: 1.7;
+        background-color: #8e744f;
     }
 
     .close-nav__icon:hover {
@@ -152,6 +194,8 @@ img, embed, object, video {
     .header{
         display: flex;
         box-sizing: border-box;
+        margin-top: 25px;
+        margin-bottom: 25px;
     }
     
     .logo-div {
@@ -161,7 +205,7 @@ img, embed, object, video {
     .logo-div__logo {
         width: 95%;
         float: left;
-        margin: 4px;
+        margin-left: 25px;
     }
 
     .header-buttons {
@@ -182,7 +226,8 @@ img, embed, object, video {
 
     #reusable-nav {
         width: 75%;
-        float: right;
+        margin-left: 25%;
+        /* float: right;  - this causes the close nav x on the nav to not work. why?*/
     }
 
     .nav-menu {
@@ -196,14 +241,29 @@ img, embed, object, video {
         border-bottom: 1px solid #8b9e98;
     }
 
-    .close-nav__icon{
-        width: 100%;
+    .close-nav__icon {
         text-align: right;
         font-size: 48px;
         color: white;
-        background: #898989;
         border: none;
         padding-right: .5em;
+        width: 100%;
+        background: #898989;
+    }
+
+    .close-search__icon {
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        border: none;
+        padding-right: .5em;
+        float: right;
+        line-height: 1.7;
+        background-color: #8e744f;
+    }
+
+    .close-nav__icon:hover {
+        color: #ce9a51;
     }
 
     .nav-menu__link {
@@ -218,13 +278,30 @@ img, embed, object, video {
         border-bottom: 1px solid #8b9e98;
     }
 
+    .nav-menu__link:hover {
+        color: #8b9e98;
+    }
+    
+    .nav-menu__link:active {
+        color: #ce9a51;
+    }
+    
+    .nav-menu__link--currentPage {
+        color: #ce9a51;
+    }
+    
+    .disabled {
+        pointer-events: none;
+    }
+
 }
 
 @media only screen and (min-width: 769px) and (max-width: 992px){
     .header{
         display: flex;
         box-sizing: border-box;
-        margin-top: 10px;
+        margin-top: 25px;
+        margin-bottom: 25px;
     }
     
     .logo-div {
@@ -233,8 +310,8 @@ img, embed, object, video {
 
     .logo-div__logo {
         width: 75%;
-        float: right;
-        margin: 4px;
+        float: left;
+        margin-left: 25px;
     }
 
     .header-buttons {
@@ -245,13 +322,6 @@ img, embed, object, video {
         margin-right: auto;
     }
 
-    .search-container {
-        width: 75%;
-    }
-
-    .nav-icon__container {
-        width: 25%;
-    }
 
     #reusable-nav {
         width: 33%;
@@ -271,15 +341,45 @@ img, embed, object, video {
         border-bottom: 1px solid #8b9e98;
     }
 
-    .close-nav__icon{
-        width: 100%;
+    .close-nav__icon {
         text-align: right;
         font-size: 48px;
         color: white;
+        border: none;
+        padding-right: .5em;
+        width: 100%;
         background: #898989;
+    }
+
+    .close-search__icon {
+        text-align: right;
+        font-size: 48px;
+        color: white;
+        border: none;
+        padding-right: .5em;
+        float: right;
+        line-height: 1.7;
+        background-color: #8e744f;
+    }
+
+    /* .close-icon {
+        text-align: right;
+        font-size: 48px;
+        color: white;
         border: none;
         padding-right: .5em;
     }
+
+    .close-nav__icon {
+        width: 100%;
+        background: #898989;
+    }
+
+    .close-search__icon {
+        float: right;
+        line-height: 1.7;
+        background-color: #8e744f;
+    } */
 
     .nav-menu__link {
         color: white;
@@ -321,7 +421,6 @@ img, embed, object, video {
     .logo-div {
         width: 100%;
         text-align: center;
-    
     }
 
     .logo-div__logo {
@@ -336,14 +435,6 @@ img, embed, object, video {
         width: 25%;
         margin-left: auto;
         margin-right: auto;
-    } 
-
-    .search-container {
-        width: 75%;
-    }
-
-    .nav-icon__container {
-        width: 25%;
     } 
 
     .close-container{

@@ -75,56 +75,6 @@ img, embed, object, video {
     border-top: 1px solid #ce9a51;
     border-bottom: 1px solid #ce9a51
 }
-/*
-*
-*End - applies to all sizes*/
-
-/* .main-image__label {
-    background-color: #8b9e98;
-    font-family: 'Indie Flower', cursive;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    width: 15%;
-    float: right;
-    margin-top: -74.5%;
-    margin-right: 10%;
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    z-index: 1;   
-}
-
-.main-image__label--left {
-    margin-right: 15%;
-}
-.category-image__label {
-    background-color: #8b9e98;
-    font-family: 'Indie Flower', cursive;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;    
-    width: 30%;
-    float: right;
-    margin-top: -73.5%;
-    margin-right: 10%;
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    z-index: 1;   
-}
-
-.category-image__label--one {
-    margin-right: 15%;
-}
-
-.category-image__label--two {
-    margin-right: 15%;
-} */
 
 .site-explanation__text {
     text-align: center;
@@ -133,15 +83,11 @@ img, embed, object, video {
     text-decoration: none;
 }
 
-
-
-
 @media only screen and (max-width: 480px){
     .main-image-row {
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
-   }
+        width: 100%;
+        position: relative;
+    }
 
     .main-image-row__column--right {
         /* TODO: Update to add hide class with javascript?  */
@@ -159,10 +105,10 @@ img, embed, object, video {
         font-size: 16px;
         line-height: 1.5;
         width: 100%;
-        margin-top: -10%;
         padding-top: 10px;
         padding-bottom: 10px;
-        position: relative;
+        position: absolute;
+        bottom: 0px;
         z-index: 1; 
     }  
 
@@ -196,7 +142,7 @@ img, embed, object, video {
         margin-right: 5%;
         display: inline-block;
         position: relative;
-   }
+    }
 
    .category-row {
         width: 100%;
@@ -243,9 +189,10 @@ img, embed, object, video {
 
 @media only screen and (min-width: 481px) and (max-width: 768px){
     .main-image-row {
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        width: 100%;
+        /*position relative is needed to have the label show where it's supposed to
+        but causes the nav to not work...?)*/
+        position: relative;
     }
 
     .main-image-row__column--right {
@@ -264,10 +211,10 @@ img, embed, object, video {
         font-size: 16px;
         line-height: 1.5;
         width: 100%;
-        margin-top: -10%;
         padding-top: 10px;
         padding-bottom: 10px;
-        position: relative;
+        position: absolute;
+        bottom: 0px;
         z-index: 1; 
     }  
 
@@ -310,8 +257,8 @@ img, embed, object, video {
     .category__bi-column {
         width: 100%; 
         display: inline-block;
+        /* position: relative; */
     }
-
 
     .category-row__column{
         width: 100%;
@@ -348,9 +295,8 @@ img, embed, object, video {
 
 @media only screen and (min-width: 769px) and (max-width: 992px){
     .main-image-row {
-        width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        width: 100%;
+        position: relative;
     }
 
     .main-image-row__column--right {
@@ -369,10 +315,10 @@ img, embed, object, video {
         font-size: 16px;
         line-height: 1.5;
         width: 100%;
-        margin-top: -10%;
         padding-top: 10px;
         padding-bottom: 10px;
-        position: relative;
+        position: absolute;
+        bottom: 0px;
         z-index: 1; 
     }  
 
@@ -500,12 +446,13 @@ img, embed, object, video {
         color: #ffffff;
         text-align: center;
         text-decoration: none;
+        white-space: nowrap;
         width: 15%;
         float: right;
-        margin-top: -74.5%;
+        margin-top: -76.5%;
         margin-right: 10%;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 10px;
+        padding-left: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
         position: relative;
@@ -525,13 +472,14 @@ img, embed, object, video {
         font-family: 'Indie Flower', cursive;
         color: #ffffff;
         text-align: center;
-        text-decoration: none;    
-        width: 30%;
+        text-decoration: none;   
+         
+        /* width: 30%; */
         float: right;
         margin-top: -73.5%;
         margin-right: 10%;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 10px;
+        padding-left: 10px;
         padding-top: 10px;
         padding-bottom: 10px;
         position: relative;
