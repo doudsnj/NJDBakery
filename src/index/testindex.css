@@ -190,8 +190,6 @@ img, embed, object, video {
 @media only screen and (min-width: 481px) and (max-width: 768px){
     .main-image-row {
         width: 100%;
-        /*position relative is needed to have the label show where it's supposed to
-        but causes the nav to not work...?)*/
         position: relative;
     }
 
@@ -435,8 +433,6 @@ img, embed, object, video {
         margin-top: 25px;
     }
 
-
-
 }
 
 @media only screen and (min-width: 993px) and (max-width: 1200px){
@@ -449,7 +445,7 @@ img, embed, object, video {
         white-space: nowrap;
         width: 15%;
         float: right;
-        margin-top: -76.5%;
+        margin-top: -76%;
         margin-right: 10%;
         padding-right: 10px;
         padding-left: 10px;
@@ -493,6 +489,7 @@ img, embed, object, video {
     .category-image__label--two {
         margin-right: 15%;
     }
+
     .main-image-row {
         display: flex;
         width: 90%;
@@ -522,6 +519,7 @@ img, embed, object, video {
         width: 97.5%;
         margin-left: 2.5%;
     }
+
     .site-explanation-container {
         width: 90%;
         margin-left: 5%;
@@ -594,6 +592,11 @@ img, embed, object, video {
         float: right;
     }
 
+    .category-image--1 {
+        float: left;
+        padding-right: 5%;
+    }
+
     .category-image--2 {
         float: right;
         padding-right: 5%;
@@ -615,7 +618,6 @@ img, embed, object, video {
    .browse-container__allCategories {
         margin-top: 50px;
     }
-
 }
 
 @media only screen and (min-width: 1201px){
