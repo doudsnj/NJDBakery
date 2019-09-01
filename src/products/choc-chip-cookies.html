@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>choc-chip-cookies-product-page</title>
+    <title>Chocolate-Chip-Cookies</title>
     <!-- <link rel="stylesheet" href="/src/shared/reset.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -17,6 +17,8 @@
     <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/src/header/header.js"></script>
     <script type="text/javascript" src="/src/nav/nav-bar.js"></script>
+    <script type="text/javascript" src="/src/order/order.service.js"></script>
+    <script type="text/javascript" src="/src/products/ind-product.js"></script>
     <script type="text/javascript" src="/src/footer/footer.js"></script>
 </head>
 
@@ -39,7 +41,7 @@
             <div class="column-right__container default-container">
                 <div class="nutrition-heading nutrition-heading__default">default</div>
                 <div class="nutrition-info nutrition-info__default">
-                    <table>
+                    <table class="defaults-table" rel="js-defaults-table">
                         <tbody>
                             <tr>
                                 <td class="table__key">image</td>
@@ -56,7 +58,7 @@
             <div class="column-right__container options-container">
                 <div class="nutrition-heading nutrition-heading__options">options</div>
                 <div class="nutrition-info nutrition-info__options">
-                    <table>
+                    <table class="options-table" rel="js-options-table">
                         <tbody>
                             <tr>
                                 <td class="table__key">image</td>
