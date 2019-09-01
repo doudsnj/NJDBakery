@@ -1,6 +1,3 @@
-var allergenDefaults = ['X', 'X', 'X', 'X', 'X', 'X', 'X'];
-var allergenOptions = ['X', 'X', 'X', 'X', 'X', 'X', 'X'];
-
 $(document).ready(function () {
     populateInfo();
 
@@ -13,29 +10,34 @@ function getDefaults(currentProduct, products, allergenDefaults) {
         if (currentProduct === product.name) {
 
             console.log('product.name', product.name);
+            if (product.dairyFree === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-dairyFree__icon table_key"</td> <td class="default-dairyFree__text">DAIRY FREE</td></tr>`);
+            }
 
-            const isDairyFree = (product.dairyFree);
-            allergenDefaults[0] = (product.dairyFree);
-            console.log('isDairyFree', isDairyFree);
-            const isEggFree = (product.eggFree);
-            allergenDefaults[1] = (product.eggFree);
-            console.log('isEggFree', isEggFree);
-            const isGlutenFree = (product.glutenFree);
-            allergenDefaults[2] = (product.glutenFree);
-            console.log('isGlutenFree', isGlutenFree);
-            const isGrainFree = (product.grainFree);
-            allergenDefaults[3] = (product.grainFree);
-            console.log('isGrainFree', isGrainFree);
-            const isNutFree = (product.nutFree);
-            allergenDefaults[4] = (product.nutFree);
-            console.log('isNutFree', isNutFree);
-            const isRefinedSugarFree = (product.refinedSugarFree);
-            allergenDefaults[5] = (product.refinedSugarFree);
-            console.log('isRefinedSugarFree', isRefinedSugarFree);
-            const isVegan = (product.vegan);
-            allergenDefaults[6] = (product.vegan);
-            console.log('isVegan', isVegan);
-            console.log('allergenDefaults', allergenDefaults);
+            if (product.eggFree === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-eggFree__icon table_key"</td> <td class="default-eggFree__text">EGG FREE</td></tr>`);
+            }
+
+            if (product.glutenFree === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-glutenFree__icon table_key"</td> <td class="default-glutenFree__text">GLUTEN FREE</td></tr>`);
+            }
+
+            if (product.grainFree === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-grainFree__icon table_key"</td> <td class="default-grainFree__text">GRAIN FREE</td></tr>`);
+            }
+
+            if (product.nutFree === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-nutFree__icon table_key"</td> <td class="default-nutFree__text">NUT FREE</td></tr>`);
+            }
+
+            if (product.refinedSugarFree === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-refinedSugarFree__icon table_key"</td> <td class="default-refinedSugarFree__text">REFINED SUGAR FREE</td></tr>`);
+            }
+
+            if (product.vegan === true) {
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-vegan__icon table_key"</td> <td class="default-vegan__text">VEGAN FREE</td></tr>`);
+            }
+
             if (currentProduct === product.name) {
                 return;
             }
@@ -48,33 +50,44 @@ function getOptions(currentProduct, products) {
     console.log('in getOptions function');
     products.forEach(product => {
         if (currentProduct === product.name) {
-            console.log('product.name', product.name);
-            const canBeDairyFree = (product.canBeDairyFree);
-            allergenOptions[0] = (product.canBeDairyFree);
-            console.log('canBeDairyFree', canBeDairyFree);
-            const canBeEggFree = (product.canBeEggFree);
-            allergenOptions[1] = (product.canBeEggFree);
-            console.log('canBeEggFree', canBeEggFree);
-            const canBeGlutenFree = (product.canBeGlutenFree);
-            allergenOptions[2] = (product.canBeGlutenFree);
-            console.log('canBeGlutenFree', canBeGlutenFree);
-            const canBeGrainFree = (product.canBeGrainFree);
-            allergenOptions[3] = (product.canBeGrainFree);
-            console.log('canBeGrainFree', canBeGrainFree);
-            const canBeNutFree = (product.canBeNutFree);
-            allergenOptions[4] = (product.canBeNutFree);
-            console.log('canBeNutFree', canBeNutFree);
-            const canBeRefinedSugarFree = (product.canBeRefinedSugarFree);
-            allergenOptions[5] = (product.canBeRefinedSugarFree);
-            console.log('canBeRefinedSugarFree', canBeRefinedSugarFree);
-            const canBeVegan = (product.canBeVegan);
-            allergenOptions[6] = (product.canBeVegan);
-            console.log('canBeVegan', canBeVegan);
-            console.log('allergenOptions', allergenOptions);
+            products.forEach(product => {
+                if (currentProduct === product.name) {
 
-            if (currentProduct === product.name) {
-                return;
-            }
+                    console.log('product.name', product.name);
+                    if (product.canBeDairyFree === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-dairyFree__icon table_key"</td> <td class="option-dairyFree__text">DAIRY FREE</td></tr>`);
+                    }
+
+                    if (product.canBeEggFree === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-eggFree__icon table_key"</td> <td class="option-eggFree__text">EGG FREE</td></tr>`);
+                    }
+
+                    if (product.canBeGlutenFree === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-glutenFree__icon table_key"</td> <td class="option-glutenFree__text">GLUTEN FREE</td></tr>`);
+                    }
+
+                    if (product.canBeGrainFree === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-grainFree__icon table_key"</td> <td class="option-grainFree__text">GRAIN FREE</td></tr>`);
+                    }
+
+                    if (product.canBeNutFree === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-nutFree__icon table_key"</td> <td class="option-nutFree__text">NUT FREE</td></tr>`);
+                    }
+
+                    if (product.canBeRefinedSugarFree === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-refinedSugarFree__icon table_key"</td> <td class="option-refinedSugarFree__text">REFINED SUGAR FREE</td></tr>`);
+                    }
+
+                    if (product.canBeVegan === true) {
+                        $(`[rel='js-options-table']`).append(`<tr><td class="option-vegan__icon table_key"</td> <td class="option-vegan__text">VEGAN FREE</td></tr>`);
+                    }
+
+                    if (currentProduct === product.name) {
+                        return;
+                    }
+                }
+
+            })
         }
     })
 
@@ -85,16 +98,7 @@ function populateInfo() {
     let currentProduct = str.replace(/-/g, ' ');
     console.log('currentProduct', currentProduct);
     getParentsOnlyProducts(products => {
-        getDefaults(currentProduct, products, allergenDefaults);
-        getOptions(currentProduct, products, allergenOptions);
+        getDefaults(currentProduct, products);
+        getOptions(currentProduct, products);
     });
-
 }
-
-function populateDefaults() {
-
-}
-
-// function populateOptions () {
-
-// }
