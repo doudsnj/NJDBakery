@@ -1,14 +1,3 @@
-//This is my first stab at what I was thinking for the the population of the product specific info
-//for the individual product pages. Right now there are just the two, hard coded (not pulling from an
-//actual template or anything) Chocolate Chip Cookies (real pictures and text) and Double Chocolate Chip Cookies 
-//(needs pictures and text) pages.
-//The batch nutrition calcs need to be updated for the Double Chocolate Chip Cookies - right now they
-//all have single digits, so it looks like the calc is failing and showing all as zero. They just need actual
-//values and the calc will work. Not pertinent to your code review though.
-
-//For the overall page population, I was toying with the idea of doing an array of objects, but it wasn't shaking down to be any
-//less coding, just a different type. So yeah, let me know your thoughts (if all these things should be
-//loops/forEaches over arrays instead). Thanks!
 $(document).ready(function () {
     populateInfo();
 });
@@ -50,7 +39,6 @@ function populateDefaults(currentProduct, products) {
                 return;
             }
         }
-
     })
 }
 
@@ -117,3 +105,39 @@ function populateOptions(currentProduct, products) {
         }
     })
 }
+
+function showTopImageForLargeViewports() {
+    var viewport = document.body.clientWidth;
+    let topImage = document.getElementById('top-image');
+    if (viewport >= 992) {
+
+        if ($(topImage).hasClass('hide')) {
+            $(topImage).removeClass('hide');
+        }
+    } else {
+        $(topImage).addClass('hide');
+    }
+};
+
+function hideMainLabelForLargeViewports() {
+    var viewport = document.body.clientWidth;
+    let mobileLabel = document.getElementById('main-image__label--mobile');
+    if (viewport <= 992) {
+        console.log('viewport is less than 992', viewport);
+
+        if ($(mobileLabel).hasClass('hide')) {
+            console.log('has hide class');
+            $(mobileLabel).removeClass('hide');
+            console.log('removed hide class');
+        }
+    } else {
+        $(mobileLabel).addClass('hide');
+    }
+};
+
+
+
+$(window).resize(function () {
+    showTopImageForLargeViewports();
+    hideMainLabelForLargeViewports();
+});
