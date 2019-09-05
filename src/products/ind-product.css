@@ -79,6 +79,81 @@ img, embed, object, video {
         padding-left: 10px;
     }
 
+    .nutrition-heading {
+        margin-top: 50px;
+    }
+    
+    .product-description{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .nutrition-breakdown__table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .nutrition-calc {
+        border-bottom: 1px solid #8b9e98;
+    }
+    
+    .table__key {
+        padding-left: 20px;
+    }
+
+    .nutrition-calc__value {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .nutrition-info__ingredients{
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 25px;
+    }
+    
+    .browse-container__cookies {
+        width: 50%;
+        float: left;
+        margin-bottom: 25px;
+    }
+    
+    .browse-container__order {
+        width: 50%;
+        float: right;
+        margin-bottom: 25px;
+    }
+    
+    .browse-heading {
+        color: #ce9a51;
+        font-family: 'Open Sans', sans-serif;
+        text-decoration: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-top: 1px solid #ce9a51;
+        border-bottom: 1px solid #ce9a51
+    }
+    
+    .browse-heading--cookies {
+        float: right;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: 15px;
+    }
+    
+    .browse-heading--order {
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-right: 15px;
+    }
+    
+
     
 
 

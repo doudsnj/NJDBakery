@@ -119,19 +119,55 @@ function showTopImageForLargeViewports() {
     }
 };
 
+function showLeftColumnIngredientsForLargeViewports() {
+    var viewport = document.body.clientWidth;
+    let largeIngredients = document.getElementById('lv-ingredients');
+    if (viewport >= 992) {
+
+        if ($(largeIngredients).hasClass('hide')) {
+            $(largeIngredients).removeClass('hide');
+        }
+    } else {
+        $(largeIngredients).addClass('hide');
+    }
+};
+
+function showMainHeadingForLargeViewports() {
+    var viewport = document.body.clientWidth;
+    let mainHeading = document.getElementById('lv-heading');
+    if (viewport >= 992) {
+
+        if ($(mainHeading).hasClass('hide')) {
+            $(mainHeading).removeClass('hide');
+        }
+    } else {
+        $(mainHeading).addClass('hide');
+    }
+};
+
 function hideMainLabelForLargeViewports() {
     var viewport = document.body.clientWidth;
     let mobileLabel = document.getElementById('main-image__label--mobile');
     if (viewport <= 992) {
-        console.log('viewport is less than 992', viewport);
 
         if ($(mobileLabel).hasClass('hide')) {
-            console.log('has hide class');
             $(mobileLabel).removeClass('hide');
-            console.log('removed hide class');
         }
     } else {
         $(mobileLabel).addClass('hide');
+    }
+};
+
+function hideMiddleColumnIngredientsForLargeViewports() {
+    var viewport = document.body.clientWidth;
+    let ingredients = document.getElementById('sv-ingredients');
+    if (viewport <= 992) {
+
+        if ($(ingredients).hasClass('hide')) {
+            $(ingredients).removeClass('hide');
+        }
+    } else {
+        $(ingredients).addClass('hide');
     }
 };
 
@@ -140,4 +176,7 @@ function hideMainLabelForLargeViewports() {
 $(window).resize(function () {
     showTopImageForLargeViewports();
     hideMainLabelForLargeViewports();
+    showLeftColumnIngredientsForLargeViewports();
+    showMainHeadingForLargeViewports();
+    hideMiddleColumnIngredientsForLargeViewports();
 });
