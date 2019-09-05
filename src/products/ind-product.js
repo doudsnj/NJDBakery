@@ -8,31 +8,31 @@ function populateDefaults(currentProduct, products) {
         if (currentProduct === product.name) {
             //Will also populate related icon vector in 'icon' <td>'s, once Cicci gets them to me
             if (product.dairyFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-dairyFree__icon table_key"></td> <td class="default-dairyFree__text">DAIRY FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-dairyFree__icon table__key"><img src="/assets/icon_temp.jpg" alt="diary free icon"></td> <td class="default-dairyFree__text">DAIRY FREE</td></tr>`);
             }
 
             if (product.eggFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-eggFree__icon table_key"></td> <td class="default-eggFree__text">EGG FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-eggFree__icon table__key"><img src="/assets/icon_temp.jpg" alt="egg free icon"></td> <td class="default-eggFree__text">EGG FREE</td></tr>`);
             }
 
             if (product.glutenFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-glutenFree__icon table_key"></td> <td class="default-glutenFree__text">GLUTEN FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-glutenFree__icon table__key"><img src="/assets/icon_temp.jpg" alt="gluten free icon"></td> <td class="default-glutenFree__text">GLUTEN FREE</td></tr>`);
             }
 
             if (product.grainFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-grainFree__icon table_key"></td> <td class="default-grainFree__text">GRAIN FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-grainFree__icon table__key"><img src="/assets/icon_temp.jpg" alt="grain free icon"></td> <td class="default-grainFree__text">GRAIN FREE</td></tr>`);
             }
 
             if (product.nutFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-nutFree__icon table_key"></td> <td class="default-nutFree__text">NUT FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-nutFree__icon table__key"><img src="/assets/icon_temp.jpg" alt="nut free icon"></td> <td class="default-nutFree__text">NUT FREE</td></tr>`);
             }
 
             if (product.refinedSugarFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-refinedSugarFree__icon table_key"></td> <td class="default-refinedSugarFree__text">REFINED SUGAR FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-refinedSugarFree__icon table__key"><img src="/assets/icon_temp.jpg" alt="refined sugar free icon"></td> <td class="default-refinedSugarFree__text">REFINED SUGAR FREE</td></tr>`);
             }
 
             if (product.vegan === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-vegan__icon table_key"></td> <td class="default-vegan__text">VEGAN FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-vegan__icon table__key"><img src="/assets/icon_temp.jpg" alt="vegan icon"></td> <td class="default-vegan__text">VEGAN FREE</td></tr>`);
             }
 
             if (currentProduct === product.name) {
@@ -55,6 +55,7 @@ function populateInfo() {
 function populateNutrition(currentProduct, products) {
     products.forEach(product => {
         if (currentProduct === product.name) {
+            //Need to add the type to the API, or pull in its category and remove plurals when necessary
             $(`[rel='js-nutrition-value__serving']`).html('1' + '"thing"');
             $(`[rel='js-nutrition-value__batch-servings']`).html(product.defaultNumberOfServings);
             $(`[rel='js-nutrition-value__calories']`).html(Math.trunc(product.totalBatchCalories / product.defaultNumberOfServings));
@@ -72,31 +73,31 @@ function populateOptions(currentProduct, products) {
         if (currentProduct === product.name) {
             //Will also populate related icon vector in 'icon' <td>'s, once Cicci gets them to me
             if (product.canBeDairyFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-dairyFree__icon table_key"></td> <td class="option-dairyFree__text">DAIRY FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-dairyFree__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="diary free icon"></td> <td class="option-dairyFree__text">DAIRY FREE</td></tr>`);
             }
 
             if (product.canBeEggFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-eggFree__icon table_key"></td> <td class="option-eggFree__text">EGG FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-eggFree__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="egg free icon"></td> <td class="option-eggFree__text">EGG FREE</td></tr>`);
             }
 
             if (product.canBeGlutenFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><t class="option-glutenFree__icon table_key">/td> <tdclass="option-glutenFree__text">GLUTEN FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-glutenFree__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="gluten free icon"></td><td class="option-glutenFree__text">GLUTEN FREE</td></tr>`);
             }
 
             if (product.canBeGrainFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-grainFree__icon table_key"></td> <td class="option-grainFree__text">GRAIN FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-grainFree__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="grain free icon"> </td> <td class="option-grainFree__text">GRAIN FREE</td></tr>`);
             }
 
             if (product.canBeNutFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-nutFree__icon table_key"></td> <td class="option-nutFree__text">NUT FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-nutFree__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="nut free icon"> </td> <td class="option-nutFree__text">NUT FREE</td></tr>`);
             }
 
             if (product.canBeRefinedSugarFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-refinedSugarFree__icon table_key"></td> <td class="option-refinedSugarFree__text">REFINED SUGAR FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-refinedSugarFree__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="refined sugar free icon"> </td> <td class="option-refinedSugarFree__text">REFINED SUGAR FREE</td></tr>`);
             }
 
             if (product.canBeVegan === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-vegan__icon table_key"></td> <td class="option-vegan__text">VEGAN FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-vegan__icon table__key"><img class="allergy-icon" src="/assets/icon_temp.jpg" alt="vegan icon"> </td> <td class="option-vegan__text">VEGAN FREE</td></tr>`);
             }
 
             if (currentProduct === product.name) {
@@ -170,8 +171,6 @@ function hideMiddleColumnIngredientsForLargeViewports() {
         $(ingredients).addClass('hide');
     }
 };
-
-
 
 $(window).resize(function () {
     showTopImageForLargeViewports();

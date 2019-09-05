@@ -2,12 +2,11 @@ $(function () {
     $("[rel='js-body']").append('<div class="footer" rel="js-footer"></div>');
     $("[rel='js-footer']").append('<div class="footer-content" rel="js-footer-content"></div>');
     $("[rel='js-footer']").after('<div class="footer-copyright" rel="js-footer-copyright"></div>');
-    $("[rel='js-footer-copyright']").append('<p class="footer-copyright__text" rel="js-footer-copyright__text">&copy; njdbakery 2018</p>');
+    $("[rel='js-footer-copyright']").append('<p class="footer-copyright__text" rel="js-footer-copyright__text">&copy; njdbakery 2019</p>');
     generateFooterLinks();
 });
 
-const footerLinks = [
-    {
+const footerLinks = [{
         class: 'footer-content__link',
         href: 'index.html',
         linkText: 'HOME'

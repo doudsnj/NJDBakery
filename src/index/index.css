@@ -152,7 +152,6 @@ img, embed, object, video {
         display: inline-block;
     }
 
-
     .category-row__column{
         width: 100%;
         margin-bottom: 25px;
@@ -196,7 +195,6 @@ img, embed, object, video {
         /* or not because it doesn't affect accessibility...*/
         display: none;
     } 
-
     
    .main-image__label--mobile {
         background-color: #8b9e98;
@@ -255,7 +253,6 @@ img, embed, object, video {
         display: inline-block;
     }
 
-
     .category-row__column{
         width: 100%;
         margin-bottom: 25px;
@@ -299,7 +296,6 @@ img, embed, object, video {
         /* or not because it doesn't affect accessibility...*/
         display: none;
     } 
-
     
    .main-image__label--mobile {
         background-color: #8b9e98;
@@ -429,8 +425,6 @@ img, embed, object, video {
     .browse-container__allCategories {
         margin-top: 25px;
     }
-
-
 
 }
 
