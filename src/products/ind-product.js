@@ -37,7 +37,7 @@ function populateDefaults(currentProduct, products) {
             }
 
             if (product.vegan === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-vegan__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/vegan.png" alt="vegan icon"></td> <td class="default-vegan__text">VEGAN FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-vegan__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/vegan.png" alt="vegan icon"></td> <td class="default-vegan__text">VEGAN</td></tr>`);
             }
 
             if (currentProduct === product.name) {
@@ -63,12 +63,12 @@ function populateNutrition(currentProduct, products) {
             //Need to add the type to the API, or pull in its category and remove plurals when necessary
             $(`[rel='js-nutrition-value__serving']`).html('1' + '"thing"');
             $(`[rel='js-nutrition-value__batch-servings']`).html(product.defaultNumberOfServings);
-            $(`[rel='js-nutrition-value__calories']`).html(Math.trunc(product.totalBatchCalories / product.defaultNumberOfServings));
-            $(`[rel='js-nutrition-value__fat']`).html(Math.trunc(product.totalBatchFat / product.defaultNumberOfServings));
-            $(`[rel='js-nutrition-value__carbs']`).html(Math.trunc(product.totalBatchCarbs / product.defaultNumberOfServings));
-            $(`[rel='js-nutrition-value__fiber']`).html(Math.trunc(product.totalBatchFiber / product.defaultNumberOfServings));
-            $(`[rel='js-nutrition-value__sugar']`).html(Math.trunc(product.totalBatchSugar / product.defaultNumberOfServings));
-            $(`[rel='js-nutrition-value__protein']`).html(Math.trunc(product.totalBatchProtein / product.defaultNumberOfServings));
+            $(`[rel='js-nutrition-value__calories']`).html(Math.trunc(product.totalBatchCalories / product.defaultNumberOfServings) + 'g');
+            $(`[rel='js-nutrition-value__fat']`).html(Math.trunc(product.totalBatchFat / product.defaultNumberOfServings) + 'g');
+            $(`[rel='js-nutrition-value__carbs']`).html(Math.trunc(product.totalBatchCarbs / product.defaultNumberOfServings) + 'g');
+            $(`[rel='js-nutrition-value__fiber']`).html(Math.trunc(product.totalBatchFiber / product.defaultNumberOfServings) + 'g');
+            $(`[rel='js-nutrition-value__sugar']`).html(Math.trunc(product.totalBatchSugar / product.defaultNumberOfServings) + 'g');
+            $(`[rel='js-nutrition-value__protein']`).html(Math.trunc(product.totalBatchProtein / product.defaultNumberOfServings) + 'g');
         }
     })
 }
@@ -102,7 +102,7 @@ function populateOptions(currentProduct, products) {
             }
 
             if (product.canBeVegan === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-vegan__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/vegan.png" alt="vegan icon"> </td> <td class="option-vegan__text">VEGAN FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-vegan__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/vegan.png" alt="vegan icon"> </td> <td class="option-vegan__text">VEGAN</td></tr>`);
             }
 
             if (currentProduct === product.name) {
