@@ -1,0 +1,53 @@
+/*start - use to show containers*/
+/* .explanation-container {
+    background-color: green;
+} */
+/* .order-form__customer-fields {
+    background-color: lightblue;
+}
+
+.order-form__product-fields {
+    background-color: #ffffff;
+} */
+/*end - use to show containers*/
+
+
+.general-heading {
+    font-family: 'Indie Flower', cursive;
+    color: #8b9e98;
+    text-align: center;
+    font-size: 50px;
+}
+
+.explanation-container {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.explanation-container__text {
+    font-family: 'Open Sans', sans-serif;
+    color: #383838;
+    text-decoration: none;
+    font-size: 16px;
+    padding-left: 10%;
+    padding-top: 25px;
+    padding-right: 10%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+/*Uses the same styling as the index page for the remainder.*/
+/* 
+@media only screen and (max-width: 480px){
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+}
+@media only screen and (min-width: 769px) and (max-width: 992px){
+}
+@media only screen and (min-width: 993px) and (max-width: 1200px){
+}
+@media only screen and (min-width: 1201px){
+} */
