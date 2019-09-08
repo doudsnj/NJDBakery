@@ -65,6 +65,30 @@ img, embed, object, video {
     color: #8b9e98;
 }
 
+.table__key {
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 40px;
+}
+
+.nutrition-heading {
+    font-family: 'Indie Flower', cursive;
+    background-color: #8b9e98;
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.nutrition-info {
+    background-color: white;
+    color: #383838;
+    font-size: 16px;
+}
+
 
 
 @media only screen and (max-width: 480px){
@@ -79,7 +103,7 @@ img, embed, object, video {
         color: #ffffff;
         text-align: center;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 24px;
         line-height: 1.5;
         width: 100%;
         margin-top: -10%;
@@ -90,24 +114,10 @@ img, embed, object, video {
     } 
 
     .nutrition-heading {
-        font-family: 'Indie Flower', cursive;
-        background-color: #8b9e98;
-        color: white;
-        text-align: left;
-        font-size: 20px;
-        font-weight: 300;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
-
-    .nutrition-heading {
         margin-top: 50px;
     }
 
     .nutrition-info {
-        background-color: white;
-        color:  #383838;
         font-size: 16px;
     }
     
@@ -130,11 +140,6 @@ img, embed, object, video {
         padding-top: 10px;
         padding-bottom: 10px;
         border-bottom: 1px solid #8b9e98;
-    }
-    
-    .table__key {
-        padding-left: 20px;
-        padding-right: 20px;
     }
 
     .nutrition-calc__value {
@@ -209,25 +214,11 @@ img, embed, object, video {
         z-index: 1; 
     } 
 
-    .nutrition-heading {
-        font-family: 'Indie Flower', cursive;
-        background-color: #8b9e98;
-        color: white;
-        text-align: left;
-        font-size: 20px;
-        font-weight: 300;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
-
     /* .nutrition-heading {
         margin-top: 50px;
     } */
 
     .nutrition-info {
-        background-color: white;
-        color:  #383838;
         font-size: 16px;
     }
     
@@ -283,12 +274,6 @@ img, embed, object, video {
         padding-bottom: 10px;
         border-bottom: 1px solid #8b9e98;
     } 
-    
-   
-    .table__key {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 
     .nutrition-calc__value {
         text-align: right;
@@ -373,25 +358,11 @@ img, embed, object, video {
         z-index: 1; 
     } 
 
-    .nutrition-heading {
-        font-family: 'Indie Flower', cursive;
-        background-color: #8b9e98;
-        color: white;
-        text-align: left;
-        font-size: 20px;
-        font-weight: 300;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
-
     /* .nutrition-heading {
         margin-top: 50px;
     } */
 
     .nutrition-info {
-        background-color: white;
-        color:  #383838;
         font-size: 16px;
     }
     
@@ -447,13 +418,7 @@ img, embed, object, video {
         padding-bottom: 10px;
         border-bottom: 1px solid #8b9e98;
     } 
-    
    
-    .table__key {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
     .nutrition-calc__value {
         text-align: right;
         padding-right: 20px;
@@ -544,7 +509,6 @@ img, embed, object, video {
         text-align: left;
         font-size: 45px;
         font-weight: 300;
-        /* padding-top: 0%; */
         vertical-align: top;
     }
     
@@ -556,7 +520,6 @@ img, embed, object, video {
     }
     
     .column-right {
-        /* font-family: 'Indie Flower', cursive; */
         font-family: 'Open Sans', sans-serif;
         width: 21%;
         margin-left: 4%;
@@ -570,27 +533,12 @@ img, embed, object, video {
     .column-right__container {
         padding-bottom: 50px;
     }
-   
-    .nutrition-heading {
-        font-family: 'Indie Flower', cursive;
-        background-color: #8b9e98;
-        color: white;
-        text-align: left;
-        font-size: 20px;
-        font-weight: 300;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
     
     .nutrition-heading__ingredients {
         margin-top: 50px;
     }
     
-    
     .nutrition-info {
-        background-color: white;
-        color: #8b9e98;
         font-size: 16px;
         /* margin-bottom: 10px; */
     }
@@ -603,19 +551,12 @@ img, embed, object, video {
     td {
         padding-top: 10px;
         padding-bottom: 10px;
+        overflow-wrap: break-word;
     }
     
     .nutrition-calc {
         border-bottom: 1px solid #8b9e98;
     }
-    
-    .table__key {
-        padding-left: 20px;
-    }
-    
-    /* .top-two-rows {
-        border: 2.5px solid #8b9e98;
-    } */
     
     .nutrition-calc__value {
         text-align: right;
@@ -695,7 +636,6 @@ img, embed, object, video {
         vertical-align: top;
     }
     
-    
     .product-description {
         font-family: 'Open Sans', sans-serif;
         color: #383838;
@@ -717,26 +657,12 @@ img, embed, object, video {
     .column-right__container {
         padding-bottom: 50px;
     }
-   
-    .nutrition-heading {
-        font-family: 'Indie Flower', cursive;
-        background-color: #8b9e98;
-        color: white;
-        text-align: left;
-        font-size: 20px;
-        font-weight: 300;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-    }
     
     .nutrition-heading__ingredients {
         margin-top: 50px;
     }
     
     .nutrition-info {
-        background-color: white;
-        color: #383838;
         font-size: 16px;
     }
 
@@ -757,14 +683,6 @@ img, embed, object, video {
     
     .nutrition-calc {
         border-bottom: 1px solid #8b9e98;
-    }
-    
-    .table__key {
-        padding-left: 20px;
-    }
-
-    .allergy-icon {
-        padding-right: 25px;
     }
     
     .nutrition-calc__value {

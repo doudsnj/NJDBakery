@@ -13,7 +13,7 @@ function populateDefaults(currentProduct, products) {
         if (currentProduct === product.name) {
             //Will also populate related icon vector in 'icon' <td>'s, once Cicci gets them to me
             if (product.dairyFree === true) {
-                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-dairyFree__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/dairy_free.png" alt="diary free icon"></td> <td class="default-dairyFree__text">DAIRY FREE</td></tr>`);
+                $(`[rel='js-defaults-table']`).append(`<tr><td class="default-dairyFree__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/dairy_free.png" alt="dairy free icon"></td> <td class="default-dairyFree__text">DAIRY FREE</td></tr>`);
             }
 
             if (product.eggFree === true) {
@@ -78,7 +78,7 @@ function populateOptions(currentProduct, products) {
         if (currentProduct === product.name) {
             //Will also populate related icon vector in 'icon' <td>'s, once Cicci gets them to me
             if (product.canBeDairyFree === true) {
-                $(`[rel='js-options-table']`).append(`<tr><td class="option-dairyFree__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/dairy_free.png" alt="diary free icon"></td> <td class="option-dairyFree__text">DAIRY FREE</td></tr>`);
+                $(`[rel='js-options-table']`).append(`<tr><td class="option-dairyFree__icon table__key"><img class="allergy-icon" src="/assets/allergy_icons/dairy_free.png" alt="dairy free icon"></td> <td class="option-dairyFree__text">DAIRY FREE</td></tr>`);
             }
 
             if (product.canBeEggFree === true) {

@@ -11,18 +11,13 @@
 } */
 /*end - use to show containers*/
 
-.logo-div__logo{
-    width: 25%;
-}
 
 .general-heading {
     font-family: 'Indie Flower', cursive;
     color: #8b9e98;
     text-align: center;
     font-size: 50px;
- }
-
-
+}
 
 .explanation-container {
     width: 90%;
@@ -34,19 +29,25 @@
     font-family: 'Open Sans', sans-serif;
     color: #383838;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 16px;
     padding-left: 10%;
-    padding-top: 2.5%;
+    padding-top: 25px;
     padding-right: 10%;
     padding-bottom: 2.5%;
     text-align: center;
     line-height: 1.5em;
 }
 
-
-
-
-
-
-@media only screen and (min-width: 600px) {
+/*Uses the same styling as the index page for the remainder.*/
+/* 
+@media only screen and (max-width: 480px){
 }
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+}
+@media only screen and (min-width: 769px) and (max-width: 992px){
+}
+@media only screen and (min-width: 993px) and (max-width: 1200px){
+}
+@media only screen and (min-width: 1201px){
+} */
