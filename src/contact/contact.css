@@ -10,13 +10,30 @@
     background-color: #ffffff;
 } */
 /*end - use to show containers*/
+body, 
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
 
+img, embed, object, video {
+    max-width: 100%;
+}
+
+.hide {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
 .general-heading {
     font-family: 'Indie Flower', cursive;
     color: #8b9e98;
     text-align: center;
     font-size: 50px;
- }
+}
 
 .contact-form__customer-heading {
     font-family: 'Indie Flower', cursive;
@@ -97,11 +114,6 @@
 .contact-form__email {
     margin-left: 12%;
 }
-
- 
-
-
-
 
 @media only screen and (min-width: 600px) {
     .contact-form {
