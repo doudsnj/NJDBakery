@@ -44,11 +44,44 @@ img, embed, object, video {
     line-height: 1.5em;
 }
 
+.ingredients-container {
+    width:90%;
+    margin-right:5%;
+    margin-left:5%;
+    margin-bottom: 25px;
+}
+
+.column-left {
+    width: 49%;
+    float: left;
+}
+
+.column-right {
+    width: 49%;
+    float: right;
+}
+
+.spacer {
+    clear: left;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
 }
+
+.table-heading {
+    font-family: 'Indie Flower', cursive;
+    background-color: #8b9e98;
+    color: white;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
 
 td {
     padding-top: 10px;
@@ -61,4 +94,5 @@ td {
     padding-left: 20px;
     padding-right: 20px;
     min-width: 40px;
+    font: bold;
 }
