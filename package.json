@@ -9,7 +9,7 @@
   "author": "Nadine Douds",
   "license": "ISC",
   "dependencies": {
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "moment": "2.24.0",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
